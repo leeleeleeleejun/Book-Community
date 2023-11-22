@@ -50,6 +50,44 @@ table {
 	border-spacing: 0;
 }
 
+* {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+button {
+	cursor: pointer;
+}
+
+:root {
+
+	// Colors
+	--color-main: #ff9900;
+	--color-sub: #ffaa42;
+	--color-sub-2: #ffcb8f;
+
+	--color-light-black: #7d7d7d;
+	--color-light-black: #7d7d7d;
+  --color-light-gray: #e7e7e7;
+	--color-gray: #bfbfbf;
+
+
+
+
+	--sidebar-color: #F7F5F0;
+
+	// Font size
+  --font-large: 30px;
+  --font-medium: 18px;
+  --font-regular: 16px;
+	--font-small: 13px;
+  --font-micro: 10px;
+
+	// Font weight
+  --weight-bold: 900;
+  --weight-semi-bold: 600;
+  --weight-regular: 500;
+  --weight-light: 300;
+}
 `;
 
 export default GlobalStyle;
