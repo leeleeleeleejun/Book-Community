@@ -59,25 +59,29 @@ button {
 }
 
 :root {
-
 	// Colors
 	--color-main: #ff9900;
 	--color-sub: #ffaa42;
 	--color-sub-2: #ffcb8f;
 
 	--color-light-black: #7d7d7d;
-	--color-light-black: #7d7d7d;
-  --color-light-gray: #e7e7e7;
+	--color-light-black-2: #495057;
+
 	--color-gray: #bfbfbf;
+	--color-gray-2:#868E96;
+	--color-gray-3:#e9ecef;
+	--color-gray-light: #EFF1F4;
+	--color-gray-light-2: #ffffff99;
 
 
+	--color-sidebar: #F7F5F0;
+	--color-sidebar-active : #E4DDCC;
 
 
-	--sidebar-color: #F7F5F0;
 
 	// Font size
-  --font-large: 30px;
-  --font-medium: 18px;
+  --font-large: 23px;
+  --font-medium: 19px;
   --font-regular: 16px;
 	--font-small: 13px;
   --font-micro: 10px;

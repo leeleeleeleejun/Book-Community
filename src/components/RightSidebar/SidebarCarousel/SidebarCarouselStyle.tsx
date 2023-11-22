@@ -2,16 +2,16 @@ import { styled } from "styled-components";
 
 export const Images = styled.div`
   display: flex;
+  justify-content: space-around;
   width: 400px;
-  height: 80%;
+  height: 45%;
   border-radius: 10px;
   overflow: hidden;
-  margin: 6% 0;
+  margin: 5% 0;
 `;
 
 export const Img = styled.img<{ $visible: boolean }>`
   min-width: 380px;
-  height: 100%;
   border-radius: 8px;
   cursor: pointer;
   transition: opacity 0.5s ease-in-out;
@@ -19,9 +19,9 @@ export const Img = styled.img<{ $visible: boolean }>`
 `;
 
 export const TextBox = styled.div`
-  width: 390px;
+  width: 350px;
   height: 100px;
-  margin: 40px auto;
+  margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
