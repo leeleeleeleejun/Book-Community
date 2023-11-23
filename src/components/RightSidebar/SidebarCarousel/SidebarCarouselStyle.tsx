@@ -1,18 +1,19 @@
 import { styled } from "styled-components";
 
-export const Images = styled.div`
+export const ImgBox = styled.div`
   display: flex;
   justify-content: space-around;
-  width: 400px;
-  height: 45%;
+  width: 380px;
+  height: 55%;
   border-radius: 10px;
   overflow: hidden;
-  margin: 5% 0;
+  margin-top: 20%;
+  border-radius: 8px;
+  filter: blur(1px);
 `;
 
 export const Img = styled.img<{ $visible: boolean }>`
   min-width: 380px;
-  border-radius: 8px;
   cursor: pointer;
   transition: opacity 0.5s ease-in-out;
   opacity: ${({ $visible }) => ($visible ? 0.7 : 0)};
@@ -21,7 +22,7 @@ export const Img = styled.img<{ $visible: boolean }>`
 export const TextBox = styled.div`
   width: 350px;
   height: 100px;
-  margin: auto;
+  margin: 20px auto;
   display: flex;
   flex-direction: column;
   justify-content: space-around;

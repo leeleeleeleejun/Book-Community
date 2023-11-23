@@ -31,6 +31,8 @@ export const LeftAside = styled.aside`
 `;
 
 export const RightAside = styled.aside`
+  display: flex;
+  flex-direction: column;
   height: 100vh;
   box-sizing: border-box;
   padding: 26px 23px 36px;

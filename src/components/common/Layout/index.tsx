@@ -4,6 +4,7 @@ import SidebarNav from "@/components/LeftSidebar/SidebarNav";
 import Carousel from "@/components/RightSidebar/SidebarCarousel";
 import ReadingTime from "@/components/LeftSidebar/ReadingTime";
 import { Container, LeftAside, RightAside, Logo, Main } from "./LayoutStyle";
+import Footer from "@/components/RightSidebar/Footer";
 
 const Layout = () => {
   return (
@@ -19,6 +20,7 @@ const Layout = () => {
       </Main>
       <RightAside>
         <Carousel />
+        <Footer />
       </RightAside>
     </Container>
   );

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Images, Img, TextBox } from "./SidebarCarouselStyle";
+import { ImgBox, Img, TextBox } from "./SidebarCarouselStyle";
 
 const array = [
   [
@@ -57,9 +57,9 @@ const Carousel = () => {
 
   return (
     <>
-      <Images>
+      <ImgBox>
         <Img src={`carouselImg/${count}.jpg`} $visible={visible} />
-      </Images>
+      </ImgBox>
       <TextBox>
         <pre>{array[count - 1][0]}</pre>
         <p>- {array[count - 1][1]} -</p>

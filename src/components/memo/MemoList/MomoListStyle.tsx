@@ -6,7 +6,7 @@ export const MemoListItem = styled.li`
   display: flex;
   max-width: 800px;
   justify-content: space-between;
-  padding: 10px 40px;
+  padding: 15px 40px;
   & > div {
     display: flex;
     width: 95%;
