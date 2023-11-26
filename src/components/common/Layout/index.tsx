@@ -13,7 +13,7 @@ const Layout = () => {
   const [login, setLogin] = useState<boolean>(true);
   return (
     <>
-      <LoginModal />
+      {login ? <LoginModal login={login} setLogin={setLogin} /> : null}
       <Container $login={login}>
         <LeftAside>
           <Logo alt="logo" src="logo.jpg" />

@@ -42,37 +42,23 @@ export const LoginModalBox = styled.div`
   background-color: white;
   border-radius: 8px;
 
+  position: relative;
+
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: var(--font-regular);
+  }
+
   img {
-    width: 120px;
-    margin: 10px auto;
-  }
-
-  input {
-    width: 250px;
-    height: 30px;
-    margin: 5px auto;
-    padding: 5px 12px;
-    border-radius: 4px;
-    border: 1px solid var(--color-main);
-    font-size: 14px;
-
-    &:focus {
-      outline: 3px solid var(--color-sub-2);
-    }
-  }
-
-  button {
-    width: 274px;
-    height: 40px;
-    margin: 10px auto;
-    border-radius: 4px;
-    background-color: var(--color-main);
-    color: white;
+    width: 190px;
+    margin: 10px auto 30px;
   }
 
   div {
     display: flex;
-    margin: 0 auto;
+    margin: 10px auto;
   }
 
   p {

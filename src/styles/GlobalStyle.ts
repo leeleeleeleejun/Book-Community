@@ -57,6 +57,7 @@ table {
 button {
 	cursor: pointer;
 	border: none;
+	background: none;
 }
 
 :root {
