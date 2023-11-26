@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 export const UserBox = styled.div`
+  background-color: var(--color-sidebar-active);
+  border-radius: 8px;
+  padding: 10px 0;
   display: flex;
   justify-content: space-around;
   margin-top: 30px;

@@ -1,11 +1,12 @@
 import { styled } from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.div<{ $login: boolean }>`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   max-width: 1600px;
   margin: auto;
+  filter: ${({ $login }) => ($login ? "blur(5px)" : "")};
 `;
 
 export const Main = styled.main`
@@ -15,7 +16,7 @@ export const Main = styled.main`
 `;
 
 export const Logo = styled.img`
-  width: 100px;
+  width: 200px;
   margin: 25px auto;
 `;
 
@@ -31,6 +32,8 @@ export const LeftAside = styled.aside`
 `;
 
 export const RightAside = styled.aside`
+  display: flex;
+  flex-direction: column;
   height: 100vh;
   box-sizing: border-box;
   padding: 26px 23px 36px;

@@ -56,6 +56,8 @@ table {
 
 button {
 	cursor: pointer;
+	border: none;
+	background: none;
 }
 
 :root {
@@ -66,13 +68,15 @@ button {
 
 	--color-light-black: #7d7d7d;
 	--color-light-black-2: #495057;
+	--color-light-black-3: #212529;
 
 	--color-gray: #bfbfbf;
 	--color-gray-2:#868E96;
 	--color-gray-3:#e9ecef;
+	--color-gray-4:#DEE2E6;
 	--color-gray-light: #EFF1F4;
 	--color-gray-light-2: #ffffff99;
-
+  --color-gray-light-3: #ADB5BD;
 
 	--color-sidebar: #F7F5F0;
 	--color-sidebar-active : #E4DDCC;
