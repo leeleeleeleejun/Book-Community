@@ -38,8 +38,8 @@ const Layout = () => {
           <Outlet />
         </Main>
         <RightAside>
-          <Carousel />
-          <Footer />
+          <Carousel signUp={false} />
+          <Footer signUp={false} />
         </RightAside>
       </Container>
     </>

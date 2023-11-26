@@ -1,14 +1,13 @@
 import { styled } from "styled-components";
 
-export const ImgBox = styled.div`
+export const ImgBox = styled.div<{ $signUp: boolean }>`
   display: flex;
   justify-content: space-around;
   width: 380px;
   height: 55%;
   border-radius: 10px;
   overflow: hidden;
-  margin-top: 20%;
-  border-radius: 8px;
+  ${({ $signUp }) => ($signUp ? null : "margin-top: 20%;")}
   filter: blur(1px);
 `;
 
@@ -16,6 +15,7 @@ export const Img = styled.img<{ $visible: boolean }>`
   min-width: 380px;
   cursor: pointer;
   transition: opacity 0.5s ease-in-out;
+  border-radius: 8px;
   opacity: ${({ $visible }) => ($visible ? 0.7 : 0)};
 `;
 

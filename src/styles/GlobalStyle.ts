@@ -55,6 +55,7 @@ table {
 }
 
 button {
+	display: block;
 	cursor: pointer;
 	border: none;
 	background: none;
