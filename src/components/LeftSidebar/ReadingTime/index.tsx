@@ -4,7 +4,7 @@ import {
   Activity,
   Week,
   Day,
-} from "./ReadingTimeStyle";
+} from "./ReadingTime.style";
 
 const ReadingTime = () => {
   const column = Array(7).fill(0);

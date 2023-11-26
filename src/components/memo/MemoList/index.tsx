@@ -10,7 +10,7 @@ import {
   WriteDate,
   WriterInfo,
   MemoInfo,
-} from "./MomoListStyle";
+} from "./MomoList.style";
 
 const MemoList = () => {
   const a = [0, 0, 0, 0, 0, 0];

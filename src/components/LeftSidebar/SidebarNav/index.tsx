@@ -2,7 +2,7 @@ import HomeIcon from "@/assets/HomeIcon";
 import MessageIcon from "@/assets/MessageIcon";
 import BookIcon from "@/assets/BookIcon";
 import BlogIcon from "@/assets/BlogIcon";
-import { Nav, NavItem } from "./SidebarNavStyle";
+import { Nav, NavItem } from "./SidebarNav.style";
 
 const SidebarNav = () => {
   return (

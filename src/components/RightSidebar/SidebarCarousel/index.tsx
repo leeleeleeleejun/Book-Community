@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ImgBox, Img, TextBox } from "./SidebarCarouselStyle";
+import { ImgBox, Img, TextBox } from "./SidebarCarousel.style";
 
 const array = [
   [

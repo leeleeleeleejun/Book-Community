@@ -1,4 +1,4 @@
-import { LoginButtonBox } from "./LoginStyle";
+import { LoginButtonBox } from "./Login.style";
 
 const LoginButton = ({
   login,

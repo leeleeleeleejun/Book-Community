@@ -1,4 +1,4 @@
-import { NavBox, NavItem } from "@/components/common/Nav/NavStyle";
+import { NavBox, NavItem } from "./Nav.style";
 
 const Nav = () => {
   return (

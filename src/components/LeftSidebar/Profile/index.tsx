@@ -1,4 +1,4 @@
-import { UserBox, UserImg, UserName } from "./ProfileStyle";
+import { UserBox, UserImg, UserName } from "./Profile.style";
 
 const Profile = () => {
   return (

@@ -1,7 +1,7 @@
 import GithubIcon from "@/assets/GithubIcon";
 import MailIcon from "@/assets/MailIcon";
 import VelogIcon from "@/assets/VelogIcon.";
-import { FooterBox, IconBox } from "./FoooterStyle";
+import { FooterBox, IconBox } from "./Foooter.style";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
