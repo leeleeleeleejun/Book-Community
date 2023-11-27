@@ -16,6 +16,7 @@ export const NavBox = styled.div`
     font-size: 14px;
   }
 `;
+
 export const NavItem = styled(Link)`
   color: black;
   font-size: 21px;
@@ -23,4 +24,5 @@ export const NavItem = styled(Link)`
   padding: 8px;
   text-decoration: none;
   border-bottom: 3px solid var(--color-gray-3);
+  margin-right: 10px;
 `;

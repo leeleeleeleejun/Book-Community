@@ -28,7 +28,7 @@ const LoginModal = ({
         <FormButton>로그인</FormButton>
         <div>
           <p>아직 회원이 아니신가요?</p>
-          <Link to={"/"}>회원가입</Link>
+          <Link to={"/signup"}>회원가입</Link>
         </div>
       </LoginModalBox>
     </LoginButtonContainer>
