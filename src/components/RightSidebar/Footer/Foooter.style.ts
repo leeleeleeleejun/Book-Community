@@ -12,7 +12,7 @@ export const FooterBox = styled.footer`
 
 export const IconBox = styled.div`
   display: flex;
+  margin-bottom: 10px;
   justify-content: center;
   gap: 25px;
-  margin-bottom: 10px;
 `;

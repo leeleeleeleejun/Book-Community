@@ -32,7 +32,7 @@ const array = [
   ],
 ];
 
-const Carousel = () => {
+const Carousel = ({ signUp }: { signUp: boolean }) => {
   const [count, setCount] = useState(1);
   const [visible, setVisible] = useState(true);
 
@@ -57,7 +57,7 @@ const Carousel = () => {
 
   return (
     <>
-      <ImgBox>
+      <ImgBox $signUp={signUp}>
         <Img src={`carouselImg/${count}.jpg`} $visible={visible} />
       </ImgBox>
       <TextBox>

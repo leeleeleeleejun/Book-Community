@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { LoginButtonContainer, LoginModalBox } from "./Login.style";
-import Input from "@/components/common/Inpuet";
+import Input from "@/components/common/Input";
 import FormButton from "@/components/common/FormButton";
 import CloseButton from "@/assets/CloseButton";
 
