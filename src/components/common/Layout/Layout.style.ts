@@ -10,7 +10,7 @@ export const Container = styled.div<{ $login: boolean }>`
 `;
 
 export const Main = styled.main`
-  padding: 10px;
+  padding: 50px 40px;
   width: 100%;
   min-height: 780px;
 `;
