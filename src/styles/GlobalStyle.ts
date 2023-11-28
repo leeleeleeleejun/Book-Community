@@ -94,7 +94,7 @@ label {
   --font-regular: 16px;
 	--font-semi-small: 14px;
 	--font-small: 13px;
-  --font-micro: 10px;
+  --font-micro: 12px;
 
 	// Font weight
   --weight-bold: 900;

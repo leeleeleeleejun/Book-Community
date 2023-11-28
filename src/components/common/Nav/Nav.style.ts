@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const NavBox = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 50px 40px 25px;
+  margin-bottom: 25px;
   border-bottom: 1px solid var(--color-gray-3);
   padding-bottom: 3px;
 
@@ -21,7 +21,7 @@ export const NavItem = styled(Link)`
   color: black;
   font-size: 21px;
   font-weight: var(--weight-semi-bold);
-  padding: 8px;
+  padding: 7px;
   text-decoration: none;
   border-bottom: 3px solid var(--color-gray-3);
   margin-right: 10px;
