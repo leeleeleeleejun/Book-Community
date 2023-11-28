@@ -20,7 +20,7 @@ export const LoginButtonBox = styled.button`
   }
 `;
 
-export const LoginButtonContainer = styled.div`
+export const LoginModalContainer = styled.div`
   width: 100%;
   height: 100vh;
   position: fixed;

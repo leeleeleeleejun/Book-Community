@@ -18,5 +18,5 @@ export const StartButton = styled(FormButton)`
   padding: 60px auto;
 `;
 export const StoptButton = styled(StartButton)`
-  background-color: var(--color-gray-2);
+  background-color: var(--color-gray);
 `;

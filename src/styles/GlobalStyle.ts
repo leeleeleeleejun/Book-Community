@@ -61,6 +61,10 @@ button {
 	background: none;
 }
 
+label {
+	cursor: pointer;
+}
+
 :root {
 	// Colors
 	--color-main: #ff9900;
@@ -88,6 +92,7 @@ button {
   --font-large: 23px;
   --font-medium: 19px;
   --font-regular: 16px;
+	--font-semi-small: 14px;
 	--font-small: 13px;
   --font-micro: 10px;
 

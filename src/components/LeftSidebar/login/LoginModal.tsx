@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { LoginButtonContainer, LoginModalBox } from "./Login.style";
+import { LoginModalContainer, LoginModalBox } from "./Login.style";
 import Input from "@/components/common/Input";
 import FormButton from "@/components/common/FormButton";
 import CloseButton from "@/assets/CloseButton";
@@ -12,7 +12,7 @@ const LoginModal = ({
   setLogin: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   return (
-    <LoginButtonContainer>
+    <LoginModalContainer>
       <LoginModalBox>
         <button
           className="close"
@@ -31,7 +31,7 @@ const LoginModal = ({
           <Link to={"/signup"}>회원가입</Link>
         </div>
       </LoginModalBox>
-    </LoginButtonContainer>
+    </LoginModalContainer>
   );
 };
 

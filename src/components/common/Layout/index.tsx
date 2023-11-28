@@ -8,12 +8,18 @@ import Footer from "@/components/RightSidebar/Footer";
 import LoginButton from "@/components/LeftSidebar/login/LoginButton";
 import { useState } from "react";
 import LoginModal from "@/components/LeftSidebar/login/LoginModal";
+import WriteMemo from "@/components/memo/WriteMemo";
+import { useSelector } from "react-redux";
+import type { RootState } from "@/store";
 
 const Layout = () => {
-  const [login, setLogin] = useState<boolean>(true);
+  const write = useSelector((state: RootState) => state.WriteMemoSlice.open);
+
+  const [login, setLogin] = useState<boolean>(false);
   return (
     <>
       {login ? <LoginModal login={login} setLogin={setLogin} /> : null}
+      {write ? <WriteMemo /> : null}
       <Container $login={login}>
         <LeftAside>
           <Logo alt="logo" src="logo.jpg" />
