@@ -12,7 +12,7 @@ const FormFiled = ({
   onChange,
 }: FormFiledProps) => {
   return (
-    <FormFiledStyle>
+    <FormFieldBox>
       <Label htmlFor={name}>{labelText(name)}</Label>
       <Input
         type={type}
@@ -36,13 +36,13 @@ const FormFiled = ({
           onChange(e.target.value, name);
         }}
       />
-    </FormFiledStyle>
+    </FormFieldBox>
   );
 };
 
 export default React.memo(FormFiled);
 
-const FormFiledStyle = styled.div`
+const FormFieldBox = styled.div`
   display: flex;
   flex-direction: column;
   margin: 10px 20px;

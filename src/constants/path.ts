@@ -4,4 +4,5 @@ export const CLIENT_PATH = {
   MYMEMO: "/mymemo",
   MYLIBRARY: "/mylibrary",
   TIMER: "/timer",
+  LIBRARY: "/library",
 };
