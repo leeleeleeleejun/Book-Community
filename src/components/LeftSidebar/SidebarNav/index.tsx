@@ -14,7 +14,7 @@ const SidebarNav = () => {
       <NavItem to={CLIENT_PATH.MYMEMO}>
         <BlogIcon />내 메모
       </NavItem>
-      <NavItem to={CLIENT_PATH.MYLIBRARY}>
+      <NavItem to={CLIENT_PATH.LIBRARY}>
         <BookIcon />내 서재
       </NavItem>
     </Nav>
