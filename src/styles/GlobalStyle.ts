@@ -86,10 +86,12 @@ label {
 	--color-sidebar: #F7F5F0;
 	--color-sidebar-active : #E4DDCC;
 
+	--color-red: #f03738;
+
 
 
 	// Font size
-  --font-large: 23px;
+  --font-large: 20px;
   --font-medium: 19px;
   --font-regular: 16px;
 	--font-semi-small: 14px;

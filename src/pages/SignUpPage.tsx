@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { userInfo, userKey } from "@/types";
-import { SignupValidate } from "@/utils/vaildate";
+import { SignupValidate } from "@/utils/validate";
 import FormFiled from "@/components/common/FormField";
 import FormButton from "@/components/common/FormButton";
 import ValidErrorMessage from "@/components/common/ValidErrorMessage";

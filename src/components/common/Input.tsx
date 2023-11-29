@@ -7,7 +7,7 @@ const Input = styled.input`
   padding: 5px 12px;
   border-radius: 4px;
   border: 1px solid var(--color-main);
-  font-size: 14px;
+  font-size: var(--font-semi-small);
 
   &:focus {
     outline: 3px solid var(--color-sub-2);

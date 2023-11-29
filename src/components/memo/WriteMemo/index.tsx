@@ -1,9 +1,9 @@
 import { useDispatch } from "react-redux";
 import CloseButton from "@/assets/CloseButton";
 import { closeModal } from "@/components/memo/WriteMemo/WriteMemoSlice";
+import { ModalContainer } from "@/components/common/ModalContainer";
 import {
   WriteMemoModalBox,
-  WriteMemoModalContainer,
   Quill,
   modules,
   ChooseBook,
@@ -16,7 +16,7 @@ const WriteMemo = () => {
   const dispatch = useDispatch();
 
   return (
-    <WriteMemoModalContainer>
+    <ModalContainer>
       <WriteMemoModalBox>
         <button className="close" onClick={() => dispatch(closeModal())}>
           <CloseButton />
@@ -39,7 +39,7 @@ const WriteMemo = () => {
           <CancelButton>취소하기</CancelButton>
         </ButtonBox>
       </WriteMemoModalBox>
-    </WriteMemoModalContainer>
+    </ModalContainer>
   );
 };
 

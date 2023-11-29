@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { LoginModalContainer, LoginModalBox } from "./Login.style";
+import { LoginModalBox } from "./Login.style";
 import Input from "@/components/common/Input";
 import FormButton from "@/components/common/FormButton";
 import CloseButton from "@/assets/CloseButton";
+import { ModalContainer } from "@/components/common/ModalContainer";
 
 const LoginModal = ({
   login,
@@ -12,7 +13,7 @@ const LoginModal = ({
   setLogin: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   return (
-    <LoginModalContainer>
+    <ModalContainer>
       <LoginModalBox>
         <button
           className="close"
@@ -31,7 +32,7 @@ const LoginModal = ({
           <Link to={"/signup"}>회원가입</Link>
         </div>
       </LoginModalBox>
-    </LoginModalContainer>
+    </ModalContainer>
   );
 };
 
