@@ -89,7 +89,7 @@ label {
 
 
 	// Font size
-  --font-large: 23px;
+  --font-large: 20px;
   --font-medium: 19px;
   --font-regular: 16px;
 	--font-semi-small: 14px;

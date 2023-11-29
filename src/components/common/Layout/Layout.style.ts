@@ -13,6 +13,7 @@ export const Main = styled.main`
   padding: 50px 40px;
   width: 100%;
   min-height: 780px;
+  position: relative;
 `;
 
 export const Logo = styled.img`

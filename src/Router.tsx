@@ -4,6 +4,7 @@ import HomePage from "@/pages/HomePage";
 import SignUpPage from "@/pages/SignUpPage";
 import TimerPage from "@/pages/TimerPage";
 import MemoDetailPage from "@/pages/MemoDetailPage";
+import MyMemoPage from "@/pages/MyMemoPage";
 
 const Router = () => {
   return (
@@ -13,6 +14,7 @@ const Router = () => {
           <Route path={"/"} element={<HomePage />} />
           <Route path={"/timer"} element={<TimerPage />} />
           <Route path={"/a"} element={<MemoDetailPage />} />
+          <Route path="aa" element={<MyMemoPage />} />
         </Route>
         <Route path={"/signup"} element={<SignUpPage />} />
       </Routes>

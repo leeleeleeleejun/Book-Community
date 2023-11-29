@@ -13,7 +13,7 @@ export const NavBox = styled.div`
     background: none;
     border: 1px solid var(--color-gray);
     border-radius: 8px;
-    font-size: 14px;
+    font-size: var(--font-semi-small);
   }
 `;
 

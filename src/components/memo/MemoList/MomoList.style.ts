@@ -29,7 +29,7 @@ export const Excerpt = styled.div`
 
   p {
     line-height: 1.5;
-    font-size: 14px;
+    font-size: var(--font-semi-small);
     color: var(--color-light-black-2);
     overflow: hidden;
 
