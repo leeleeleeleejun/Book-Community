@@ -86,6 +86,8 @@ label {
 	--color-sidebar: #F7F5F0;
 	--color-sidebar-active : #E4DDCC;
 
+	--color-red: #f03738;
+
 
 
 	// Font size

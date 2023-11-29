@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export interface CounterState {
+export interface WriteMemoInitialState {
   open: boolean;
 }
 
-const initialState: CounterState = {
+const initialState: WriteMemoInitialState = {
   open: false,
 };
 

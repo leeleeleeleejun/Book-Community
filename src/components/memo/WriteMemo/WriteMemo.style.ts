@@ -2,34 +2,9 @@ import { styled } from "styled-components";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import FormButton from "@/components/common/FormButton";
+import { ModalBox } from "@/components/common/ModalContainer";
 
-export const WriteMemoModalContainer = styled.div`
-  width: 100%;
-  height: 100vh;
-  position: fixed;
-  display: flex;
-  background-color: rgba(0, 0, 0, 0.6);
-  align-items: center;
-  z-index: 10;
-`;
-
-export const WriteMemoModalBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: white;
-  padding: 30px;
-  border-radius: 8px;
-  margin: auto;
-  position: relative;
-
-  .close {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: var(--font-regular);
-  }
-
+export const WriteMemoModalBox = styled(ModalBox)`
   h3 {
     font-size: var(--font-medium);
     font-weight: var(--weight-semi-bold);

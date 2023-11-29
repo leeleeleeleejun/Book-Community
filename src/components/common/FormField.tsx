@@ -60,6 +60,8 @@ const labelText = (name: userKey) => {
       return "이름";
     case "nickname":
       return "닉네임";
+    case "introduction":
+      return "한줄소개";
     case "email":
       return "이메일";
     case "password":

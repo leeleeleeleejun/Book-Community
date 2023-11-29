@@ -1,11 +1,15 @@
 import SettingIcon from "@/assets/SettingIcon";
 import MemoList from "@/components/memo/MemoList";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { openModal } from "@/components/EditUser/EditUserSlice";
 
 const MyMemoPage = () => {
+  const dispatch = useDispatch();
+
   return (
     <>
-      <Banner>여기에서 당신의 이야기를 만나보세요.</Banner>
+      <Banner>이곳에서 당신의 이야기를 만나보세요.</Banner>
       <UserInfo>
         <UserImg src="carouselImg/1.jpg" />
         <div>
@@ -14,7 +18,7 @@ const MyMemoPage = () => {
           </UserNicName>
           <UserIntroduction>글로 남기는 나만의 기록장</UserIntroduction>
         </div>
-        <button>
+        <button onClick={() => dispatch(openModal())}>
           <SettingIcon />
         </button>
       </UserInfo>

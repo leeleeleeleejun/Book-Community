@@ -9,6 +9,7 @@ export interface FormFiledProps {
 export interface userInfo {
   name: string;
   nickname: string;
+  introduction: string;
   email: string;
   password: string;
   confirmPassword?: string;
@@ -19,6 +20,7 @@ export interface userInfo {
 export type userKey =
   | "name"
   | "nickname"
+  | "introduction"
   | "email"
   | "password"
   | "confirmPassword"
@@ -26,6 +28,7 @@ export type userKey =
 
 export interface editUserInfo {
   nickname: string;
+  introduction: string;
   password: string;
   confirmPassword: string;
   phone_number: string;

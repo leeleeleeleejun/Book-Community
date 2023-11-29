@@ -1,3 +1,4 @@
+import { ModalBox } from "@/components/common/ModalContainer";
 import styled from "styled-components";
 
 export const LoginButtonBox = styled.button`
@@ -20,36 +21,11 @@ export const LoginButtonBox = styled.button`
   }
 `;
 
-export const LoginModalContainer = styled.div`
-  width: 100%;
-  height: 100vh;
-  position: fixed;
-  display: flex;
-  background-color: rgba(0, 0, 0, 0.6);
-  align-items: center;
-  z-index: 10;
-`;
-
-export const LoginModalBox = styled.div`
-  display: flex;
+export const LoginModalBox = styled(ModalBox)`
   width: 400px;
   height: 300px;
   margin: 0 auto;
   padding: 40px 10px;
-  justify-content: center;
-
-  flex-direction: column;
-  background-color: white;
-  border-radius: 8px;
-
-  position: relative;
-
-  .close {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: var(--font-regular);
-  }
 
   img {
     width: 190px;
