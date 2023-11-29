@@ -4,6 +4,7 @@ import Input from "@/components/common/Input";
 import FormButton from "@/components/common/FormButton";
 import CloseButton from "@/assets/CloseButton";
 import { ModalContainer } from "@/components/common/ModalContainer";
+import { CLIENT_PATH } from "@/constants/path";
 
 const LoginModal = ({
   login,
@@ -29,7 +30,7 @@ const LoginModal = ({
         <FormButton>로그인</FormButton>
         <div>
           <p>아직 회원이 아니신가요?</p>
-          <Link to={"/signup"}>회원가입</Link>
+          <Link to={CLIENT_PATH.SIGNUP}>회원가입</Link>
         </div>
       </LoginModalBox>
     </ModalContainer>

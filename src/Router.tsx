@@ -5,18 +5,19 @@ import SignUpPage from "@/pages/SignUpPage";
 import TimerPage from "@/pages/TimerPage";
 import MemoDetailPage from "@/pages/MemoDetailPage";
 import MyMemoPage from "@/pages/MyMemoPage";
+import { CLIENT_PATH } from "@/constants/path";
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
-          <Route path={"/"} element={<HomePage />} />
-          <Route path={"/timer"} element={<TimerPage />} />
+          <Route path={CLIENT_PATH.HOME} element={<HomePage />} />
+          <Route path={CLIENT_PATH.TIMER} element={<TimerPage />} />
           <Route path={"/a"} element={<MemoDetailPage />} />
-          <Route path="aa" element={<MyMemoPage />} />
+          <Route path={CLIENT_PATH.MYMEMO} element={<MyMemoPage />} />
         </Route>
-        <Route path={"/signup"} element={<SignUpPage />} />
+        <Route path={CLIENT_PATH.SIGNUP} element={<SignUpPage />} />
       </Routes>
     </BrowserRouter>
   );

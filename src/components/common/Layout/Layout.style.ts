@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Container = styled.div<{ $login: boolean }>`
   display: flex;
@@ -16,9 +17,12 @@ export const Main = styled.main`
   position: relative;
 `;
 
-export const Logo = styled.img`
-  width: 200px;
+export const Logo = styled(Link)`
   margin: 25px auto;
+
+  img {
+    width: 230px;
+  }
 `;
 
 export const LeftAside = styled.aside`

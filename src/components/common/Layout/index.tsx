@@ -12,6 +12,7 @@ import LoginButton from "@/components/LeftSidebar/login/LoginButton";
 import LoginModal from "@/components/LeftSidebar/login/LoginModal";
 import WriteMemo from "@/components/memo/WriteMemo";
 import EditUser from "@/components/EditUser";
+import { CLIENT_PATH } from "@/constants/path";
 
 const Layout = () => {
   const write = useSelector((state: RootState) => state.WriteMemoSlice.open);
@@ -26,7 +27,9 @@ const Layout = () => {
       {edit ? <EditUser /> : null}
       <Container $login={login}>
         <LeftAside>
-          <Logo alt="logo" src="logo.jpg" />
+          <Logo to={CLIENT_PATH.HOME}>
+            <img alt="logo" src="logo.jpg" />
+          </Logo>
           {login ? (
             <LoginButton login={login} setLogin={setLogin} />
           ) : (
