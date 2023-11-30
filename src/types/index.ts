@@ -15,6 +15,8 @@ export interface userInfo {
   confirmPassword?: string;
   phone_number: string;
   profile: string;
+  activity_graph: [Date, number][];
+  my_book: string[];
 }
 
 export type userKey =

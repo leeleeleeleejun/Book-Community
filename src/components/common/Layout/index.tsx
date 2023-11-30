@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import type { RootState } from "@/store";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Container, LeftAside, RightAside, Logo, Main } from "./Layout.style";
 import Profile from "@/components/LeftSidebar/Profile";
 import SidebarNav from "@/components/LeftSidebar/SidebarNav";
@@ -11,41 +11,68 @@ import Footer from "@/components/RightSidebar/Footer";
 import LoginButton from "@/components/LeftSidebar/login/LoginButton";
 import LoginModal from "@/components/LeftSidebar/login/LoginModal";
 import WriteMemo from "@/components/memo/WriteMemo";
-import EditUser from "@/components/EditUser";
+import EditUser from "@/components/User";
 import { CLIENT_PATH } from "@/constants/path";
+import { getUserInfo } from "@/api/userAPI";
+import { setUser } from "@/components/User/UserSlice";
 
 const Layout = () => {
   const write = useSelector((state: RootState) => state.WriteMemoSlice.open);
-  const edit = useSelector((state: RootState) => state.EditUserSlice.open);
+  const edit = useSelector((state: RootState) => state.UserSlice.open);
+  const user = useSelector((state: RootState) => state.UserSlice.userInfo);
+  const dispatch = useDispatch();
 
-  const [login, setLogin] = useState<boolean>(false);
+  const [loginModal, setLoginModalOpen] = useState<boolean>(false);
+
+  const openLoginModalFunc = () => {
+    setLoginModalOpen(true);
+  };
+
+  const closeLoginModalFunc = () => {
+    setLoginModalOpen(false);
+  };
+
+  useEffect(() => {
+    (async () => {
+      if (localStorage.getItem("token")) {
+        const response = await getUserInfo();
+        const result = await response.json();
+        dispatch(setUser(result.user));
+      }
+    })();
+  }, []);
 
   return (
     <>
-      {login ? <LoginModal login={login} setLogin={setLogin} /> : null}
+      {loginModal ? (
+        <LoginModal closeLoginModalFunc={closeLoginModalFunc} />
+      ) : null}
       {write ? <WriteMemo /> : null}
       {edit ? <EditUser /> : null}
-      <Container $login={login}>
+      <Container $loginModalOpen={loginModal}>
         <LeftAside>
           <Logo to={CLIENT_PATH.HOME}>
             <img alt="logo" src="logo.jpg" />
           </Logo>
-          {login ? (
-            <LoginButton login={login} setLogin={setLogin} />
-          ) : (
+          {user ? (
             <>
               <Profile />
               <ReadingTime />
             </>
+          ) : (
+            <LoginButton openLoginModalFunc={openLoginModalFunc} />
           )}
           <SidebarNav />
-          <button
-            onClick={() => {
-              setLogin(!login);
-            }}
-          >
-            로그아웃
-          </button>
+          {localStorage.getItem("token") && (
+            <button
+              onClick={() => {
+                localStorage.removeItem("token");
+                window.location.reload();
+              }}
+            >
+              로그아웃
+            </button>
+          )}
         </LeftAside>
         <Main>
           <Outlet />

@@ -10,10 +10,14 @@ import {
   WriteDate,
   WriterInfo,
   MemoInfo,
-} from "./MomoList.style";
+} from "./MemoList.style";
+import type { RootState } from "@/store";
+import BasicUserIcon from "@/components/common/BasicUserIcon";
+import { useSelector } from "react-redux";
 
 const MemoList = () => {
   const a = [0, 0, 0, 0, 0, 0];
+  const user = useSelector((state: RootState) => state.UserSlice.userInfo);
   return (
     <MemoListBox>
       {a.map((item, index) => (
@@ -22,7 +26,11 @@ const MemoList = () => {
             <MemoTitle>안녕하세요</MemoTitle>
             <MemoInfo>
               <WriterInfo>
-                <WriterImg src="carouselImg/1.jpg" />
+                {user?.profile ? (
+                  <WriterImg src="carouselImg/1.jpg" />
+                ) : (
+                  <BasicUserIcon size={25} />
+                )}
                 <WriterNicName>이준석</WriterNicName>
               </WriterInfo>
               <WriteDate>

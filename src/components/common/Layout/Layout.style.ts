@@ -1,13 +1,13 @@
 import { styled } from "styled-components";
 import { Link } from "react-router-dom";
 
-export const Container = styled.div<{ $login: boolean }>`
+export const Container = styled.div<{ $loginModalOpen: boolean }>`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   max-width: 1600px;
   margin: auto;
-  filter: ${({ $login }) => ($login ? "blur(5px)" : "")};
+  filter: ${({ $loginModalOpen }) => ($loginModalOpen ? "blur(5px)" : "")};
 `;
 
 export const Main = styled.main`
