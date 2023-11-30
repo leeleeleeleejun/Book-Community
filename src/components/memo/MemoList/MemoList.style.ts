@@ -60,17 +60,19 @@ export const MemoInfo = styled.div`
 export const WriterInfo = styled.div`
   display: flex;
   height: 10px;
+  align-items: center;
 `;
 
 export const WriterImg = styled.img`
   width: 25px;
   height: 25px;
-  margin-top: -8%;
-  margin-right: 7px;
+
   border-radius: 50%;
 `;
 
-export const WriterNicName = styled.div``;
+export const WriterNicName = styled.div`
+  margin-left: 7px;
+`;
 
 export const WriteDate = styled.div`
   svg {

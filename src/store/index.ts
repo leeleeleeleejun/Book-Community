@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import WriteMemoSlice from "@/components/memo/WriteMemo/WriteMemoSlice";
-import EditUserSlice from "@/components/EditUser/EditUserSlice";
+import UserSlice from "@/components/User/UserSlice";
 
 export const store = configureStore({
   reducer: {
     WriteMemoSlice,
-    EditUserSlice,
+    UserSlice,
   },
 });
 

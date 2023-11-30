@@ -8,7 +8,7 @@ import FormButton from "@/components/common/FormButton";
 import { EditUserInfoValidate } from "@/utils/validate";
 import { ModalContainer, ModalBox } from "@/components/common/ModalContainer";
 import CloseButton from "@/assets/CloseButton";
-import { closeModal } from "./EditUserSlice";
+import { closeModal } from "./UserSlice";
 
 const EditUser = () => {
   const dispatch = useDispatch();

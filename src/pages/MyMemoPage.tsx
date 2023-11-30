@@ -2,7 +2,7 @@ import SettingIcon from "@/assets/SettingIcon";
 import MemoList from "@/components/memo/MemoList";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { openModal } from "@/components/EditUser/EditUserSlice";
+import { openModal } from "@/components/User/UserSlice";
 
 const MyMemoPage = () => {
   const dispatch = useDispatch();

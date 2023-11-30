@@ -5,29 +5,53 @@ import FormButton from "@/components/common/FormButton";
 import CloseButton from "@/assets/CloseButton";
 import { ModalContainer } from "@/components/common/ModalContainer";
 import { CLIENT_PATH } from "@/constants/path";
+import { useState } from "react";
+import { login } from "@/api/userAPI";
 
 const LoginModal = ({
-  login,
-  setLogin,
+  closeLoginModalFunc,
 }: {
-  login: boolean;
-  setLogin: React.Dispatch<React.SetStateAction<boolean>>;
+  closeLoginModalFunc: () => void;
 }) => {
+  const [email, setMail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <ModalContainer>
       <LoginModalBox>
-        <button
-          className="close"
-          onClick={() => {
-            setLogin(!login);
-          }}
-        >
+        <button className="close" onClick={closeLoginModalFunc}>
           <CloseButton />
         </button>
         <img src="logo_2.jpg" />
-        <Input placeholder="이메일" />
-        <Input placeholder="비밀번호" />
-        <FormButton>로그인</FormButton>
+        <Input
+          type="email"
+          placeholder="이메일"
+          onChange={(e) => {
+            setMail(e.target.value);
+          }}
+        />
+        <Input
+          type="password"
+          placeholder="비밀번호"
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+        />
+        <FormButton
+          onClick={async () => {
+            const response = await login({ email, password });
+
+            if (response !== null && response.ok) {
+              alert("로그인에 성공했습니다.");
+              closeLoginModalFunc();
+              const result = await response.json();
+              localStorage.setItem("token", result.token);
+              window.location.reload();
+            }
+          }}
+        >
+          로그인
+        </FormButton>
         <div>
           <p>아직 회원이 아니신가요?</p>
           <Link to={CLIENT_PATH.SIGNUP}>회원가입</Link>

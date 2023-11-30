@@ -7,7 +7,7 @@ import ValidErrorMessage from "@/components/common/ValidErrorMessage";
 import styled from "styled-components";
 import Carousel from "@/components/RightSidebar/SidebarCarousel";
 import Footer from "@/components/RightSidebar/Footer";
-import { postUser } from "@/api/user";
+import { signUpAPI } from "@/api/userAPI";
 import { useNavigate } from "react-router-dom";
 
 const SignUpPage = () => {
@@ -22,6 +22,8 @@ const SignUpPage = () => {
     confirmPassword: "",
     phone_number: "",
     profile: "",
+    activity_graph: [],
+    my_book: [],
   });
 
   const [validateError, serValidateError] = useState("");
@@ -90,9 +92,13 @@ const SignUpPage = () => {
           type="button"
           onClick={async () => {
             if (SignupValidate(signUPInfo, serValidateError)) {
-              const copyData = { ...signUPInfo };
+              const copyData = {
+                ...signUPInfo,
+                activity_graph: [],
+                my_book: [],
+              };
               delete copyData.confirmPassword;
-              const result = await postUser(copyData);
+              const result = await signUpAPI(copyData);
 
               if (result) {
                 navigate("/");

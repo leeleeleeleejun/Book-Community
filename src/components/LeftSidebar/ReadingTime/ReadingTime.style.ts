@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ReadingTimeBox = styled.div`
-  margin: 50px 0;
+  margin: 52px 0;
 `;
 
 export const TotalReadingTime = styled.div`
