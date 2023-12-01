@@ -13,6 +13,20 @@ import { useNavigate } from "react-router-dom";
 const SignUpPage = () => {
   const navigate = useNavigate();
 
+  const currentDate = new Date();
+  const currentDayOfWeek = currentDate.getDay();
+  const startOfWeek = new Date(currentDate);
+  startOfWeek.setDate(currentDate.getDate() - currentDayOfWeek);
+
+  const week = Array(7).fill(0);
+  const activity_graph_empty: [Date, number[]][] = Array(20)
+    .fill(0)
+    .map((_, index) => {
+      const weekStartDay = new Date(startOfWeek);
+      weekStartDay.setDate(startOfWeek.getDate() - index * 7);
+      return [weekStartDay, week];
+    });
+
   const [signUPInfo, setSignUPInfo] = useState<userInfo>({
     name: "",
     nickname: "",
@@ -22,7 +36,7 @@ const SignUpPage = () => {
     confirmPassword: "",
     phone_number: "",
     profile: "",
-    activity_graph: [],
+    activity_graph: activity_graph_empty.reverse(),
     my_book: [],
   });
 
@@ -92,11 +106,7 @@ const SignUpPage = () => {
           type="button"
           onClick={async () => {
             if (SignupValidate(signUPInfo, serValidateError)) {
-              const copyData = {
-                ...signUPInfo,
-                activity_graph: [],
-                my_book: [],
-              };
+              const copyData = { ...signUPInfo };
               delete copyData.confirmPassword;
               const result = await signUpAPI(copyData);
 

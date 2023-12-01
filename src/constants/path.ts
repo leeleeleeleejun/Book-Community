@@ -9,6 +9,9 @@ export const API_PATH = {
       USER_SIGNUP: `${API_BASE_URL}/signup`,
       USER_LOGIN: `${API_BASE_URL}/login`,
     },
+    PUT: {
+      TIMER: `${API_BASE_URL}/readtime`,
+    },
   },
 };
 

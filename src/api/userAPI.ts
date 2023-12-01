@@ -46,3 +46,12 @@ export const getUserInfo = async () => {
   const response = await callApi("GET", API_PATH.USER.GET.USER_INFO);
   return response;
 };
+
+export const pushReadTime = async (data: { day: number; active: number }) => {
+  const response = await callApi(
+    "PUT",
+    API_PATH.USER.PUT.TIMER,
+    JSON.stringify(data)
+  );
+  return response;
+};

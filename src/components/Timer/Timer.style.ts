@@ -13,10 +13,20 @@ export const ButtonBox = styled.div`
 `;
 
 export const StartButton = styled(FormButton)`
-  height: 50px;
+  height: 70px;
+  width: 160px;
   font-size: var(--font-medium);
   padding: 60px auto;
 `;
-export const StoptButton = styled(StartButton)`
+export const PauseButton = styled(StartButton)`
   background-color: var(--color-gray);
+  &:hover {
+    background-color: var(--color-gray-4);
+  }
+`;
+export const StoptButton = styled(StartButton)`
+  background-color: var(--color-brown);
+  &:hover {
+    background-color: var(--color-brown-2);
+  }
 `;

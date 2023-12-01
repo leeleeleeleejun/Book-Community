@@ -88,6 +88,8 @@ label {
 
 	--color-red: #f03738;
 
+	--color-brown: #e68019;
+	--color-brown-2: #e98d30;
 
 
 	// Font size
