@@ -1,10 +1,18 @@
 import { useRef, useState } from "react";
-import { TimeBox, StartButton, StoptButton, ButtonBox } from "./Timer.style";
+import {
+  TimeBox,
+  StartButton,
+  StoptButton,
+  ButtonBox,
+  PauseButton,
+} from "./Timer.style";
+import { pushReadTime } from "@/api/userAPI";
 
 const Timer = () => {
   const [running, setRunning] = useState<boolean>(false);
   const [time, setTime] = useState<number>(0);
   const intervalRef = useRef<number | undefined>(undefined);
+  const today = new Date().getDay();
 
   const startWatch = () => {
     if (!running) {
@@ -23,13 +31,24 @@ const Timer = () => {
   };
 
   return (
-    <div>
+    <>
       <TimeBox>{formatTime(time)}</TimeBox>
       <ButtonBox>
         <StartButton onClick={startWatch}>시작</StartButton>
-        <StoptButton onClick={stopWatch}>종료</StoptButton>
+        <PauseButton onClick={stopWatch}>중단</PauseButton>
+        <StoptButton
+          onClick={async () => {
+            const response = await pushReadTime({ day: today, active: time });
+            const result = await response.json();
+            alert(result.message);
+            stopWatch();
+            setTime(0);
+          }}
+        >
+          기록하기
+        </StoptButton>
       </ButtonBox>
-    </div>
+    </>
   );
 };
 export default Timer;

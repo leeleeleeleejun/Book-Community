@@ -7,5 +7,9 @@ const FormButton = styled.button`
   border-radius: 4px;
   background-color: var(--color-main);
   color: white;
+
+  &:hover {
+    background-color: var(--color-sub);
+  }
 `;
 export default FormButton;
