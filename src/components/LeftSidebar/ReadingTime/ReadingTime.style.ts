@@ -15,6 +15,10 @@ export const TotalReadingTime = styled.div`
 `;
 
 export const Activity = styled.table`
+  background-color: white;
+  padding: 10px;
+  border-radius: 8px;
+
   tr {
     display: flex;
     gap: 3px;
@@ -32,5 +36,8 @@ export const Day = styled.td<{ $active: number }>`
   height: 13px;
   background-color: var(--color-main);
   border-radius: 3px;
-  opacity: 0.6;
+  ${({ $active }) =>
+    $active > 0
+      ? `opacity: ${$active};`
+      : "background-color: var(--color-gray-3);"}
 `;
