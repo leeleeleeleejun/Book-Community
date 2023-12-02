@@ -43,6 +43,7 @@ const Timer = () => {
             alert(result.message);
             stopWatch();
             setTime(0);
+            window.location.reload();
           }}
         >
           기록하기

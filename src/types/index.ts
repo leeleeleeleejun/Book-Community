@@ -6,6 +6,13 @@ export interface FormFiledProps {
   onChange: (value: string, key?: userKey) => void;
 }
 
+export interface ActivityGraph {
+  date: Date;
+  activities: number[];
+}
+
+export type ActivityGraphArray = ActivityGraph[];
+
 export interface userInfo {
   name: string;
   nickname: string;
@@ -15,7 +22,7 @@ export interface userInfo {
   confirmPassword?: string;
   phone_number: string;
   profile: string;
-  activity_graph: [Date, number[]][];
+  activity_graph: ActivityGraphArray;
   my_book: string[];
 }
 

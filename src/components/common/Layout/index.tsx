@@ -21,9 +21,7 @@ const Layout = () => {
   const edit = useSelector((state: RootState) => state.UserSlice.open);
   const user = useSelector((state: RootState) => state.UserSlice.userInfo);
   const dispatch = useDispatch();
-
   const [loginModal, setLoginModalOpen] = useState<boolean>(false);
-
   const openLoginModalFunc = () => {
     setLoginModalOpen(true);
   };
@@ -57,13 +55,13 @@ const Layout = () => {
           {user ? (
             <>
               <Profile />
-              <ReadingTime />
+              <ReadingTime activityGraph={user.activity_graph} />
             </>
           ) : (
             <LoginButton openLoginModalFunc={openLoginModalFunc} />
           )}
           <SidebarNav />
-          {localStorage.getItem("token") && (
+          {user && (
             <button
               onClick={() => {
                 localStorage.removeItem("token");
