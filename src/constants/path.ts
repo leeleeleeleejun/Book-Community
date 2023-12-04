@@ -1,4 +1,5 @@
 const API_BASE_URL = "http://localhost:3001";
+export const API_USER_IMG = `${API_BASE_URL}/userimg/`;
 
 export const API_PATH = {
   USER: {
@@ -11,12 +12,15 @@ export const API_PATH = {
     },
     PUT: {
       TIMER: `${API_BASE_URL}/readtime`,
+      USER_INFO: `${API_BASE_URL}/user`,
+      USER_IMG: `${API_BASE_URL}/userimg`,
     },
   },
 };
 
 export const CLIENT_PATH = {
   HOME: "/",
+  LOGIN: "/login",
   SIGNUP: "/signup",
   MYMEMO: "/mymemo",
   MYLIBRARY: "/mylibrary",

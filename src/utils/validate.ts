@@ -77,14 +77,8 @@ export const EditUserInfoValidate = (
     return;
   }
 
-  // 비밀번호 유효성 평가
-  if (PasswordValidate(password)) {
-    serValidateError(errors.password);
-    return;
-  }
-
   // 비밀번호 확인 유효성 평가
-  if (confirmPasswordValidate(confirmPassword, password)) {
+  if (password && confirmPasswordValidate(confirmPassword, password)) {
     serValidateError(errors.confirmPassword);
     return;
   }
@@ -95,6 +89,8 @@ export const EditUserInfoValidate = (
     return;
   }
   serValidateError("");
+
+  return true;
 };
 
 const nameValidate = (value: string) => {

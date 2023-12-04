@@ -39,11 +39,13 @@ const Timer = () => {
         <StoptButton
           onClick={async () => {
             const response = await pushReadTime({ day: today, active: time });
-            const result = await response.json();
-            alert(result.message);
-            stopWatch();
-            setTime(0);
-            window.location.reload();
+            if (response) {
+              const result = await response.json();
+              alert(result.message);
+              stopWatch();
+              setTime(0);
+              window.location.reload();
+            }
           }}
         >
           기록하기

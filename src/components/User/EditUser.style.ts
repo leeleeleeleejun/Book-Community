@@ -21,11 +21,15 @@ export const ProfileImageSection = styled.div`
   padding: 20px 10px 0;
 
   img {
-    width: 120px;
-    height: 120px;
-    border-radius: 15px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
     margin: auto 0;
   }
+`;
+
+export const BasicUserIconWrap = styled.div`
+  margin: auto 0;
 `;
 
 export const ProfileImageButton = styled.button<{ $isChange: boolean }>`
