@@ -2,24 +2,24 @@ import { createSlice } from "@reduxjs/toolkit";
 import { userInfo } from "@/types";
 
 export interface EditUserInitialState {
-  open: boolean;
+  editUserModalOpen: boolean;
   userInfo: userInfo | null;
 }
 
 const initialState: EditUserInitialState = {
-  open: false,
+  editUserModalOpen: false,
   userInfo: null,
 };
 
 export const UserSlice = createSlice({
-  name: "openEditUserModal",
+  name: "user",
   initialState,
   reducers: {
     openModal: (state) => {
-      state.open = true;
+      state.editUserModalOpen = true;
     },
     closeModal: (state) => {
-      state.open = false;
+      state.editUserModalOpen = false;
     },
     setUser: (state, action) => {
       state.userInfo = action.payload;

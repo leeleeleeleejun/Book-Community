@@ -1,22 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export interface WriteMemoInitialState {
-  open: boolean;
+  WriteMemoModal: boolean;
 }
 
 const initialState: WriteMemoInitialState = {
-  open: false,
+  WriteMemoModal: false,
 };
 
 export const WriteMemoSlice = createSlice({
-  name: "openWriteMemoModal",
+  name: "writeMemo",
   initialState,
   reducers: {
     openModal: (state) => {
-      state.open = true;
+      state.WriteMemoModal = true;
     },
     closeModal: (state) => {
-      state.open = false;
+      state.WriteMemoModal = false;
     },
   },
 });

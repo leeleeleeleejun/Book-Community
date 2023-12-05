@@ -41,7 +41,7 @@ const LoginModal = ({
           onClick={async () => {
             const response = await login({ email, password });
 
-            if (response !== null && response.ok) {
+            if (response) {
               alert("로그인에 성공했습니다.");
               closeLoginModalFunc();
               const result = await response.json();

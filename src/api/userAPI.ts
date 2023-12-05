@@ -1,5 +1,5 @@
 import { API_PATH } from "@/constants/path";
-import { userInfo } from "@/types";
+import { postBookListItemApiProp, userInfo } from "@/types";
 import callApi from "@/utils/callApi";
 
 export const signUpAPI = async (data: userInfo) => {
@@ -11,15 +11,8 @@ export const signUpAPI = async (data: userInfo) => {
       },
       body: JSON.stringify(data),
     });
-    if (response.ok) {
-      alert("회원가입 성공");
-    } else {
-      // 서버 응답이 오류(4xx, 5xx)인 경우
-      const errorData = await response.json();
-      throw new Error(errorData.error);
-    }
 
-    return response.ok;
+    return response;
   } catch (err) {
     alert(err);
   }
@@ -97,6 +90,32 @@ export const editProfileImage = async (data: File) => {
       console.error(`서버 응답 오류: ${response.status} - ${errorMessage}`);
       throw new Error(`서버 응답 오류: ${response.status} - ${errorMessage}`);
     }
+    return response;
+  } catch (err) {
+    alert(err);
+  }
+};
+
+export const pushMyBookListItem = async (data: postBookListItemApiProp) => {
+  try {
+    const response = await callApi(
+      "POST",
+      API_PATH.USER.POST.USER_LIBRARY,
+      JSON.stringify(data)
+    );
+    return response;
+  } catch (err) {
+    alert(err);
+  }
+};
+
+export const deleteMyBookListItem = async (data: postBookListItemApiProp) => {
+  try {
+    const response = await callApi(
+      "DELETE",
+      API_PATH.USER.POST.USER_LIBRARY,
+      JSON.stringify(data)
+    );
     return response;
   } catch (err) {
     alert(err);

@@ -50,7 +50,7 @@ table {
 	border-spacing: 0;
 }
 
-* {
+body {
   font-family: 'Noto Sans KR', sans-serif;
 }
 

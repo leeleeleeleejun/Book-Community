@@ -18,7 +18,7 @@ export const LoginValidate = (
   }
 };
 
-export const SignupValidate = (
+export const SignUpValidate = (
   signUPInfo: userInfo,
   serValidateError: React.Dispatch<React.SetStateAction<string>>
 ) => {

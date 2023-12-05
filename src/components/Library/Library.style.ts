@@ -10,6 +10,7 @@ export const LibraryHeaderBox = styled.div`
     font-size: 24px;
     font-weight: var(--weight-semi-bold);
     line-height: 45px;
+    margin-left: 10px;
   }
 `;
 
@@ -17,14 +18,12 @@ export const UserImg = styled.img`
   width: 45px;
   height: 45px;
   border-radius: 50%;
-  margin-right: 10px;
 `;
 
 export const Title = styled.div`
   display: flex;
   font-size: 22px;
   font-weight: var(--weight-regular);
-
   svg {
     margin-right: 5px;
   }
@@ -51,13 +50,45 @@ export const BookListBody = styled.ul`
   max-width: 690px;
   height: 200px;
   overflow-x: auto;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   padding: 5px;
 `;
 
-export const BookItem = styled.li`
+export const BookItemBox = styled.li`
   width: 98px;
   margin-right: 10px;
+`;
+
+export const BookItem = styled.div`
+  position: absolute;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 98px;
+  height: 142px;
+  opacity: 0;
+  border-radius: 4px;
+
+  color: white;
+  font-size: 20px;
+  font-weight: 800;
+
+  &:hover {
+    opacity: 1;
+  }
+`;
+
+export const MinusButton = styled.button`
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 8px;
+  background-color: var(--color-sub);
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  margin: auto;
+  opacity: 0.7;
+  font-weight: var(--weight-semi-bold);
 `;
 
 export const BookImg = styled.img`
