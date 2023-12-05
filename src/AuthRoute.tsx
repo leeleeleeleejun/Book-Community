@@ -1,10 +1,8 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useSelector } from "react-redux";
-import type { RootState } from "@/store";
 import { CLIENT_PATH } from "./constants/path";
 
 const AuthRoute = () => {
-  const user = useSelector((state: RootState) => state.UserSlice.userInfo);
+  const user = localStorage.getItem("token");
 
   if (user) return <Outlet />;
   else {
