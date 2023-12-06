@@ -37,7 +37,9 @@ const SearchBook = () => {
   const searchFunc = async () => {
     if (searchValue) {
       const response = await searchAPI(searchValue);
-      setBookList(response);
+      if (response.ok) {
+        setBookList(response);
+      }
     } else {
       alert("검색어를 입력해주세요");
     }
@@ -48,9 +50,7 @@ const SearchBook = () => {
 
     const book_info = { cover, title };
     const response = await pushMyBookListItem({ theme, book_info });
-    if (!response) return;
-    const result = await response.json();
-    if (response.ok) {
+    if (response?.ok) {
       dispatch(
         setUser({
           ...user,
@@ -61,7 +61,6 @@ const SearchBook = () => {
         })
       );
     }
-    alert(result.message);
   };
 
   return (

@@ -39,6 +39,16 @@ const EditProfileImage = () => {
     setUserProfile(null);
   };
 
+  const setProfileImageFunc = async () => {
+    const response = userProfile
+      ? await editProfileImage(userProfile)
+      : await deleteProfileImage();
+
+    if (response?.ok) {
+      window.location.reload();
+    }
+  };
+
   return (
     <ProfileEditor>
       <h3>회원정보 수정</h3>
@@ -65,20 +75,7 @@ const EditProfileImage = () => {
           <ProfileImageButton $isChange={false} onClick={deleteImage}>
             기본이미지
           </ProfileImageButton>
-          <ProfileImageButton
-            $isChange={true}
-            onClick={async () => {
-              const response = userProfile
-                ? await editProfileImage(userProfile)
-                : await deleteProfileImage();
-
-              if (response && response.ok) {
-                const result = await response.json();
-                alert(result.message);
-                window.location.reload();
-              }
-            }}
-          >
+          <ProfileImageButton $isChange={true} onClick={setProfileImageFunc}>
             변경
           </ProfileImageButton>
         </div>

@@ -9,17 +9,16 @@ export const searchAPI = async (data: string) => {
       `${API_PATH.BOOK.GET}?${queryString}`
     );
 
+    const result = await response.json();
+
     if (response.ok) {
-      const result = await response.json();
       const correctedJSON = result.replace(/\\/g, "").slice(0, -1);
       const parsedData = JSON.parse(correctedJSON);
       return parsedData.item;
     } else {
-      // 서버 응답이 오류(4xx, 5xx)인 경우
-      const errorData = await response.json();
-      throw new Error(errorData.error);
+      throw new Error(result.error);
     }
   } catch (err) {
-    console.log(err);
+    alert(err);
   }
 };

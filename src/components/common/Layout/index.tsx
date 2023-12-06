@@ -42,8 +42,10 @@ const Layout = () => {
     (async () => {
       if (localStorage.getItem("token")) {
         const response = await getUserInfo();
-        const result = await response.json();
-        dispatch(setUser(result.user));
+        if (response) {
+          const result = await response.json();
+          dispatch(setUser(result.user));
+        }
       }
     })();
   }, []);

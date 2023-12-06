@@ -16,6 +16,17 @@ const LoginModal = ({
   const [email, setMail] = useState("");
   const [password, setPassword] = useState("");
 
+  const loginFunc = async () => {
+    const response = await login({ email, password });
+
+    if (response?.ok) {
+      closeLoginModalFunc();
+      const result = await response.json();
+      localStorage.setItem("token", result.token);
+      window.location.reload();
+    }
+  };
+
   return (
     <ModalContainer>
       <LoginModalBox>
@@ -37,21 +48,7 @@ const LoginModal = ({
             setPassword(e.target.value);
           }}
         />
-        <FormButton
-          onClick={async () => {
-            const response = await login({ email, password });
-
-            if (response) {
-              alert("로그인에 성공했습니다.");
-              closeLoginModalFunc();
-              const result = await response.json();
-              localStorage.setItem("token", result.token);
-              window.location.reload();
-            }
-          }}
-        >
-          로그인
-        </FormButton>
+        <FormButton onClick={loginFunc}>로그인</FormButton>
         <div>
           <p>아직 회원이 아니신가요?</p>
           <Link to={CLIENT_PATH.SIGNUP}>회원가입</Link>

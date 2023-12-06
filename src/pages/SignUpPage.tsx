@@ -55,6 +55,18 @@ const SignUpPage = () => {
     setSignUPInfo((prev) => ({ ...prev, [key]: value }));
   }, []);
 
+  const signUpFunc = async () => {
+    if (SignUpValidate(signUPInfo, serValidateError)) {
+      const copyData = { ...signUPInfo };
+      delete copyData.confirmPassword;
+      const response = await signUpAPI(copyData);
+
+      if (response?.ok) {
+        navigate("/");
+      }
+    }
+  };
+
   return (
     <Container>
       <CarouselBox>
@@ -107,21 +119,7 @@ const SignUpPage = () => {
           onChange={setSignUPInfoFunc}
         />
         <ValidErrorMessage>{validateError}</ValidErrorMessage>
-        <FormButton
-          type="button"
-          onClick={async () => {
-            if (SignUpValidate(signUPInfo, serValidateError)) {
-              const copyData = { ...signUPInfo };
-              delete copyData.confirmPassword;
-              const response = await signUpAPI(copyData);
-
-              if (response) {
-                alert("회원가입 성공");
-                navigate("/");
-              }
-            }
-          }}
-        >
+        <FormButton type="button" onClick={signUpFunc}>
           가입하기
         </FormButton>
       </main>

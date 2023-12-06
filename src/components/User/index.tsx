@@ -35,6 +35,26 @@ const EditUser = () => {
 
   if (!user) return null;
 
+  const editUserInfoFunc = async () => {
+    const validateResult = EditUserInfoValidate(editUserInfo, serValidateError);
+    if (validateResult) {
+      const editUser = {
+        ...user,
+        nickname: editUserInfo.nickname || user.nickname,
+        introduction: editUserInfo.introduction || user.introduction,
+        password: editUserInfo.password || user.password,
+        phone_number: editUserInfo.phone_number || user.phone_number,
+      };
+
+      delete editUser.confirmPassword;
+      dispatch(setUser(editUser));
+      const response = await editUserInfoAPI(editUser);
+      if (response) {
+        dispatch(closeModal());
+      }
+    }
+  };
+
   return (
     <ModalContainer>
       <ModalBox>
@@ -83,34 +103,7 @@ const EditUser = () => {
           onChange={setEditUserInfoFunc}
         />
         <ValidErrorMessage>{validateError}</ValidErrorMessage>
-        <FormButton
-          onClick={async () => {
-            const validateResult = EditUserInfoValidate(
-              editUserInfo,
-              serValidateError
-            );
-            if (validateResult) {
-              const editUser = {
-                ...user,
-                nickname: editUserInfo.nickname || user.nickname,
-                introduction: editUserInfo.introduction || user.introduction,
-                password: editUserInfo.password || user.password,
-                phone_number: editUserInfo.phone_number || user.phone_number,
-              };
-
-              delete editUser.confirmPassword;
-              dispatch(setUser(editUser));
-              const response = await editUserInfoAPI(editUser);
-              if (response) {
-                const result = await response.json();
-                alert(result.message);
-                dispatch(closeModal());
-              }
-            }
-          }}
-        >
-          수정하기
-        </FormButton>
+        <FormButton onClick={editUserInfoFunc}>수정하기</FormButton>
       </ModalBox>
     </ModalContainer>
   );

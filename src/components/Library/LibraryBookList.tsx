@@ -28,14 +28,10 @@ const LibraryBookList = ({ theme }: { theme: BookListThemeObjType }) => {
 
     if (!userAnswer) return;
 
-    if (!theme) return;
-
     const book_info = { cover, title };
     const response = await deleteMyBookListItem({ theme, book_info });
 
-    if (response) {
-      const result = await response.json();
-
+    if (response?.ok) {
       const editBookList = user.my_book[theme].filter(
         (item) => item.title !== title
       );
@@ -49,8 +45,6 @@ const LibraryBookList = ({ theme }: { theme: BookListThemeObjType }) => {
           },
         })
       );
-
-      alert(result.message);
     }
   };
 

@@ -30,26 +30,22 @@ const Timer = () => {
     }
   };
 
+  const pushReadTimeFunc = async () => {
+    const response = await pushReadTime({ day: today, active: time });
+    if (response) {
+      stopWatch();
+      setTime(0);
+      window.location.reload();
+    }
+  };
+
   return (
     <>
       <TimeBox>{formatTime(time)}</TimeBox>
       <ButtonBox>
         <StartButton onClick={startWatch}>시작</StartButton>
         <PauseButton onClick={stopWatch}>중단</PauseButton>
-        <StoptButton
-          onClick={async () => {
-            const response = await pushReadTime({ day: today, active: time });
-            if (response) {
-              const result = await response.json();
-              alert(result.message);
-              stopWatch();
-              setTime(0);
-              window.location.reload();
-            }
-          }}
-        >
-          기록하기
-        </StoptButton>
+        <StoptButton onClick={pushReadTimeFunc}>기록하기</StoptButton>
       </ButtonBox>
     </>
   );
