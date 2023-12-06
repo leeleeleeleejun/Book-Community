@@ -21,6 +21,10 @@ export const API_PATH = {
   BOOK: {
     GET: `${API_BASE_URL}/searchbook`,
   },
+
+  MEMO: {
+    POST: `${API_BASE_URL}/memo`,
+  },
 };
 
 export const CLIENT_PATH = {

@@ -1,13 +1,9 @@
 import {
-  BookImg,
-  BookItem,
   BookItemBox,
   BookListBody,
   BookListEditButton,
   BookListHeader,
   BookListTitle,
-  BookTitle,
-  MinusButton,
 } from "./Library.style";
 import PencilIcon from "@/assets/PecilIcon";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,11 +13,17 @@ import { setTheme } from "./LibrarySlice";
 import { RootState } from "@/store";
 import { deleteMyBookListItem } from "@/api/userAPI";
 import { setUser } from "@/components/User/UserSlice";
+import BookItem from "@/components/common/BookItem";
 
 const LibraryBookList = ({ theme }: { theme: BookListThemeObjType }) => {
   const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.UserSlice.userInfo);
   if (!user) return;
+
+  const openSearchModal = () => {
+    dispatch(openModal());
+    dispatch(setTheme(theme));
+  };
 
   const deleteMyBookListItemFunc = async (cover: string, title: string) => {
     const userAnswer = confirm("해당 책을 삭제하겠습니까?");
@@ -54,12 +56,7 @@ const LibraryBookList = ({ theme }: { theme: BookListThemeObjType }) => {
         <BookListTitle>
           {bookListThemeObj[theme]} ({user.my_book[theme].length}/29)
         </BookListTitle>
-        <BookListEditButton
-          onClick={() => {
-            dispatch(openModal());
-            dispatch(setTheme(theme));
-          }}
-        >
+        <BookListEditButton onClick={openSearchModal}>
           <PencilIcon />
         </BookListEditButton>
       </BookListHeader>
@@ -68,17 +65,11 @@ const LibraryBookList = ({ theme }: { theme: BookListThemeObjType }) => {
           const { cover, title } = item;
           return (
             <BookItemBox key={index}>
-              <BookItem>
-                <MinusButton
-                  onClick={() => {
-                    deleteMyBookListItemFunc(cover, title);
-                  }}
-                >
-                  ㅡ
-                </MinusButton>
-              </BookItem>
-              <BookImg src={cover} />
-              <BookTitle>{title}</BookTitle>
+              <BookItem
+                deleteFunc={deleteMyBookListItemFunc}
+                cover={cover}
+                title={title}
+              />
             </BookItemBox>
           );
         })}

@@ -22,7 +22,7 @@ const Layout = () => {
     (state: RootState) => state.SearchBookSlice.searchBookModalOpen
   );
   const write = useSelector(
-    (state: RootState) => state.WriteMemoSlice.WriteMemoModal
+    (state: RootState) => state.WriteMemoSlice.writeMemoModal
   );
   const edit = useSelector(
     (state: RootState) => state.UserSlice.editUserModalOpen

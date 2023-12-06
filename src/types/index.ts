@@ -21,6 +21,7 @@ export interface my_book_item {
 }
 
 export interface userInfo {
+  _id: string;
   name: string;
   nickname: string;
   introduction: string;
@@ -78,4 +79,11 @@ export interface bookListItemType {
 export interface postBookListItemApiProp {
   theme: BookListThemeObjType;
   book_info: my_book_item;
+}
+
+export interface memo {
+  title: string;
+  author: userInfo;
+  content: string;
+  book_info?: my_book_item;
 }

@@ -2,7 +2,11 @@ import { styled } from "styled-components";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import FormButton from "@/components/common/FormButton";
-import { ModalBox } from "@/components/common/ModalContainer";
+import { ModalBox, ModalContainer } from "@/components/common/ModalContainer";
+
+export const WriteMemoModalContainer = styled(ModalContainer)`
+  z-index: 9;
+`;
 
 export const WriteMemoModalBox = styled(ModalBox)`
   h3 {
@@ -17,38 +21,46 @@ export const WriteMemoModalBox = styled(ModalBox)`
   }
 `;
 
+export const TitleInput = styled.input`
+  height: 25px;
+  border-radius: 4px;
+  border: 1px solid var(--color-gray-2);
+`;
+
+export const CheckBoxWrap = styled.label`
+  font-size: var(--font-semi-small);
+  margin: 10px 0;
+
+  input {
+    margin-right: 5px;
+  }
+`;
+
 export const ChooseBook = styled.div`
   display: flex;
   flex-direction: column;
   font-size: var(--font-semi-small);
 
-  label {
-    margin: 10px 0;
+  padding: 25px 0;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: var(--color-gray-light);
+  border-radius: 5px;
 
-    input {
-      margin-right: 5px;
-    }
+  & > button {
+    width: 50px;
+    background-color: white;
+    border-radius: 2px;
+    padding: 3px;
+    margin: 15px auto 0;
+    border: 1px solid var(--color-gray);
   }
+`;
 
-  div {
-    margin: auto;
-    padding: 25px 0;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    background-color: var(--color-gray-light);
-    border-radius: 5px;
-
-    button {
-      width: 50px;
-      background-color: white;
-      border-radius: 2px;
-      padding: 3px;
-      margin: 15px auto 0;
-      border: 1px solid var(--color-gray);
-    }
-  }
+export const BookItemBox = styled.span`
+  margin: auto;
+  width: 98px;
 `;
 
 export const ButtonBox = styled.div`

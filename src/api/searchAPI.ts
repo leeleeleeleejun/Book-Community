@@ -11,7 +11,8 @@ export const searchAPI = async (data: string) => {
 
     const result = await response.json();
     if (response.ok) {
-      const correctedJSON = result.replace(/\\/g, "").slice(0, -1);
+      const correctedJSON = result.replace(/'/g, "\\'").slice(0, -1);
+
       const parsedData = JSON.parse(correctedJSON);
       return parsedData.item;
     } else {
