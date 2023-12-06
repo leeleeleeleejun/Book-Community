@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userKey, editUserInfo } from "@/types";
 import EditProfileImage from "./EditProfileImage";
 import FormField from "@/components/common/FormField";
@@ -8,25 +8,32 @@ import FormButton from "@/components/common/FormButton";
 import { EditUserInfoValidate } from "@/utils/validate";
 import { ModalContainer, ModalBox } from "@/components/common/ModalContainer";
 import CloseButton from "@/assets/CloseButton";
-import { closeModal } from "./UserSlice";
+import { closeModal, setUser } from "./UserSlice";
+import { RootState } from "@/store";
+import { editUserInfoAPI } from "@/api/userAPI";
 
 const EditUser = () => {
   const dispatch = useDispatch();
-
+  const user = useSelector((state: RootState) => state.UserSlice.userInfo);
   const [editUserInfo, setEditUserInfo] = useState<editUserInfo>({
-    nickname: "",
-    introduction: "",
+    nickname: user ? user.nickname : "",
+    introduction: user ? user.introduction : "",
     password: "",
     confirmPassword: "",
-    phone_number: "",
+    phone_number: user ? user.phone_number : "",
   });
+
   const [validateError, serValidateError] = useState("");
+
   const { nickname, introduction, password, confirmPassword, phone_number } =
     editUserInfo;
+
   const setEditUserInfoFunc = useCallback((value: string, key?: userKey) => {
     if (!key) return;
     setEditUserInfo((prev) => ({ ...prev, [key]: value }));
   }, []);
+
+  if (!user) return null;
 
   return (
     <ModalContainer>
@@ -77,8 +84,29 @@ const EditUser = () => {
         />
         <ValidErrorMessage>{validateError}</ValidErrorMessage>
         <FormButton
-          onClick={() => {
-            EditUserInfoValidate(editUserInfo, serValidateError);
+          onClick={async () => {
+            const validateResult = EditUserInfoValidate(
+              editUserInfo,
+              serValidateError
+            );
+            if (validateResult) {
+              const editUser = {
+                ...user,
+                nickname: editUserInfo.nickname || user.nickname,
+                introduction: editUserInfo.introduction || user.introduction,
+                password: editUserInfo.password || user.password,
+                phone_number: editUserInfo.phone_number || user.phone_number,
+              };
+
+              delete editUser.confirmPassword;
+              dispatch(setUser(editUser));
+              const response = await editUserInfoAPI(editUser);
+              if (response) {
+                const result = await response.json();
+                alert(result.message);
+                dispatch(closeModal());
+              }
+            }
           }}
         >
           수정하기

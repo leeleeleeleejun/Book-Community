@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import CloseButton from "@/assets/CloseButton";
-import { closeModal } from "@/components/memo/WriteMemo/WriteMemoSlice";
+import { closeModal } from "./WriteMemoSlice";
 import { ModalContainer } from "@/components/common/ModalContainer";
 import {
   WriteMemoModalBox,

@@ -2,23 +2,31 @@ import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import type { RootState } from "@/store";
 import { useDispatch, useSelector } from "react-redux";
+import { CLIENT_PATH } from "@/constants/path";
+import { getUserInfo } from "@/api/userAPI";
 import { Container, LeftAside, RightAside, Logo, Main } from "./Layout.style";
+import LoginButton from "@/components/LeftSidebar/login/LoginButton";
+import LoginModal from "@/components/LeftSidebar/login/LoginModal";
 import Profile from "@/components/LeftSidebar/Profile";
 import SidebarNav from "@/components/LeftSidebar/SidebarNav";
 import Carousel from "@/components/RightSidebar/SidebarCarousel";
 import ReadingTime from "@/components/LeftSidebar/ReadingTime";
 import Footer from "@/components/RightSidebar/Footer";
-import LoginButton from "@/components/LeftSidebar/login/LoginButton";
-import LoginModal from "@/components/LeftSidebar/login/LoginModal";
 import WriteMemo from "@/components/memo/WriteMemo";
 import EditUser from "@/components/User";
-import { CLIENT_PATH } from "@/constants/path";
-import { getUserInfo } from "@/api/userAPI";
+import SearchBook from "@/components/SearchBook";
 import { setUser } from "@/components/User/UserSlice";
 
 const Layout = () => {
-  const write = useSelector((state: RootState) => state.WriteMemoSlice.open);
-  const edit = useSelector((state: RootState) => state.UserSlice.open);
+  const search = useSelector(
+    (state: RootState) => state.SearchBookSlice.searchBookModalOpen
+  );
+  const write = useSelector(
+    (state: RootState) => state.WriteMemoSlice.WriteMemoModal
+  );
+  const edit = useSelector(
+    (state: RootState) => state.UserSlice.editUserModalOpen
+  );
   const user = useSelector((state: RootState) => state.UserSlice.userInfo);
   const dispatch = useDispatch();
   const [loginModal, setLoginModalOpen] = useState<boolean>(false);
@@ -42,11 +50,10 @@ const Layout = () => {
 
   return (
     <>
-      {loginModal ? (
-        <LoginModal closeLoginModalFunc={closeLoginModalFunc} />
-      ) : null}
-      {write ? <WriteMemo /> : null}
-      {edit ? <EditUser /> : null}
+      {search && <SearchBook />}
+      {loginModal && <LoginModal closeLoginModalFunc={closeLoginModalFunc} />}
+      {write && <WriteMemo />}
+      {edit && <EditUser />}
       <Container $loginModalOpen={loginModal}>
         <LeftAside>
           <Logo to={CLIENT_PATH.HOME}>

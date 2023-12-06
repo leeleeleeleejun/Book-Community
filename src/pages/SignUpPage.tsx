@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { userInfo, userKey } from "@/types";
-import { SignupValidate } from "@/utils/validate";
+import { SignUpValidate } from "@/utils/validate";
 import FormFiled from "@/components/common/FormField";
 import FormButton from "@/components/common/FormButton";
 import ValidErrorMessage from "@/components/common/ValidErrorMessage";
@@ -28,7 +28,6 @@ const SignUpPage = () => {
     })
     .reverse();
 
-  console.log(activity_graph_empty);
   const [signUPInfo, setSignUPInfo] = useState<userInfo>({
     name: "",
     nickname: "",
@@ -39,7 +38,11 @@ const SignUpPage = () => {
     phone_number: "",
     profile: "",
     activity_graph: activity_graph_empty,
-    my_book: [],
+    my_book: {
+      bestBook: [],
+      readBook: [],
+      hopeBook: [],
+    },
   });
 
   const [validateError, serValidateError] = useState("");
@@ -107,12 +110,13 @@ const SignUpPage = () => {
         <FormButton
           type="button"
           onClick={async () => {
-            if (SignupValidate(signUPInfo, serValidateError)) {
+            if (SignUpValidate(signUPInfo, serValidateError)) {
               const copyData = { ...signUPInfo };
               delete copyData.confirmPassword;
-              const result = await signUpAPI(copyData);
+              const response = await signUpAPI(copyData);
 
-              if (result) {
+              if (response) {
+                alert("회원가입 성공");
                 navigate("/");
               }
             }

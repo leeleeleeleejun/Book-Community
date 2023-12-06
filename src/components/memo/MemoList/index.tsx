@@ -18,6 +18,7 @@ import { useSelector } from "react-redux";
 const MemoList = () => {
   const a = [0, 0, 0, 0, 0, 0];
   const user = useSelector((state: RootState) => state.UserSlice.userInfo);
+
   return (
     <MemoListBox>
       {a.map((item, index) => (

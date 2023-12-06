@@ -1,23 +1,32 @@
 import SettingIcon from "@/assets/SettingIcon";
 import MemoList from "@/components/memo/MemoList";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { openModal } from "@/components/User/UserSlice";
+import { RootState } from "@/store";
+import BasicUserIcon from "@/components/common/BasicUserIcon";
+import { API_USER_IMG } from "@/constants/path";
 
 const MyMemoPage = () => {
   const dispatch = useDispatch();
+  const user = useSelector((state: RootState) => state.UserSlice.userInfo);
+
+  if (!user) return null;
 
   return (
     <>
       <Banner>이곳에서 당신의 이야기를 만나보세요.</Banner>
       <UserInfo>
-        <UserImg src="carouselImg/1.jpg" />
-        <div>
-          <UserNicName>
-            <span>이준석</span> 님의 메모장
-          </UserNicName>
-          <UserIntroduction>글로 남기는 나만의 기록장</UserIntroduction>
-        </div>
+        {user && user.profile.length > 30 ? (
+          <UserImg alt="UserImg" src={API_USER_IMG + user.profile} />
+        ) : (
+          <BasicUserIcon size={70} />
+        )}
+
+        <TextBox>
+          <UserNicName>{user.nickname} 님의 메모장</UserNicName>
+          <p>{user.introduction || "글로 남기는 나만의 기록장"}</p>
+        </TextBox>
         <button onClick={() => dispatch(openModal())}>
           <SettingIcon />
         </button>
@@ -54,11 +63,14 @@ const UserInfo = styled.div`
   }
 `;
 
+const TextBox = styled.div`
+  margin-left: 20px;
+`;
+
 const UserImg = styled.img`
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  margin-right: 20px;
 `;
 
 const UserNicName = styled.h2`
@@ -66,5 +78,3 @@ const UserNicName = styled.h2`
   font-weight: var(--weight-semi-bold);
   margin-bottom: 10px;
 `;
-
-const UserIntroduction = styled.p``;

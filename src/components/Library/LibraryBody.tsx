@@ -9,9 +9,9 @@ const LibraryBody = () => {
         <LibraryIcon />
         책장
       </Title>
-      <LibraryBookList />
-      <LibraryBookList />
-      <LibraryBookList />
+      <LibraryBookList theme="bestBook" />
+      <LibraryBookList theme="readBook" />
+      <LibraryBookList theme="hopeBook" />
     </>
   );
 };

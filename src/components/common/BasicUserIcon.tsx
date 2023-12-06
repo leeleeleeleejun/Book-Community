@@ -17,7 +17,6 @@ const UserIconWrap = styled.div<{ $size: number }>`
   background-color: var(--color-light-black);
   text-align: center;
   border-radius: 50%;
-
   svg {
     margin: auto;
   }
