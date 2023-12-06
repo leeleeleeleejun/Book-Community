@@ -23,6 +23,7 @@ import { pushMyBookListItem } from "@/api/userAPI";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { setUser } from "@/components/User/UserSlice";
+import LoadingIcon from "@/assets/LoadingIcon";
 
 const SearchBook = () => {
   const dispatch = useDispatch();
@@ -32,14 +33,15 @@ const SearchBook = () => {
 
   const [searchValue, serSearchValue] = useState("");
   const [bookList, setBookList] = useState<bookListItemType[]>();
+  const [loading, setLoading] = useState(false);
   if (!user) return null;
 
   const searchFunc = async () => {
     if (searchValue) {
+      setLoading(true);
       const response = await searchAPI(searchValue);
-      if (response.ok) {
-        setBookList(response);
-      }
+      setLoading(false);
+      setBookList(response);
     } else {
       alert("검색어를 입력해주세요");
     }
@@ -78,7 +80,7 @@ const SearchBook = () => {
             }}
           />
           <SearchButton onClick={searchFunc}>
-            <SearchIcon />
+            {loading ? <LoadingIcon /> : <SearchIcon />}
           </SearchButton>
         </SearchInputBox>
         {bookList && (

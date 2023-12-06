@@ -13,6 +13,9 @@ export const SearchInputBox = styled.div`
 `;
 
 export const SearchButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--color-main);
   width: 50px;
   height: 37px;

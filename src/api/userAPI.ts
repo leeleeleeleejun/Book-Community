@@ -7,6 +7,9 @@ const handleApiResponse = async (response: Response) => {
   if (!response.ok) {
     throw new Error(result.error);
   } else {
+    if (result.token) {
+      localStorage.setItem("token", result.token);
+    }
     alert(result.message);
   }
   return response;
