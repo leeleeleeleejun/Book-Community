@@ -34,7 +34,7 @@ export const BasicUserIconWrap = styled.div`
 
 export const ProfileImageButton = styled.button<{ $isChange: boolean }>`
   width: 110px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 300;
   color: white;
   border-radius: 8px;
