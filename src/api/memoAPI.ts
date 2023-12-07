@@ -11,7 +11,9 @@ export const postMemo = async (data: memo) => {
       JSON.stringify(data)
     );
 
-    return await handleApiResponse(response);
+    await handleApiResponse(response);
+
+    return response;
   } catch (err) {
     alert(err);
   }
