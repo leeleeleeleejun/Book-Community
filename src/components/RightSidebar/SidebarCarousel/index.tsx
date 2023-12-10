@@ -40,7 +40,7 @@ const Carousel = ({ signUp }: { signUp: boolean }) => {
     setVisible(false);
 
     setTimeout(() => {
-      setCount((count) => (count < 6 ? count + 1 : 1));
+      setCount((count) => (count < 7 ? count + 1 : 1));
       setVisible(true);
     }, 500);
   };

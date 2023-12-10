@@ -54,6 +54,12 @@ body {
   font-family: 'Noto Sans KR', sans-serif;
 }
 
+
+a {
+	color: black;
+	text-decoration: none;
+}
+
 button {
 	display: block;
 	cursor: pointer;

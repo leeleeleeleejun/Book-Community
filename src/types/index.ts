@@ -82,6 +82,7 @@ export interface postBookListItemApiProp {
 }
 
 export interface memo {
+  _id?: string;
   title: string;
   author: userInfo;
   description: string;

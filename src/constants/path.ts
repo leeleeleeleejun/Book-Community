@@ -26,6 +26,10 @@ export const API_PATH = {
     GET: `${API_BASE_URL}/memo`,
     POST: `${API_BASE_URL}/memo`,
   },
+
+  ALL_MEMO: {
+    GET: `${API_BASE_URL}/memos`,
+  },
 };
 
 export const CLIENT_PATH = {
@@ -36,4 +40,6 @@ export const CLIENT_PATH = {
   MYLIBRARY: "/mylibrary",
   TIMER: "/timer",
   LIBRARY: "/library",
+
+  MEMO: "/memo/:_id",
 };

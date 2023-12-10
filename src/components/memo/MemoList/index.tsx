@@ -17,8 +17,9 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import LoadingIcon from "@/assets/LoadingIcon";
 import { getAllMemo } from "@/api/memoAPI";
 import { memo } from "@/types";
-import { API_USER_IMG } from "@/constants/path";
+import { API_USER_IMG, CLIENT_PATH } from "@/constants/path";
 import getDateFunc from "@/utils/getDate";
+import { Link } from "react-router-dom";
 
 const MemoList = () => {
   const [memoList, setMemoList] = useState<memo[]>([]);
@@ -45,37 +46,45 @@ const MemoList = () => {
   return (
     <MemoListBox>
       {memoList.map((item, index) => {
-        const { title, author, description, createdAt, book_info } = item;
+        const { _id, title, author, description, createdAt, book_info } = item;
         return (
-          <MemoListItem key={index}>
-            <div>
-              <MemoTitle>{title}</MemoTitle>
-              <MemoInfo>
-                <WriterInfo>
-                  {author.profile ? (
-                    <WriterImg
-                      alt="UserImg"
-                      src={API_USER_IMG + author.profile}
-                    />
-                  ) : (
-                    <BasicUserIcon size={25} />
-                  )}
-                  <WriterNicName>{author.name}</WriterNicName>
-                </WriterInfo>
-                <WriteDate>
-                  <CalendalIcon /> {createdAt && getDateFunc(createdAt)}
-                </WriteDate>
-              </MemoInfo>
-              <Excerpt>
-                <p>{description}</p>
-              </Excerpt>
-            </div>
-            {book_info?.cover ? (
-              <BookImg src={book_info?.cover} />
-            ) : (
-              <LogoImg src="logo_2.jpg" />
-            )}
-          </MemoListItem>
+          <Link
+            key={index}
+            to={_id ? CLIENT_PATH.MEMO.replace(":_id", _id) : "/"}
+          >
+            <MemoListItem>
+              <div>
+                <MemoTitle>{title}</MemoTitle>
+                <MemoInfo>
+                  <WriterInfo>
+                    {author && author.profile ? (
+                      <WriterImg
+                        alt="UserImg"
+                        src={API_USER_IMG + author.profile}
+                      />
+                    ) : (
+                      <BasicUserIcon size={25} />
+                    )}
+                    <WriterNicName>
+                      {(author && author.name) || "user"}
+                    </WriterNicName>
+                  </WriterInfo>
+                  <WriteDate>
+                    <CalendalIcon />
+                    {createdAt && getDateFunc(createdAt).slice(0, 10)}
+                  </WriteDate>
+                </MemoInfo>
+                <Excerpt>
+                  <p>{description}</p>
+                </Excerpt>
+              </div>
+              {book_info?.cover ? (
+                <BookImg src={book_info?.cover} />
+              ) : (
+                <LogoImg src="logo_2.jpg" />
+              )}
+            </MemoListItem>
+          </Link>
         );
       })}
       <div ref={pageEnd} />
