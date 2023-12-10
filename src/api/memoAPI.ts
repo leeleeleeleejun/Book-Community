@@ -18,3 +18,20 @@ export const postMemo = async (data: memo) => {
     alert(err);
   }
 };
+
+export const getAllMemo = async (data: number) => {
+  const queryString = new URLSearchParams({ param: String(data) });
+  try {
+    const response = await fetch(`${API_PATH.MEMO.GET}?${queryString}`, {
+      method: "GET",
+    });
+
+    const result = await response.json();
+    if (!response.ok) {
+      throw new Error(result.error);
+    }
+    return result;
+  } catch (err) {
+    alert(err);
+  }
+};

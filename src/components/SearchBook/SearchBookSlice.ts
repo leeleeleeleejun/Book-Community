@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export interface SearchBookInitialState {
-  searchBookModalOpen: boolean;
+  searchBookModal: boolean;
 }
 
 const initialState: SearchBookInitialState = {
-  searchBookModalOpen: false,
+  searchBookModal: false,
 };
 
 export const SearchBookSlice = createSlice({
@@ -13,10 +13,10 @@ export const SearchBookSlice = createSlice({
   initialState,
   reducers: {
     openModal: (state) => {
-      state.searchBookModalOpen = true;
+      state.searchBookModal = true;
     },
     closeModal: (state) => {
-      state.searchBookModalOpen = false;
+      state.searchBookModal = false;
     },
   },
 });

@@ -12,7 +12,7 @@ import {
   CancelButton,
   ButtonBox,
   WriteMemoModalContainer,
-  TitleInput,
+  Input,
   BookItemBox,
   CheckBoxWrap,
 } from "./WriteMemo.style";
@@ -31,6 +31,7 @@ const WriteMemo = () => {
   const [chooseBookCheck, setChooseBookCheck] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [description, setDescription] = useState("");
 
   const cancelMemoBookFunc = () => {
     const book_info = { cover: "", title: "" };
@@ -45,6 +46,11 @@ const WriteMemo = () => {
       return;
     }
 
+    if (!description) {
+      alert("소개글을 입력해 주세요.");
+      return;
+    }
+
     if (!content) {
       alert("내용을 입력해 주세요.");
       return;
@@ -53,6 +59,7 @@ const WriteMemo = () => {
     const memoInfo = {
       author,
       title,
+      description,
       content,
       ...(chooseBookCheck && { book_info }),
     };
@@ -62,6 +69,7 @@ const WriteMemo = () => {
     if (response?.ok) {
       dispatch(closeModal());
       setTitle("");
+      setDescription("");
       setContent("");
     }
   };
@@ -72,8 +80,8 @@ const WriteMemo = () => {
           <CloseButton />
         </button>
         <h3>메모 글 작성</h3>
-        <p>제목</p>
-        <TitleInput
+        <span>제목</span>
+        <Input
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -113,7 +121,12 @@ const WriteMemo = () => {
             )}
           </ChooseBook>
         )}
-
+        <span>한 줄 소개</span>
+        <Input
+          type="text"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
         <Quill
           theme="snow"
           modules={modules}

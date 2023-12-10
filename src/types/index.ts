@@ -84,6 +84,8 @@ export interface postBookListItemApiProp {
 export interface memo {
   title: string;
   author: userInfo;
+  description: string;
   content: string;
   book_info?: my_book_item;
+  createdAt?: string;
 }

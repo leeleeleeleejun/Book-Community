@@ -4,6 +4,7 @@ import {
   MemoListItem,
   MemoTitle,
   Excerpt,
+  LogoImg,
   BookImg,
   WriterNicName,
   WriterImg,
@@ -11,46 +12,99 @@ import {
   WriterInfo,
   MemoInfo,
 } from "./MemoList.style";
-import type { RootState } from "@/store";
 import BasicUserIcon from "@/components/common/BasicUserIcon";
-import { useSelector } from "react-redux";
+import { useEffect, useMemo, useRef, useState } from "react";
+import LoadingIcon from "@/assets/LoadingIcon";
+import { getAllMemo } from "@/api/memoAPI";
+import { memo } from "@/types";
+import { API_USER_IMG } from "@/constants/path";
+import getDateFunc from "@/utils/getDate";
 
 const MemoList = () => {
-  const a = [0, 0, 0, 0, 0, 0];
-  const user = useSelector((state: RootState) => state.UserSlice.userInfo);
+  const [memoList, setMemoList] = useState<memo[]>([]);
+  console.log(memoList);
+  const [page, setPage] = useState(0); //스크롤이 닿았을 때 새롭게 데이터 페이지를 바꿀 state
+  const [loading, setLoading] = useState(false);
+  const io = useMemo(() => observer(setPage), []);
+  const pageEnd = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    fetchPins(page, setMemoList, setLoading);
+  }, [page]);
+
+  useEffect(() => {
+    if (loading) {
+      //로딩되었을 때만 실행
+      if (pageEnd.current !== null) {
+        //옵져버 탐색 시작
+        io.observe(pageEnd.current);
+      }
+    }
+  }, [loading]);
 
   return (
     <MemoListBox>
-      {a.map((item, index) => (
-        <MemoListItem key={index}>
-          <div>
-            <MemoTitle>안녕하세요</MemoTitle>
-            <MemoInfo>
-              <WriterInfo>
-                {user?.profile ? (
-                  <WriterImg src="carouselImg/1.jpg" />
-                ) : (
-                  <BasicUserIcon size={25} />
-                )}
-                <WriterNicName>이준석</WriterNicName>
-              </WriterInfo>
-              <WriteDate>
-                <CalendalIcon /> 2023-11-21
-              </WriteDate>
-            </MemoInfo>
-            <Excerpt>
-              <p>
-                임지호이쯤에서 (2)에 대한 제 생각으로 이어질 수 있을 것
-                같습니다. 우리나라에서 교육은 가장 중요한 가치 중 하나입니다.
-                어쩌면 조선 시대의 과거 제도부터 내려온 전통이자 문화적 유산일
-              </p>
-            </Excerpt>
-          </div>
-          <BookImg src="carouselImg/1.jpg" />
-        </MemoListItem>
-      ))}
+      {memoList.map((item, index) => {
+        const { title, author, description, createdAt, book_info } = item;
+        return (
+          <MemoListItem key={index}>
+            <div>
+              <MemoTitle>{title}</MemoTitle>
+              <MemoInfo>
+                <WriterInfo>
+                  {author.profile ? (
+                    <WriterImg
+                      alt="UserImg"
+                      src={API_USER_IMG + author.profile}
+                    />
+                  ) : (
+                    <BasicUserIcon size={25} />
+                  )}
+                  <WriterNicName>{author.name}</WriterNicName>
+                </WriterInfo>
+                <WriteDate>
+                  <CalendalIcon /> {createdAt && getDateFunc(createdAt)}
+                </WriteDate>
+              </MemoInfo>
+              <Excerpt>
+                <p>{description}</p>
+              </Excerpt>
+            </div>
+            {book_info?.cover ? (
+              <BookImg src={book_info?.cover} />
+            ) : (
+              <LogoImg src="logo_2.jpg" />
+            )}
+          </MemoListItem>
+        );
+      })}
+      <div ref={pageEnd} />
+      {loading && <LoadingIcon />}
     </MemoListBox>
   );
 };
 
 export default MemoList;
+
+const fetchPins = async (
+  page: number,
+  setMemoList: React.Dispatch<React.SetStateAction<memo[]>>,
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>
+) => {
+  setLoading(true);
+  const response = await getAllMemo(page);
+  const newList = response.memos;
+  setMemoList((prev) => [...prev, ...newList]);
+  setLoading(false);
+};
+
+const observer = (setPage: React.Dispatch<React.SetStateAction<number>>) => {
+  return new IntersectionObserver(
+    (entries) => {
+      if (entries[0].isIntersecting) {
+        setPage((prev) => ++prev);
+      }
+    },
+    { threshold: 1 }
+  );
+};

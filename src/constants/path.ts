@@ -23,6 +23,7 @@ export const API_PATH = {
   },
 
   MEMO: {
+    GET: `${API_BASE_URL}/memo`,
     POST: `${API_BASE_URL}/memo`,
   },
 };

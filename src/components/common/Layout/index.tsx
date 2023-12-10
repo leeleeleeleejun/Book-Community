@@ -19,14 +19,12 @@ import { setUser } from "@/components/User/UserSlice";
 
 const Layout = () => {
   const search = useSelector(
-    (state: RootState) => state.SearchBookSlice.searchBookModalOpen
+    (state: RootState) => state.SearchBookSlice.searchBookModal
   );
   const write = useSelector(
     (state: RootState) => state.WriteMemoSlice.writeMemoModal
   );
-  const edit = useSelector(
-    (state: RootState) => state.UserSlice.editUserModalOpen
-  );
+  const edit = useSelector((state: RootState) => state.UserSlice.editUserModal);
   const user = useSelector((state: RootState) => state.UserSlice.userInfo);
   const dispatch = useDispatch();
   const [loginModal, setLoginModalOpen] = useState<boolean>(false);

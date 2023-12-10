@@ -1,12 +1,16 @@
 import styled from "styled-components";
 
-export const MemoListBox = styled.ul``;
+export const MemoListBox = styled.ul`
+  display: flex;
+  flex-direction: column;
+`;
 
 export const MemoListItem = styled.li`
   display: flex;
   max-width: 800px;
   justify-content: space-between;
   padding-top: 15px;
+
   & > div {
     display: flex;
     width: 95%;
@@ -16,14 +20,14 @@ export const MemoListItem = styled.li`
 `;
 
 export const MemoTitle = styled.h3`
-  height: 60px;
+  height: 50px;
   font-size: var(--font-medium);
   font-weight: var(--weight-semi-bold);
 `;
 
 export const Excerpt = styled.div`
   padding: 10px;
-  margin-top: 15px;
+  margin-top: 5px;
   background-color: var(--color-gray-light);
   border-radius: 6px;
 
@@ -45,8 +49,15 @@ export const Excerpt = styled.div`
 `;
 
 export const BookImg = styled.img`
-  width: 110px;
+  height: 130px;
   margin: 0 10px;
+  border-radius: 6px;
+`;
+
+export const LogoImg = styled.img`
+  width: 90px;
+  height: 25px;
+  margin: 50px 10px;
   border-radius: 6px;
 `;
 
@@ -64,14 +75,15 @@ export const WriterInfo = styled.div`
 `;
 
 export const WriterImg = styled.img`
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
 
   border-radius: 50%;
 `;
 
 export const WriterNicName = styled.div`
-  margin-left: 7px;
+  margin-left: 10px;
+  font-size: var(--font-semi-small);
 `;
 
 export const WriteDate = styled.div`

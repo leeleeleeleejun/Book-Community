@@ -12,19 +12,21 @@ export const WriteMemoModalBox = styled(ModalBox)`
   h3 {
     font-size: var(--font-medium);
     font-weight: var(--weight-semi-bold);
+    margin-bottom: 30px;
   }
 
-  & > p {
+  & > span {
     font-size: var(--font-small);
     font-weight: var(--weight-light);
-    margin: 30px 0 8px;
+    margin: 8px 0;
   }
 `;
 
-export const TitleInput = styled.input`
+export const Input = styled.input`
   height: 25px;
   border-radius: 4px;
   border: 1px solid var(--color-gray-2);
+  padding: 5px 10px;
 `;
 
 export const CheckBoxWrap = styled.label`
