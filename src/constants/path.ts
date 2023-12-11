@@ -21,14 +21,29 @@ export const API_PATH = {
   BOOK: {
     GET: `${API_BASE_URL}/searchbook`,
   },
+
+  MEMO: {
+    GET: `${API_BASE_URL}/memo`,
+    POST: `${API_BASE_URL}/memo`,
+    PUT: `${API_BASE_URL}/memo`,
+    DELETE: `${API_BASE_URL}/memo`,
+  },
+
+  ALL_MEMO: {
+    GET: `${API_BASE_URL}/memos`,
+  },
+  USER_MEMO: {
+    GET: `${API_BASE_URL}/memo/user`,
+  },
 };
 
 export const CLIENT_PATH = {
   HOME: "/",
   LOGIN: "/login",
   SIGNUP: "/signup",
-  MYMEMO: "/mymemo",
-  MYLIBRARY: "/mylibrary",
+  MY_MEMO: "/mymemo",
   TIMER: "/timer",
   LIBRARY: "/library",
+
+  MEMO: "/memo/:_id",
 };

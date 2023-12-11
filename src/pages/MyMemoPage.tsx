@@ -31,7 +31,7 @@ const MyMemoPage = () => {
           <SettingIcon />
         </button>
       </UserInfo>
-      <MemoList />
+      <MemoList user={user._id} />
     </>
   );
 };

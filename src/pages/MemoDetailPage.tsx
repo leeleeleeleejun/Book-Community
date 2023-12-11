@@ -1,9 +1,46 @@
+import { useEffect, useState } from "react";
 import LeftArrowIcon from "@/assets/LeftArrowIcon";
-import { useNavigate, NavigateFunction } from "react-router-dom";
+import { useNavigate, NavigateFunction, useParams } from "react-router-dom";
 import styled from "styled-components";
+import { deleteMemo, getMemo } from "@/api/memoAPI";
+import { memo } from "@/types";
+import getDateFunc from "@/utils/getDate";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/store";
+import {
+  openModal,
+  setMemoId,
+} from "@/components/memo/WriteMemo/WriteMemoSlice";
 
 const MemoDetailPage = () => {
   const navigate: NavigateFunction = useNavigate();
+  const dispatch = useDispatch();
+  const user = useSelector((state: RootState) => state.UserSlice.userInfo);
+  const { _id } = useParams();
+  const [memo, setMemo] = useState<memo>();
+
+  useEffect(() => {
+    (async () => {
+      if (!_id) return;
+      const response = await getMemo(_id);
+      setMemo({
+        ...response.memo,
+        createdAt: getDateFunc(response.memo.createdAt),
+      });
+    })();
+  }, []);
+
+  const deleteMemoFunc = async () => {
+    const userAnswer = confirm("해당 책을 삭제하겠습니까?");
+
+    if (userAnswer && _id) {
+      const response = await deleteMemo(_id);
+      if (response) return navigate(-1);
+    }
+  };
+
+  if (!memo) return;
+
   return (
     <>
       <MemoHeader>
@@ -14,26 +51,39 @@ const MemoDetailPage = () => {
         >
           <LeftArrowIcon />
         </button>
-        <MemoTitle>안녕하세요</MemoTitle>
+        <MemoTitle>{memo.title}</MemoTitle>
         <Writer>
           <i>by</i>
-          이준석
+          {(memo.author && memo.author.nickname) || "user"}
         </Writer>
-        <WriteDate>2023-11-28 12:24</WriteDate>
+        <WriteDate>
+          {memo.createdAt && memo.createdAt.slice(0, 10)}{" "}
+          {memo.createdAt && memo.createdAt.slice(11, 16)}
+        </WriteDate>
       </MemoHeader>
-      <BookBox>
-        <BoolTitle>
-          이제 나가서 사람 좀 만나려고요 - 어느 내향인의 집 나간 외향성을 찾아서
-        </BoolTitle>
-        <BookImg src="carouselImg/1.jpg" />
-      </BookBox>
-      <Article>
-        내향인인 저자는 1년 동안 외향적으로 살아보려는 노력을 제대로 한다.
-        모르는 사람에게 말을 걸고, 즉흥 연기 수업을 듣고, 데이팅 앱으로 사람을
-        만나고, 스탠드업 코미디를 하고, 디너파티를 주최한다. 그 좌충우돌
-        과정에서 느낀 점, 주변 사람들의 반응, 자신의 달라진 점을 상세히 적은
-        것만으로도 충분히 흥미롭다. 그리고 유머 감각이 무척 뛰어나다.
-      </Article>
+      {memo.book_info && (
+        <BookBox>
+          <BoolTitle>{memo.book_info.title}</BoolTitle>
+          <BookImg src={memo.book_info.cover} />
+        </BookBox>
+      )}
+      <Article>{memo.content || ""}</Article>
+      {memo.author && memo.author._id === user?._id && (
+        <ButtonWrap>
+          <Button
+            $update={true}
+            onClick={() => {
+              dispatch(openModal());
+              dispatch(setMemoId(memo._id));
+            }}
+          >
+            수정
+          </Button>
+          <Button $update={false} onClick={deleteMemoFunc}>
+            삭제
+          </Button>
+        </ButtonWrap>
+      )}
     </>
   );
 };
@@ -42,6 +92,7 @@ export default MemoDetailPage;
 
 const MemoHeader = styled.div`
   width: 90%;
+  margin: auto;
   padding-bottom: 20px;
   display: flex;
   flex-direction: column;
@@ -93,14 +144,140 @@ const BoolTitle = styled.h4`
 `;
 
 const BookImg = styled.img`
-  width: 150px;
+  width: 120px;
   border-radius: 4px;
   box-shadow: 0 0 5px #0006;
   margin: 20px auto 40px;
 `;
 
-const Article = styled.article`
+const ArticleWrap = styled.div`
   width: 90%;
+  padding: 30px 20px;
   margin: 0 auto;
-  line-height: 1.6;
+  line-height: initial;
+  h1 {
+    display: block;
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+  }
+  h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+  }
+
+  h3 {
+    display: block;
+    font-size: 1.17em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+  }
+
+  h4 {
+    display: block;
+    font-size: 1em;
+    margin-top: 1.33em;
+    margin-bottom: 1.33em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+  }
+
+  h5 {
+    display: block;
+    font-size: 0.83em;
+    margin-top: 1.67em;
+    margin-bottom: 1.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+  }
+
+  h6 {
+    display: block;
+    font-size: 0.67em;
+    margin-top: 2.33em;
+    margin-bottom: 2.33em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+  }
+
+  strong {
+    font-weight: bold;
+  }
+
+  ol {
+    display: block;
+    list-style-type: decimal;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 40px;
+  }
+
+  ul {
+    display: block;
+    list-style-type: disc;
+    margin-top: 1em;
+    margin-bottom: 1 em;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 40px;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  blockquote {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+
+  @media (max-width: 768px) {
+    img {
+      max-width: 300px;
+    }
+  }
+`;
+
+const Article = ({ children }: { children: string }) => {
+  return <ArticleWrap dangerouslySetInnerHTML={{ __html: children }} />;
+};
+
+const Button = styled.button<{ $update: boolean }>`
+  color: white;
+  font-weight: var(--weight-light);
+  border-radius: 8px;
+  width: 50px;
+  height: 30px;
+  background-color: ${({ $update }) =>
+    $update ? "var(--color-main)" : "var(--color-gray)"};
+  margin: 5px;
+  cursor: pointer;
+`;
+
+const ButtonWrap = styled.div`
+  display: flex;
+  justify-content: flex-end;
+
+  @media (max-width: 768px) {
+    top: 85px;
+  }
 `;

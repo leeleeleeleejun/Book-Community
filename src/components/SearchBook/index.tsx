@@ -24,11 +24,11 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { setUser } from "@/components/User/UserSlice";
 import LoadingIcon from "@/assets/LoadingIcon";
+import { setMemoBook } from "@/components/memo/WriteMemo/WriteMemoSlice";
 
 const SearchBook = () => {
   const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.UserSlice.userInfo);
-
   const theme = useSelector((state: RootState) => state.LibrarySlice.theme);
 
   const [searchValue, serSearchValue] = useState("");
@@ -65,6 +65,12 @@ const SearchBook = () => {
     }
   };
 
+  const chooseMemoBookFunc = (cover: string, title: string) => {
+    const book_info = { cover, title };
+    dispatch(setMemoBook(book_info));
+    dispatch(closeModal());
+  };
+
   return (
     <ModalContainer>
       <ModalBox>
@@ -99,7 +105,9 @@ const SearchBook = () => {
                   </BookInfoBox>
                   <CollectButton
                     onClick={() => {
-                      pushMyBookListItemFunc(cover, title);
+                      theme
+                        ? pushMyBookListItemFunc(cover, title)
+                        : chooseMemoBookFunc(cover, title);
                     }}
                   >
                     +

@@ -1,19 +1,7 @@
 import { API_PATH } from "@/constants/path";
 import { postBookListItemApiProp, userInfo } from "@/types";
 import callApi from "@/utils/callApi";
-
-const handleApiResponse = async (response: Response) => {
-  const result = await response.json();
-  if (!response.ok) {
-    throw new Error(result.error);
-  } else {
-    if (result.token) {
-      localStorage.setItem("token", result.token);
-    }
-    alert(result.message);
-  }
-  return response;
-};
+import handleApiResponse from "@/utils/handleApiResponse";
 
 export const signUpAPI = async (data: userInfo) => {
   try {
@@ -25,7 +13,9 @@ export const signUpAPI = async (data: userInfo) => {
       body: JSON.stringify(data),
     });
 
-    return await handleApiResponse(response);
+    await handleApiResponse(response);
+
+    return response;
   } catch (err) {
     alert(err);
   }
@@ -41,7 +31,12 @@ export const login = async (data: { email: string; password: string }) => {
       body: JSON.stringify(data),
     });
 
-    return await handleApiResponse(response);
+    const result = await handleApiResponse(response);
+    if (result.token) {
+      localStorage.setItem("token", result.token);
+    }
+
+    return response;
   } catch (err) {
     alert(err);
   }
@@ -66,7 +61,9 @@ export const pushReadTime = async (data: { day: number; active: number }) => {
       JSON.stringify(data)
     );
 
-    return await handleApiResponse(response);
+    await handleApiResponse(response);
+
+    return response;
   } catch (err) {
     alert(err);
   }
@@ -80,7 +77,9 @@ export const editUserInfoAPI = async (data: userInfo) => {
       JSON.stringify(data)
     );
 
-    return await handleApiResponse(response);
+    await handleApiResponse(response);
+
+    return response;
   } catch (err) {
     alert(err);
   }
@@ -99,7 +98,9 @@ export const editProfileImage = async (data: File) => {
       body: formData,
     });
 
-    return await handleApiResponse(response);
+    await handleApiResponse(response);
+
+    return response;
   } catch (err) {
     alert(err);
   }
@@ -109,7 +110,9 @@ export const deleteProfileImage = async () => {
   try {
     const response = await callApi("DELETE", API_PATH.USER.PUT.USER_IMG);
 
-    return await handleApiResponse(response);
+    await handleApiResponse(response);
+
+    return response;
   } catch (err) {
     alert(err);
   }
@@ -123,7 +126,9 @@ export const pushMyBookListItem = async (data: postBookListItemApiProp) => {
       JSON.stringify(data)
     );
 
-    return await handleApiResponse(response);
+    await handleApiResponse(response);
+
+    return response;
   } catch (err) {
     alert(err);
   }
@@ -137,7 +142,9 @@ export const deleteMyBookListItem = async (data: postBookListItemApiProp) => {
       JSON.stringify(data)
     );
 
-    return await handleApiResponse(response);
+    await handleApiResponse(response);
+
+    return response;
   } catch (err) {
     alert(err);
   }

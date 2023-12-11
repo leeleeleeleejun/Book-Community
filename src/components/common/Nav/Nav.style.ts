@@ -6,7 +6,7 @@ export const NavBox = styled.div`
   justify-content: space-between;
   margin-bottom: 25px;
   border-bottom: 1px solid var(--color-gray-3);
-  padding-bottom: 3px;
+  padding-bottom: 8px;
 
   button {
     padding: 4px 12px;
@@ -17,12 +17,13 @@ export const NavBox = styled.div`
   }
 `;
 
-export const NavItem = styled(Link)`
+export const NavItem = styled(Link)<{ $active: boolean }>`
   color: black;
   font-size: 21px;
   font-weight: var(--weight-semi-bold);
   padding: 7px;
   text-decoration: none;
-  border-bottom: 3px solid var(--color-gray-3);
   margin-right: 10px;
+
+  ${({ $active }) => $active && "border-bottom: 4px solid black;"}
 `;

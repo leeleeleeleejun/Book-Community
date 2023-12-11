@@ -1,11 +1,15 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { CLIENT_PATH } from "./constants/path";
+import { useSelector } from "react-redux";
+import { RootState } from "./store";
 
 const AuthRoute = () => {
-  const user = localStorage.getItem("token");
+  const user = useSelector((state: RootState) => state.UserSlice.userInfo);
+  const token = localStorage.getItem("token");
 
-  if (user) return <Outlet />;
-  else {
+  if (token && user) {
+    return <Outlet />;
+  } else {
     return (
       <>
         {alert("로그인을 해주세요!")}
