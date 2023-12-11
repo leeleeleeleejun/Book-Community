@@ -70,7 +70,7 @@ const SignUpPage = () => {
   return (
     <Container>
       <CarouselBox>
-        <Logo src="logo.jpg" />
+        <Logo src="/logo.jpg" />
         <Carousel signUp={true} />
         <Footer signUp={true} />
       </CarouselBox>

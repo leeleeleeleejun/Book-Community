@@ -58,7 +58,7 @@ const Carousel = ({ signUp }: { signUp: boolean }) => {
   return (
     <>
       <ImgBox $signUp={signUp}>
-        <Img src={`carouselImg/${count}.jpg`} $visible={visible} />
+        <Img src={`/carouselImg/${count}.jpg`} $visible={visible} />
       </ImgBox>
       <TextBox>
         <pre>{array[count - 1][0]}</pre>

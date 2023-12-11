@@ -21,7 +21,7 @@ export interface my_book_item {
 }
 
 export interface userInfo {
-  _id: string;
+  _id?: string;
   name: string;
   nickname: string;
   introduction: string;
