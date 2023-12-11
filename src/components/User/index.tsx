@@ -10,7 +10,8 @@ import { ModalContainer, ModalBox } from "@/components/common/ModalContainer";
 import CloseButton from "@/assets/CloseButton";
 import { closeModal, setUser } from "./UserSlice";
 import { RootState } from "@/store";
-import { editUserInfoAPI } from "@/api/userAPI";
+import { deleteUser, editUserInfoAPI } from "@/api/userAPI";
+import { WithdrawalButton } from "./EditUser.style";
 
 const EditUser = () => {
   const dispatch = useDispatch();
@@ -51,6 +52,19 @@ const EditUser = () => {
       const response = await editUserInfoAPI(editUser);
       if (response) {
         dispatch(closeModal());
+      }
+    }
+  };
+
+  const deleteUserFunc = async () => {
+    const userAnswer = confirm("회원을 탈퇴하시겠습니까?");
+
+    if (userAnswer && user._id) {
+      const response = await deleteUser(user._id);
+      if (response?.ok) {
+        dispatch(closeModal());
+        dispatch(setUser(null));
+        localStorage.removeItem("token");
       }
     }
   };
@@ -104,6 +118,7 @@ const EditUser = () => {
         />
         <ValidErrorMessage>{validateError}</ValidErrorMessage>
         <FormButton onClick={editUserInfoFunc}>수정하기</FormButton>
+        <WithdrawalButton onClick={deleteUserFunc}>탈퇴하기</WithdrawalButton>
       </ModalBox>
     </ModalContainer>
   );

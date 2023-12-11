@@ -53,22 +53,6 @@ export const getUserInfo = async () => {
   }
 };
 
-export const pushReadTime = async (data: { day: number; active: number }) => {
-  try {
-    const response = await callApi(
-      "PUT",
-      API_PATH.USER.PUT.TIMER,
-      JSON.stringify(data)
-    );
-
-    await handleApiResponse(response);
-
-    return response;
-  } catch (err) {
-    alert(err);
-  }
-};
-
 export const editUserInfoAPI = async (data: userInfo) => {
   try {
     const response = await callApi(
@@ -109,6 +93,38 @@ export const editProfileImage = async (data: File) => {
 export const deleteProfileImage = async () => {
   try {
     const response = await callApi("DELETE", API_PATH.USER.PUT.USER_IMG);
+
+    await handleApiResponse(response);
+
+    return response;
+  } catch (err) {
+    alert(err);
+  }
+};
+
+export const deleteUser = async (data: string) => {
+  try {
+    const response = await callApi(
+      "DELETE",
+      API_PATH.USER.DELETE.USER_INFO,
+      JSON.stringify({ _id: data })
+    );
+
+    await handleApiResponse(response);
+
+    return response;
+  } catch (err) {
+    alert(err);
+  }
+};
+
+export const pushReadTime = async (data: { day: number; active: number }) => {
+  try {
+    const response = await callApi(
+      "PUT",
+      API_PATH.USER.PUT.TIMER,
+      JSON.stringify(data)
+    );
 
     await handleApiResponse(response);
 

@@ -57,7 +57,7 @@ const Layout = () => {
       <Container $loginModalOpen={loginModal}>
         <LeftAside>
           <Logo to={CLIENT_PATH.HOME}>
-            <img alt="logo" src="logo.jpg" />
+            <img alt="logo" src="/logo.jpg" />
           </Logo>
           {user ? (
             <>

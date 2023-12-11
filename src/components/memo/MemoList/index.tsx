@@ -80,7 +80,7 @@ const MemoList = ({ user }: { user: string }) => {
               {book_info?.cover ? (
                 <BookImg src={book_info?.cover} />
               ) : (
-                <LogoImg src="logo_2.jpg" />
+                <LogoImg src="/logo_2.jpg" />
               )}
             </MemoListItem>
           </Link>

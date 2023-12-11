@@ -31,7 +31,7 @@ const LoginModal = ({
         <button className="close" onClick={closeLoginModalFunc}>
           <CloseButton />
         </button>
-        <img src="logo_2.jpg" />
+        <img src="/logo_2.jpg" />
         <Input
           type="email"
           placeholder="이메일"

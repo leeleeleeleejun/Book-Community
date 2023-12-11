@@ -7,6 +7,7 @@ export const NavBox = styled.div`
   margin-bottom: 25px;
   border-bottom: 1px solid var(--color-gray-3);
   padding-bottom: 8px;
+  height: 27px;
 
   button {
     padding: 4px 12px;

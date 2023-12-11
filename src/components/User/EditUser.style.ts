@@ -1,4 +1,5 @@
 import { css, styled } from "styled-components";
+import FormButton from "@/components/common/FormButton";
 
 export const ProfileEditor = styled.div`
   margin: 20px;
@@ -58,4 +59,13 @@ export const ProfileImageButton = styled.button<{ $isChange: boolean }>`
 
 export const ImgFile = styled.input`
   display: none;
+`;
+
+export const WithdrawalButton = styled(FormButton)`
+  background-color: var(--color-gray);
+  margin: 5px auto;
+
+  &:hover {
+    background-color: var(--color-gray-light-3);
+  }
 `;

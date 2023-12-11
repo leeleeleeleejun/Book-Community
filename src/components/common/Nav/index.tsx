@@ -32,7 +32,7 @@ const Nav = () => {
           기록하기
         </NavItem>
       </nav>
-      <button onClick={openWriteModalFunc}>글 쓰기</button>
+      {activeHome && <button onClick={openWriteModalFunc}>글 쓰기</button>}
     </NavBox>
   );
 };

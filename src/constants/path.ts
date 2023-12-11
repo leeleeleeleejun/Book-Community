@@ -16,6 +16,9 @@ export const API_PATH = {
       USER_INFO: `${API_BASE_URL}/user`,
       USER_IMG: `${API_BASE_URL}/userimg`,
     },
+    DELETE: {
+      USER_INFO: `${API_BASE_URL}/user`,
+    },
   },
 
   BOOK: {
