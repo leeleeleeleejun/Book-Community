@@ -31,7 +31,7 @@ const MyMemoPage = () => {
           <SettingIcon />
         </button>
       </UserInfo>
-      <MemoList user={user._id} />
+      <MemoList user={user._id || ""} />
     </>
   );
 };
@@ -40,7 +40,8 @@ export default MyMemoPage;
 const Banner = styled.div`
   position: absolute;
   top: 0;
-  width: 90%;
+  left: 0;
+  width: 100%;
   height: 230px;
   background-color: var(--color-light-black-3);
   color: #ecf0f1;
@@ -48,6 +49,10 @@ const Banner = styled.div`
   font-weight: var(--weight-light);
   text-align: center;
   line-height: 230px;
+
+  @media (max-width: 800px) {
+    display: none;
+  }
 `;
 
 const UserInfo = styled.div`
@@ -61,10 +66,18 @@ const UserInfo = styled.div`
   button {
     margin-left: auto;
   }
+
+  @media (max-width: 800px) {
+    margin-top: 20px;
+  }
 `;
 
 const TextBox = styled.div`
   margin-left: 20px;
+
+  @media (max-width: 400px) {
+    font-size: var(--font-semi-small);
+  }
 `;
 
 const UserImg = styled.img`
@@ -77,4 +90,8 @@ const UserNicName = styled.h2`
   font-size: var(--font-large);
   font-weight: var(--weight-semi-bold);
   margin-bottom: 10px;
+
+  @media (max-width: 400px) {
+    font-size: var(--font-medium);
+  }
 `;

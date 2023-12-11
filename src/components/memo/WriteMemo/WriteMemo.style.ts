@@ -14,6 +14,14 @@ export const WriteMemoModalBox = styled(ModalBox)`
     font-weight: var(--weight-semi-bold);
     margin-bottom: 30px;
   }
+`;
+
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: 100%;
+  box-sizing: border-box;
 
   & > span {
     font-size: var(--font-small);
@@ -57,6 +65,14 @@ export const ChooseBook = styled.div`
     padding: 3px;
     margin: 15px auto 0;
     border: 1px solid var(--color-gray);
+
+    @media (max-width: 400px) {
+      font-size: var(--font-small);
+    }
+  }
+
+  @media (max-width: 400px) {
+    font-size: var(--font-small);
   }
 `;
 
@@ -68,16 +84,19 @@ export const BookItemBox = styled.span`
 export const ButtonBox = styled.div`
   display: flex;
 `;
-export const RegisterButton = styled(FormButton)``;
-export const CancelButton = styled(FormButton)`
+export const RegisterButton = styled(FormButton)`
+  width: 40%;
+`;
+export const CancelButton = styled(RegisterButton)`
   background-color: var(--color-gray);
 `;
 
 export const Quill = styled(ReactQuill)`
-  height: 250px;
+  height: 170px;
   width: 100%;
   margin-top: 20px;
   margin-bottom: 70px;
+
   @media (max-width: 500px) {
     margin-bottom: 100px;
   }

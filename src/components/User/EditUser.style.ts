@@ -1,9 +1,7 @@
 import { css, styled } from "styled-components";
 import FormButton from "@/components/common/FormButton";
 
-export const ProfileEditor = styled.div`
-  margin: 20px;
-
+export const Header = styled.div`
   h3 {
     font-size: 18px;
     font-weight: bold;
@@ -14,6 +12,16 @@ export const ProfileEditor = styled.div`
     color: var(--color-gray-2);
     font-weight: 200;
   }
+`;
+
+export const Content = styled.div`
+  overflow-y: auto;
+  height: 100%;
+  box-sizing: border-box;
+`;
+
+export const ProfileEditor = styled.div`
+  margin: 20px;
 `;
 
 export const ProfileImageSection = styled.div`

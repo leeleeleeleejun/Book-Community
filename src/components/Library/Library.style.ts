@@ -11,6 +11,10 @@ export const LibraryHeaderBox = styled.div`
     font-weight: var(--weight-semi-bold);
     line-height: 45px;
     margin-left: 10px;
+
+    @media (max-width: 400px) {
+      font-size: var(--font-medium);
+    }
   }
 `;
 

@@ -26,4 +26,9 @@ export const ModalBox = styled.div`
     right: 15px;
     font-size: var(--font-regular);
   }
+
+  @media (max-width: 400px) {
+    height: 100%;
+    box-sizing: border-box;
+  }
 `;

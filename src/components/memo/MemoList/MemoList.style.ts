@@ -9,7 +9,10 @@ export const MemoListItem = styled.li`
   display: flex;
   max-width: 800px;
   justify-content: space-between;
-  padding-top: 15px;
+  padding: 15px;
+  box-shadow: 2px 2px 10px #eee;
+  margin: 10px 0;
+  border-radius: 8px;
 
   & > div {
     display: flex;
@@ -23,6 +26,10 @@ export const MemoTitle = styled.h3`
   height: 50px;
   font-size: var(--font-medium);
   font-weight: var(--weight-semi-bold);
+
+  @media (max-width: 450px) {
+    font-size: 17px;
+  }
 `;
 
 export const Excerpt = styled.div`
@@ -49,17 +56,27 @@ export const Excerpt = styled.div`
 `;
 
 export const BookImg = styled.img`
-  height: 130px;
   width: 90px;
-  margin: 0 10px;
+  height: 130px;
+  margin-left: 15px;
   border-radius: 6px;
+
+  @media (max-width: 450px) {
+    height: 110px;
+    width: 80px;
+  }
 `;
 
 export const LogoImg = styled.img`
   width: 90px;
   height: 25px;
-  margin: 50px 10px;
+  margin: 50px 0 50px 15px;
   border-radius: 6px;
+
+  @media (max-width: 450px) {
+    width: 70px;
+    height: 20px;
+  }
 `;
 
 export const MemoInfo = styled.div`

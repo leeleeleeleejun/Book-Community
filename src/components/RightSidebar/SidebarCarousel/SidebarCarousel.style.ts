@@ -9,6 +9,11 @@ export const ImgBox = styled.div<{ $signUp: boolean }>`
   overflow: hidden;
   ${({ $signUp }) => ($signUp ? null : "margin-top: 20%;")}
   filter: blur(1px);
+  margin: auto;
+
+  @media (max-width: 1400px) {
+    width: 300px;
+  }
 `;
 
 export const Img = styled.img<{ $visible: boolean }>`
@@ -17,6 +22,10 @@ export const Img = styled.img<{ $visible: boolean }>`
   transition: opacity 0.5s ease-in-out;
   border-radius: 8px;
   opacity: ${({ $visible }) => ($visible ? 0.7 : 0)};
+
+  @media (max-width: 1400px) {
+    width: 300px;
+  }
 `;
 
 export const TextBox = styled.div`

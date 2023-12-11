@@ -5,6 +5,15 @@ export const Title = styled.h4`
   font-size: var(--font-regular);
   margin-bottom: 10px;
   width: 600px;
+
+  @media (max-width: 700px) {
+    width: 400px;
+    font-size: var(--font-semi-small);
+  }
+
+  @media (max-width: 500px) {
+    width: 300px;
+  }
 `;
 
 export const SearchInputBox = styled.div`
@@ -30,6 +39,10 @@ export const SearchInput = styled(Input)`
   &:focus {
     outline: none;
   }
+
+  @media (max-width: 700px) {
+    font-size: var(--font-small);
+  }
 `;
 
 export const BookListBox = styled.ul`
@@ -48,6 +61,19 @@ export const BookListItem = styled.li`
 
 export const BookInfoBox = styled.div`
   width: 100%;
+`;
+
+export const BookImg = styled.img`
+  @media (max-width: 700px) {
+    width: 130px;
+    max-height: 170px;
+  }
+
+  @media (max-width: 500px) {
+    width: 100px;
+    max-height: 170px;
+    margin: auto;
+  }
 `;
 
 export const BookTitle = styled.div`
@@ -81,4 +107,8 @@ export const CollectButton = styled.button`
   background-color: var(--color-sub);
   font-size: 25px;
   font-weight: var(--weight-semi-bold);
+
+  @media (max-width: 700px) {
+    margin: auto 20px auto 5px;
+  }
 `;

@@ -15,6 +15,7 @@ import {
   AuthorAndPublisher,
   Description,
   BookInfoBox,
+  BookImg,
 } from "./SearchBook.style";
 import { useState } from "react";
 import { searchAPI } from "@/api/searchAPI";
@@ -96,7 +97,7 @@ const SearchBook = () => {
                 item;
               return (
                 <BookListItem key={isbn}>
-                  <img src={cover} />
+                  <BookImg src={cover} />
                   <BookInfoBox>
                     <BookTitle>{title}</BookTitle>
                     <AuthorAndPublisher>작가: {author}</AuthorAndPublisher>

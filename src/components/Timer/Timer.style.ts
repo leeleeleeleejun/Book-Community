@@ -6,6 +6,14 @@ export const TimeBox = styled.div`
   text-align: center;
   margin: 130px 0;
   font-family: "Dongle", sans-serif;
+
+  @media (max-width: 1400px) {
+    font-size: 200px;
+  }
+
+  @media (max-width: 900px) {
+    font-size: 150px;
+  }
 `;
 
 export const ButtonBox = styled.div`
@@ -13,10 +21,21 @@ export const ButtonBox = styled.div`
 `;
 
 export const StartButton = styled(FormButton)`
-  height: 70px;
   width: 160px;
+  height: 70px;
   font-size: var(--font-medium);
   padding: 60px auto;
+
+  @media (max-width: 1400px) {
+    width: 130px;
+    height: 60px;
+  }
+
+  @media (max-width: 900px) {
+    width: 100px;
+    height: 40px;
+    font-size: var(--font-semi-small);
+  }
 `;
 export const PauseButton = styled(StartButton)`
   background-color: var(--color-gray);

@@ -51,8 +51,6 @@ const EditProfileImage = () => {
 
   return (
     <ProfileEditor>
-      <h3>회원정보 수정</h3>
-      <p>프로필과 정보를 변경할 수 있습니다.</p>
       <ProfileImageSection>
         {viewProfileImg && viewProfileImg.length > 30 ? (
           <img src={viewProfileImg} alt="프로필 이미지" />

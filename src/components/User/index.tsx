@@ -11,7 +11,7 @@ import CloseButton from "@/assets/CloseButton";
 import { closeModal, setUser } from "./UserSlice";
 import { RootState } from "@/store";
 import { deleteUser, editUserInfoAPI } from "@/api/userAPI";
-import { WithdrawalButton } from "./EditUser.style";
+import { Content, Header, WithdrawalButton } from "./EditUser.style";
 
 const EditUser = () => {
   const dispatch = useDispatch();
@@ -80,45 +80,51 @@ const EditUser = () => {
         >
           <CloseButton />
         </button>
-        <EditProfileImage />
-        <FormField
-          name="nickname"
-          type="text"
-          placeholder="2글자 이상"
-          value={nickname}
-          onChange={setEditUserInfoFunc}
-        />
-        <FormField
-          name="introduction"
-          type="text"
-          placeholder="한 줄로 나를 소개해 주세요"
-          value={introduction}
-          onChange={setEditUserInfoFunc}
-        />
-        <FormField
-          name="password"
-          type="password"
-          placeholder="특수문자, 문자, 숫자 포함 8~15자"
-          value={password}
-          onChange={setEditUserInfoFunc}
-        />
-        <FormField
-          name="confirmPassword"
-          type="password"
-          placeholder="특수문자, 문자, 숫자 포함 8~15자"
-          value={confirmPassword}
-          onChange={setEditUserInfoFunc}
-        />
-        <FormField
-          name="phone_number"
-          type="tel"
-          placeholder="01011112222"
-          value={phone_number}
-          onChange={setEditUserInfoFunc}
-        />
-        <ValidErrorMessage>{validateError}</ValidErrorMessage>
-        <FormButton onClick={editUserInfoFunc}>수정하기</FormButton>
-        <WithdrawalButton onClick={deleteUserFunc}>탈퇴하기</WithdrawalButton>
+        <Header>
+          <h3>회원정보 수정</h3>
+          <p>프로필과 정보를 변경할 수 있습니다.</p>
+        </Header>
+        <Content>
+          <EditProfileImage />
+          <FormField
+            name="nickname"
+            type="text"
+            placeholder="2글자 이상"
+            value={nickname}
+            onChange={setEditUserInfoFunc}
+          />
+          <FormField
+            name="introduction"
+            type="text"
+            placeholder="한 줄로 나를 소개해 주세요"
+            value={introduction}
+            onChange={setEditUserInfoFunc}
+          />
+          <FormField
+            name="password"
+            type="password"
+            placeholder="특수문자, 문자, 숫자 포함 8~15자"
+            value={password}
+            onChange={setEditUserInfoFunc}
+          />
+          <FormField
+            name="confirmPassword"
+            type="password"
+            placeholder="특수문자, 문자, 숫자 포함 8~15자"
+            value={confirmPassword}
+            onChange={setEditUserInfoFunc}
+          />
+          <FormField
+            name="phone_number"
+            type="tel"
+            placeholder="01011112222"
+            value={phone_number}
+            onChange={setEditUserInfoFunc}
+          />
+          <ValidErrorMessage>{validateError}</ValidErrorMessage>
+          <FormButton onClick={editUserInfoFunc}>수정하기</FormButton>
+          <WithdrawalButton onClick={deleteUserFunc}>탈퇴하기</WithdrawalButton>
+        </Content>
       </ModalBox>
     </ModalContainer>
   );

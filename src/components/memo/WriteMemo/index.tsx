@@ -15,6 +15,7 @@ import {
   Input,
   BookItemBox,
   CheckBoxWrap,
+  Content,
 } from "./WriteMemo.style";
 import { useEffect, useState } from "react";
 import type { RootState } from "@/store";
@@ -108,66 +109,68 @@ const WriteMemo = () => {
           <CloseButton />
         </button>
         <h3>메모 글{memoId ? " 수정" : " 작성"}</h3>
-        <span>제목</span>
-        <Input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <CheckBoxWrap htmlFor="choose-book">
-          <input
-            checked={chooseBookCheck}
-            type="checkbox"
-            id="choose-book"
-            onChange={() => {
-              setChooseBookCheck((prev) => !prev);
-            }}
+        <Content>
+          <span>제목</span>
+          <Input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
           />
-          책 선택하기
-        </CheckBoxWrap>
-        {chooseBookCheck && (
-          <ChooseBook>
-            {bookInfo.title ? (
-              <BookItemBox>
-                <BookItem
-                  cover={bookInfo.cover}
-                  title={bookInfo.title}
-                  cancelFunc={cancelMemoBookFunc}
-                />
-              </BookItemBox>
-            ) : (
-              <>
-                <span>책을 검색해 주세요</span>
-                <button
-                  onClick={() => {
-                    dispatch(setTheme(null));
-                    dispatch(openModal());
-                  }}
-                >
-                  검색
-                </button>
-              </>
-            )}
-          </ChooseBook>
-        )}
-        <span>한 줄 소개</span>
-        <Input
-          type="text"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <Quill
-          theme="snow"
-          modules={modules}
-          value={content}
-          onChange={setContent}
-        />
-        <ButtonBox>
-          <RegisterButton onClick={writeMemoFunc}>
-            {memoId ? "수정" : "등록"}하기
-          </RegisterButton>
-          <CancelButton onClick={closeModalFunc}>취소하기</CancelButton>
-        </ButtonBox>
+          <CheckBoxWrap htmlFor="choose-book">
+            <input
+              checked={chooseBookCheck}
+              type="checkbox"
+              id="choose-book"
+              onChange={() => {
+                setChooseBookCheck((prev) => !prev);
+              }}
+            />
+            책 선택하기
+          </CheckBoxWrap>
+          {chooseBookCheck && (
+            <ChooseBook>
+              {bookInfo.title ? (
+                <BookItemBox>
+                  <BookItem
+                    cover={bookInfo.cover}
+                    title={bookInfo.title}
+                    cancelFunc={cancelMemoBookFunc}
+                  />
+                </BookItemBox>
+              ) : (
+                <>
+                  <span>책을 검색해 주세요</span>
+                  <button
+                    onClick={() => {
+                      dispatch(setTheme(null));
+                      dispatch(openModal());
+                    }}
+                  >
+                    검색
+                  </button>
+                </>
+              )}
+            </ChooseBook>
+          )}
+          <span>한 줄 소개</span>
+          <Input
+            type="text"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+          <Quill
+            theme="snow"
+            modules={modules}
+            value={content}
+            onChange={setContent}
+          />
+          <ButtonBox>
+            <RegisterButton onClick={writeMemoFunc}>
+              {memoId ? "수정" : "등록"}하기
+            </RegisterButton>
+            <CancelButton onClick={closeModalFunc}>취소하기</CancelButton>
+          </ButtonBox>
+        </Content>
       </WriteMemoModalBox>
     </WriteMemoModalContainer>
   );
