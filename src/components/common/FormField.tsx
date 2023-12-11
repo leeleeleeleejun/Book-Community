@@ -45,7 +45,7 @@ export default React.memo(FormFiled);
 const FormFieldBox = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 10px 20px;
+  margin: 7px 20px;
   justify-content: center;
 `;
 
