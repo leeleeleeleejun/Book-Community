@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import LeftArrowIcon from "@/assets/LeftArrowIcon";
 import { useNavigate, NavigateFunction, useParams } from "react-router-dom";
 import styled from "styled-components";
-import { getMemo } from "@/api/memoAPI";
+import { deleteMemo, getMemo } from "@/api/memoAPI";
 import { memo } from "@/types";
 import getDateFunc from "@/utils/getDate";
 import { useDispatch, useSelector } from "react-redux";
@@ -29,6 +29,15 @@ const MemoDetailPage = () => {
       });
     })();
   }, []);
+
+  const deleteMemoFunc = async () => {
+    const userAnswer = confirm("해당 책을 삭제하겠습니까?");
+
+    if (userAnswer && _id) {
+      const response = await deleteMemo(_id);
+      if (response) return navigate(-1);
+    }
+  };
 
   if (!memo) return;
 
@@ -70,7 +79,9 @@ const MemoDetailPage = () => {
           >
             수정
           </Button>
-          <Button $update={false}>삭제</Button>
+          <Button $update={false} onClick={deleteMemoFunc}>
+            삭제
+          </Button>
         </ButtonWrap>
       )}
     </>

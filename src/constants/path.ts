@@ -26,6 +26,7 @@ export const API_PATH = {
     GET: `${API_BASE_URL}/memo`,
     POST: `${API_BASE_URL}/memo`,
     PUT: `${API_BASE_URL}/memo`,
+    DELETE: `${API_BASE_URL}/memo`,
   },
 
   ALL_MEMO: {

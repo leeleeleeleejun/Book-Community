@@ -52,6 +52,22 @@ export const editMemo = async (data: memo, memoId: string) => {
   }
 };
 
+export const deleteMemo = async (data: string) => {
+  try {
+    const response = await callApi(
+      "DELETE",
+      API_PATH.MEMO.DELETE,
+      JSON.stringify({ _id: data })
+    );
+
+    await handleApiResponse(response);
+
+    return response;
+  } catch (err) {
+    alert(err);
+  }
+};
+
 export const getAllMemo = async (data: number) => {
   const queryString = new URLSearchParams({ param: String(data) });
   try {
