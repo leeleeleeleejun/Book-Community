@@ -18,7 +18,7 @@ const Router = () => {
           <Route path={CLIENT_PATH.TIMER} element={<TimerPage />} />
           <Route path={CLIENT_PATH.MEMO} element={<MemoDetailPage />} />
           <Route element={<AuthRoute />}>
-            <Route path={CLIENT_PATH.MYMEMO} element={<MyMemoPage />} />
+            <Route path={CLIENT_PATH.MY_MEMO} element={<MyMemoPage />} />
             <Route path={CLIENT_PATH.LIBRARY} element={<LibraryPage />} />
           </Route>
         </Route>

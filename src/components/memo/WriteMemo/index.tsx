@@ -43,7 +43,7 @@ const WriteMemo = () => {
         setTitle(memo.title);
         setContent(memo.content);
         setDescription(memo.description);
-        if (memo.book_info) {
+        if (memo.book_info.title) {
           setChooseBookCheck(true);
           dispatch(setMemoBook(memo.book_info));
         }

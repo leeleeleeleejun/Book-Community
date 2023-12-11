@@ -7,7 +7,7 @@ export const Nav = styled.nav`
   padding: 10px 0;
 `;
 
-export const NavItem = styled(Link)`
+export const NavItem = styled(Link)<{ $active: boolean }>`
   display: flex;
   justify-content: space-between;
   padding: 8px 15px;
@@ -21,4 +21,7 @@ export const NavItem = styled(Link)`
   &:hover {
     background-color: var(--color-gray);
   }
+
+  ${({ $active }) =>
+    $active && "background-color: var(--color-sidebar-active);"}
 `;

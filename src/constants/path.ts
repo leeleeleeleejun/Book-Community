@@ -41,8 +41,7 @@ export const CLIENT_PATH = {
   HOME: "/",
   LOGIN: "/login",
   SIGNUP: "/signup",
-  MYMEMO: "/mymemo",
-  MYLIBRARY: "/mylibrary",
+  MY_MEMO: "/mymemo",
   TIMER: "/timer",
   LIBRARY: "/library",
 
