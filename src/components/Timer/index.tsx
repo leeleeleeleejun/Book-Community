@@ -6,7 +6,7 @@ import {
   ButtonBox,
   PauseButton,
 } from "./Timer.style";
-import { pushReadTime } from "@/api/userAPI";
+import { pushReadTime, getUserInfo } from "@/api/userAPI";
 
 const Timer = () => {
   const [running, setRunning] = useState<boolean>(false);
@@ -31,11 +31,18 @@ const Timer = () => {
   };
 
   const pushReadTimeFunc = async () => {
-    const response = await pushReadTime({ day: today, active: time });
-    if (response) {
-      stopWatch();
-      setTime(0);
-      window.location.reload();
+    const token = localStorage.getItem("token");
+
+    const loginResponse = await getUserInfo();
+    if (token && loginResponse?.ok) {
+      const response = await pushReadTime({ day: today, active: time });
+      if (response) {
+        stopWatch();
+        setTime(0);
+        window.location.reload();
+      }
+    } else {
+      alert("로그인이 필요합니다!");
     }
   };
 

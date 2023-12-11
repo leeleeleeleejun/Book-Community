@@ -1,10 +1,21 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { CLIENT_PATH } from "./constants/path";
+import { getUserInfo } from "@/api/userAPI";
+import { useEffect, useState } from "react";
 
 const AuthRoute = () => {
-  const user = localStorage.getItem("token");
+  const [auth, setAuth] = useState(false);
 
-  if (user) return <Outlet />;
+  useEffect(() => {
+    (async () => {
+      const token = localStorage.getItem("token");
+      const loginResponse = await getUserInfo();
+
+      if (token && loginResponse?.ok) setAuth(true);
+    })();
+  }, []);
+
+  if (auth) return <Outlet />;
   else {
     return (
       <>
