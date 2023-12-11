@@ -50,6 +50,7 @@ export const Excerpt = styled.div`
 
 export const BookImg = styled.img`
   height: 130px;
+  width: 90px;
   margin: 0 10px;
   border-radius: 6px;
 `;

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import CloseButton from "@/assets/CloseButton";
-import { closeModal } from "./WriteMemoSlice";
+import { closeModal, setMemoId } from "./WriteMemoSlice";
 import { setTheme } from "@/components/Library/LibrarySlice";
 import { openModal } from "@/components/SearchBook/SearchBookSlice";
 import {
@@ -16,29 +16,47 @@ import {
   BookItemBox,
   CheckBoxWrap,
 } from "./WriteMemo.style";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { RootState } from "@/store";
 import BookItem from "@/components/common/BookItem";
 import { setMemoBook } from "./WriteMemoSlice";
-import { postMemo } from "@/api/memoAPI";
+import { editMemo, getMemo, postMemo } from "@/api/memoAPI";
 
 const WriteMemo = () => {
   const dispatch = useDispatch();
-  const book_info = useSelector(
+  const memoId = useSelector((state: RootState) => state.WriteMemoSlice.memoId);
+  const bookInfo = useSelector(
     (state: RootState) => state.WriteMemoSlice.memoBook
   );
+
   const author = useSelector((state: RootState) => state.UserSlice.userInfo);
   const [chooseBookCheck, setChooseBookCheck] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [description, setDescription] = useState("");
 
+  useEffect(() => {
+    (async () => {
+      if (memoId) {
+        const response = await getMemo(memoId);
+        const memo = response.memo;
+        setTitle(memo.title);
+        setContent(memo.content);
+        setDescription(memo.description);
+        if (memo.book_info) {
+          setChooseBookCheck(true);
+          dispatch(setMemoBook(memo.book_info));
+        }
+      }
+    })();
+  }, []);
+
   const cancelMemoBookFunc = () => {
-    const book_info = { cover: "", title: "" };
-    dispatch(setMemoBook(book_info));
+    const bookInfo = { cover: "", title: "" };
+    dispatch(setMemoBook(bookInfo));
   };
 
-  const postMemoFunc = async () => {
+  const writeMemoFunc = async () => {
     if (!author) return;
 
     if (!title) {
@@ -61,25 +79,35 @@ const WriteMemo = () => {
       title,
       description,
       content,
-      ...(chooseBookCheck && { book_info }),
+      ...(chooseBookCheck && { book_info: bookInfo }),
     };
 
-    const response = await postMemo(memoInfo);
+    const response = memoId
+      ? await editMemo(memoInfo, memoId)
+      : await postMemo(memoInfo);
 
     if (response?.ok) {
-      dispatch(closeModal());
+      closeModalFunc();
       setTitle("");
       setDescription("");
       setContent("");
+      window.location.reload();
     }
   };
+
+  const closeModalFunc = () => {
+    cancelMemoBookFunc();
+    dispatch(closeModal());
+    dispatch(setMemoId(""));
+  };
+
   return (
     <WriteMemoModalContainer>
       <WriteMemoModalBox>
-        <button className="close" onClick={() => dispatch(closeModal())}>
+        <button className="close" onClick={closeModalFunc}>
           <CloseButton />
         </button>
-        <h3>메모 글 작성</h3>
+        <h3>메모 글{memoId ? " 수정" : " 작성"}</h3>
         <span>제목</span>
         <Input
           type="text"
@@ -88,6 +116,7 @@ const WriteMemo = () => {
         />
         <CheckBoxWrap htmlFor="choose-book">
           <input
+            checked={chooseBookCheck}
             type="checkbox"
             id="choose-book"
             onChange={() => {
@@ -98,11 +127,11 @@ const WriteMemo = () => {
         </CheckBoxWrap>
         {chooseBookCheck && (
           <ChooseBook>
-            {book_info.title ? (
+            {bookInfo.title ? (
               <BookItemBox>
                 <BookItem
-                  cover={book_info.cover}
-                  title={book_info.title}
+                  cover={bookInfo.cover}
+                  title={bookInfo.title}
                   cancelFunc={cancelMemoBookFunc}
                 />
               </BookItemBox>
@@ -134,8 +163,10 @@ const WriteMemo = () => {
           onChange={setContent}
         />
         <ButtonBox>
-          <RegisterButton onClick={postMemoFunc}>등록하기</RegisterButton>
-          <CancelButton>취소하기</CancelButton>
+          <RegisterButton onClick={writeMemoFunc}>
+            {memoId ? "수정" : "등록"}하기
+          </RegisterButton>
+          <CancelButton onClick={closeModalFunc}>취소하기</CancelButton>
         </ButtonBox>
       </WriteMemoModalBox>
     </WriteMemoModalContainer>

@@ -1,22 +1,15 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { CLIENT_PATH } from "./constants/path";
-import { getUserInfo } from "@/api/userAPI";
-import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "./store";
 
 const AuthRoute = () => {
-  const [auth, setAuth] = useState(false);
+  const user = useSelector((state: RootState) => state.UserSlice.userInfo);
+  const token = localStorage.getItem("token");
 
-  useEffect(() => {
-    (async () => {
-      const token = localStorage.getItem("token");
-      const loginResponse = await getUserInfo();
-
-      if (token && loginResponse?.ok) setAuth(true);
-    })();
-  }, []);
-
-  if (auth) return <Outlet />;
-  else {
+  if (token && user) {
+    return <Outlet />;
+  } else {
     return (
       <>
         {alert("로그인을 해주세요!")}

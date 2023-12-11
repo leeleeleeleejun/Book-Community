@@ -5,9 +5,17 @@ import styled from "styled-components";
 import { getMemo } from "@/api/memoAPI";
 import { memo } from "@/types";
 import getDateFunc from "@/utils/getDate";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/store";
+import {
+  openModal,
+  setMemoId,
+} from "@/components/memo/WriteMemo/WriteMemoSlice";
 
 const MemoDetailPage = () => {
   const navigate: NavigateFunction = useNavigate();
+  const dispatch = useDispatch();
+  const user = useSelector((state: RootState) => state.UserSlice.userInfo);
   const { _id } = useParams();
   const [memo, setMemo] = useState<memo>();
 
@@ -22,6 +30,8 @@ const MemoDetailPage = () => {
     })();
   }, []);
 
+  if (!memo) return;
+
   return (
     <>
       <MemoHeader>
@@ -32,24 +42,37 @@ const MemoDetailPage = () => {
         >
           <LeftArrowIcon />
         </button>
-        <MemoTitle>{memo?.title}</MemoTitle>
+        <MemoTitle>{memo.title}</MemoTitle>
         <Writer>
           <i>by</i>
-          {(memo?.author && memo.author.nickname) || "user"}
+          {(memo.author && memo.author.nickname) || "user"}
         </Writer>
         <WriteDate>
-          {memo?.createdAt && memo.createdAt.slice(0, 10)}{" "}
-          {memo?.createdAt && memo.createdAt.slice(11, 16)}
+          {memo.createdAt && memo.createdAt.slice(0, 10)}{" "}
+          {memo.createdAt && memo.createdAt.slice(11, 16)}
         </WriteDate>
       </MemoHeader>
-      {memo?.book_info && (
+      {memo.book_info && (
         <BookBox>
           <BoolTitle>{memo.book_info.title}</BoolTitle>
           <BookImg src={memo.book_info.cover} />
         </BookBox>
       )}
-
-      <Article>{memo?.content || ""}</Article>
+      <Article>{memo.content || ""}</Article>
+      {memo.author && memo.author._id === user?._id && (
+        <ButtonWrap>
+          <Button
+            $update={true}
+            onClick={() => {
+              dispatch(openModal());
+              dispatch(setMemoId(memo._id));
+            }}
+          >
+            수정
+          </Button>
+          <Button $update={false}>삭제</Button>
+        </ButtonWrap>
+      )}
     </>
   );
 };
@@ -58,6 +81,7 @@ export default MemoDetailPage;
 
 const MemoHeader = styled.div`
   width: 90%;
+  margin: auto;
   padding-bottom: 20px;
   display: flex;
   flex-direction: column;
@@ -225,3 +249,24 @@ const ArticleWrap = styled.div`
 const Article = ({ children }: { children: string }) => {
   return <ArticleWrap dangerouslySetInnerHTML={{ __html: children }} />;
 };
+
+const Button = styled.button<{ $update: boolean }>`
+  color: white;
+  font-weight: var(--weight-light);
+  border-radius: 8px;
+  width: 50px;
+  height: 30px;
+  background-color: ${({ $update }) =>
+    $update ? "var(--color-main)" : "var(--color-gray)"};
+  margin: 5px;
+  cursor: pointer;
+`;
+
+const ButtonWrap = styled.div`
+  display: flex;
+  justify-content: flex-end;
+
+  @media (max-width: 768px) {
+    top: 85px;
+  }
+`;

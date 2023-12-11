@@ -5,7 +5,7 @@ const HomePage = () => {
   return (
     <>
       <Nav />
-      <MemoList />
+      <MemoList user={""} />
     </>
   );
 };

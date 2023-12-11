@@ -4,6 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export interface WriteMemoInitialState {
   writeMemoModal: boolean;
   memoBook: my_book_item;
+  memoId: string;
 }
 
 const initialState: WriteMemoInitialState = {
@@ -12,6 +13,7 @@ const initialState: WriteMemoInitialState = {
     cover: "",
     title: "",
   },
+  memoId: "",
 };
 
 export const WriteMemoSlice = createSlice({
@@ -27,9 +29,13 @@ export const WriteMemoSlice = createSlice({
     setMemoBook: (state, action) => {
       state.memoBook = action.payload;
     },
+    setMemoId: (state, action) => {
+      state.memoId = action.payload;
+    },
   },
 });
 
-export const { openModal, closeModal, setMemoBook } = WriteMemoSlice.actions;
+export const { openModal, closeModal, setMemoBook, setMemoId } =
+  WriteMemoSlice.actions;
 
 export default WriteMemoSlice.reducer;

@@ -15,22 +15,21 @@ import {
 import BasicUserIcon from "@/components/common/BasicUserIcon";
 import { useEffect, useMemo, useRef, useState } from "react";
 import LoadingIcon from "@/assets/LoadingIcon";
-import { getAllMemo } from "@/api/memoAPI";
+import { getAllMemo, getUserMemo } from "@/api/memoAPI";
 import { memo } from "@/types";
 import { API_USER_IMG, CLIENT_PATH } from "@/constants/path";
 import getDateFunc from "@/utils/getDate";
 import { Link } from "react-router-dom";
 
-const MemoList = () => {
+const MemoList = ({ user }: { user: string }) => {
   const [memoList, setMemoList] = useState<memo[]>([]);
-  console.log(memoList);
   const [page, setPage] = useState(0); //스크롤이 닿았을 때 새롭게 데이터 페이지를 바꿀 state
   const [loading, setLoading] = useState(false);
   const io = useMemo(() => observer(setPage), []);
   const pageEnd = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    fetchPins(page, setMemoList, setLoading);
+    fetchPins(page, setMemoList, setLoading, user);
   }, [page]);
 
   useEffect(() => {
@@ -66,7 +65,7 @@ const MemoList = () => {
                       <BasicUserIcon size={25} />
                     )}
                     <WriterNicName>
-                      {(author && author.name) || "user"}
+                      {(author && author.nickname) || "user"}
                     </WriterNicName>
                   </WriterInfo>
                   <WriteDate>
@@ -98,10 +97,13 @@ export default MemoList;
 const fetchPins = async (
   page: number,
   setMemoList: React.Dispatch<React.SetStateAction<memo[]>>,
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>,
+  user: string
 ) => {
   setLoading(true);
-  const response = await getAllMemo(page);
+  const response = user
+    ? await getUserMemo(page, user)
+    : await getAllMemo(page);
   const newList = response.memos;
   setMemoList((prev) => [...prev, ...newList]);
   setLoading(false);
