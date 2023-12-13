@@ -85,6 +85,11 @@ const SearchBook = () => {
             onChange={(e) => {
               serSearchValue(e.target.value);
             }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && e.nativeEvent.isComposing === false) {
+                searchFunc();
+              }
+            }}
           />
           <SearchButton onClick={searchFunc}>
             {loading ? <LoadingIcon /> : <SearchIcon />}
