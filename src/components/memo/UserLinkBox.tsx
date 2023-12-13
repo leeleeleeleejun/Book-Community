@@ -16,7 +16,11 @@ const UserLinkBox = ({
       <button
         onClick={(e) => {
           e.preventDefault();
-          navigate(CLIENT_PATH.USER_MEMO.replace(":userId", userId));
+          if (userId) {
+            navigate(CLIENT_PATH.USER_MEMO.replace(":userId", userId));
+          } else {
+            alert("존재하지 않는 유저입니다.");
+          }
         }}
       >
         메모장 방문하기
@@ -24,7 +28,11 @@ const UserLinkBox = ({
       <button
         onClick={(e) => {
           e.preventDefault();
-          navigate(CLIENT_PATH.LIBRARY.replace(":userId", userId));
+          if (userId) {
+            navigate(CLIENT_PATH.LIBRARY.replace(":userId", userId));
+          } else {
+            alert("존재하지 않는 유저입니다.");
+          }
         }}
       >
         서재 방문하기
