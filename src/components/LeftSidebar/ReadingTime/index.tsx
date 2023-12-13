@@ -33,7 +33,7 @@ const ReadingTime = ({
             const row: number[] =
               columnIndex > today ? Array(19).fill(0) : Array(20).fill(0);
             return (
-              <tr key={columnIndex}>
+              <tr key={columnIndex + item}>
                 {columnIndex === 1 ? (
                   <Week>Mon</Week>
                 ) : columnIndex === 3 ? (
@@ -46,7 +46,7 @@ const ReadingTime = ({
                 {row.map((item, rowIndex) => {
                   return (
                     <Day
-                      key={rowIndex}
+                      key={rowIndex + item}
                       $active={translateTime(
                         activityGraph[rowIndex].activities[columnIndex]
                       )}
