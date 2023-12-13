@@ -84,6 +84,7 @@ export const MemoInfo = styled.div`
   justify-content: space-between;
   font-size: var(--font-small);
   color: var(--color-gray-2);
+  position: relative;
 `;
 
 export const WriterInfo = styled.div`
@@ -102,6 +103,10 @@ export const WriterImg = styled.img`
 export const WriterNicName = styled.div`
   margin-left: 10px;
   font-size: var(--font-semi-small);
+
+  &:hover {
+    color: var(--color-light-black-2);
+  }
 `;
 
 export const WriteDate = styled.div`

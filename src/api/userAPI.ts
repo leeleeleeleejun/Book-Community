@@ -44,6 +44,19 @@ export const login = async (data: { email: string; password: string }) => {
   return null;
 };
 
+export const getAnotherUserInfo = async (data: string) => {
+  const queryString = new URLSearchParams({ param: data });
+  try {
+    const response = await callApi(
+      "GET",
+      `${API_PATH.USER.GET.ANOTHER_USER_INFO}?${queryString}`
+    );
+    return response;
+  } catch (err) {
+    alert(err);
+  }
+};
+
 export const getUserInfo = async () => {
   try {
     const response = await callApi("GET", API_PATH.USER.GET.USER_INFO);

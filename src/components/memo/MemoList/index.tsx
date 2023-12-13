@@ -20,11 +20,14 @@ import { memo } from "@/types";
 import { API_USER_IMG, CLIENT_PATH } from "@/constants/path";
 import getDateFunc from "@/utils/getDate";
 import { Link } from "react-router-dom";
+import UserLinkBox from "../UserLinkBox";
 
 const MemoList = ({ user }: { user: string }) => {
   const [memoList, setMemoList] = useState<memo[]>([]);
   const [page, setPage] = useState(0); //스크롤이 닿았을 때 새롭게 데이터 페이지를 바꿀 state
   const [loading, setLoading] = useState(false);
+  const [showLinkBox, setShowLinkBox] = useState<number | null>();
+
   const io = useMemo(() => observer(setPage), []);
   const pageEnd = useRef<HTMLDivElement>(null);
 
@@ -42,10 +45,16 @@ const MemoList = ({ user }: { user: string }) => {
     }
   }, [loading]);
 
+  const setShowLinkBoxFunc = (itemNumber: number) => {
+    if (showLinkBox === itemNumber) setShowLinkBox(null);
+    else setShowLinkBox(itemNumber);
+  };
+
   return (
     <MemoListBox>
       {memoList.map((item, index) => {
         const { _id, title, author, description, createdAt, book_info } = item;
+
         return (
           <Link
             key={index}
@@ -64,8 +73,17 @@ const MemoList = ({ user }: { user: string }) => {
                     ) : (
                       <BasicUserIcon size={25} />
                     )}
-                    <WriterNicName>
-                      {(author && author.nickname) || "user"}
+                    <WriterNicName
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setShowLinkBoxFunc(index);
+                      }}
+                    >
+                      <span>{(author && author.nickname) || "user"}</span>
+                      <UserLinkBox
+                        userId={(author && author._id) || ""}
+                        showLinkBox={showLinkBox === index}
+                      />
                     </WriterNicName>
                   </WriterInfo>
                   <WriteDate>
