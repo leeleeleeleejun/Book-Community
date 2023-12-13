@@ -6,26 +6,42 @@ import {
   BookListTitle,
 } from "./Library.style";
 import PencilIcon from "@/assets/PecilIcon";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { openModal } from "@/components/SearchBook/SearchBookSlice";
-import { BookListThemeObjType } from "@/types";
+import { BookListThemeObjType, userInfo } from "@/types";
 import { setTheme } from "./LibrarySlice";
-import { RootState } from "@/store";
 import { deleteMyBookListItem } from "@/api/userAPI";
 import { setUser } from "@/components/User/UserSlice";
 import BookItem from "@/components/common/BookItem";
 
-const LibraryBookList = ({ theme }: { theme: BookListThemeObjType }) => {
+const LibraryBookList = ({
+  theme,
+  targetUser,
+  authUser,
+}: {
+  theme: BookListThemeObjType;
+  targetUser: userInfo | null;
+  authUser: boolean;
+}) => {
   const dispatch = useDispatch();
-  const user = useSelector((state: RootState) => state.UserSlice.userInfo);
-  if (!user) return;
+  if (!targetUser) return;
 
   const openSearchModal = () => {
+    if (!authUser) {
+      alert("권한이 없습니다.");
+      return;
+    }
+
     dispatch(openModal());
     dispatch(setTheme(theme));
   };
 
   const deleteMyBookListItemFunc = async (cover: string, title: string) => {
+    if (!authUser) {
+      alert("권한이 없습니다.");
+      return;
+    }
+
     const userAnswer = confirm("해당 책을 삭제하겠습니까?");
 
     if (!userAnswer) return;
@@ -34,15 +50,15 @@ const LibraryBookList = ({ theme }: { theme: BookListThemeObjType }) => {
     const response = await deleteMyBookListItem({ theme, book_info });
 
     if (response?.ok) {
-      const editBookList = user.my_book[theme].filter(
+      const editBookList = targetUser.my_book[theme].filter(
         (item) => item.title !== title
       );
 
       dispatch(
         setUser({
-          ...user,
+          ...targetUser,
           my_book: {
-            ...user.my_book,
+            ...targetUser.my_book,
             [theme]: editBookList,
           },
         })
@@ -54,14 +70,14 @@ const LibraryBookList = ({ theme }: { theme: BookListThemeObjType }) => {
     <>
       <BookListHeader>
         <BookListTitle>
-          {bookListThemeObj[theme]} ({user.my_book[theme].length}/29)
+          {bookListThemeObj[theme]} ({targetUser.my_book[theme].length}/29)
         </BookListTitle>
         <BookListEditButton onClick={openSearchModal}>
           <PencilIcon />
         </BookListEditButton>
       </BookListHeader>
       <BookListBody>
-        {user.my_book[theme].map((item, index) => {
+        {targetUser.my_book[theme].map((item, index) => {
           const { cover, title } = item;
           return (
             <BookItemBox key={index}>

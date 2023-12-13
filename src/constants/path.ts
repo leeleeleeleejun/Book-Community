@@ -5,6 +5,7 @@ export const API_PATH = {
   USER: {
     GET: {
       USER_INFO: `${API_BASE_URL}/user`,
+      ANOTHER_USER_INFO: `${API_BASE_URL}/anotheruser`,
     },
     POST: {
       USER_SIGNUP: `${API_BASE_URL}/signup`,
@@ -44,9 +45,9 @@ export const CLIENT_PATH = {
   HOME: "/",
   LOGIN: "/login",
   SIGNUP: "/signup",
-  MY_MEMO: "/mymemo",
+  USER_MEMO: "/user/memo/:userId",
   TIMER: "/timer",
-  LIBRARY: "/library",
+  LIBRARY: "/user/library/:userId",
 
   MEMO: "/memo/:_id",
 };
