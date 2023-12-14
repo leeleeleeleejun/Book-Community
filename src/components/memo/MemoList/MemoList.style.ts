@@ -53,6 +53,10 @@ export const Excerpt = styled.div`
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
   }
+
+  @media (max-width: 450px) {
+    margin-top: 10px;
+  }
 `;
 
 export const BookImg = styled.img`
