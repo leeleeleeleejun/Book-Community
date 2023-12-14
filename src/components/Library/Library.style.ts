@@ -50,15 +50,17 @@ export const BookListEditButton = styled.button`
 `;
 
 export const BookListBody = styled.ul`
-  display: flex;
-  max-width: 690px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 98px);
+  gap: 15px 10px;
+  overflow-y: auto;
+
+  width: 100%;
   height: 200px;
-  overflow-x: auto;
   margin-bottom: 30px;
   padding: 5px;
 `;
 
 export const BookItemBox = styled.li`
-  width: 98px;
-  margin-right: 10px;
+  position: relative;
 `;

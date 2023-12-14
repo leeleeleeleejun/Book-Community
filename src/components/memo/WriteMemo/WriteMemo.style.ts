@@ -14,6 +14,11 @@ export const WriteMemoModalBox = styled(ModalBox)`
     font-weight: var(--weight-semi-bold);
     margin-bottom: 30px;
   }
+
+  @media (max-width: 400px) {
+    height: 100%;
+    box-sizing: border-box;
+  }
 `;
 
 export const Content = styled.div`
