@@ -32,7 +32,7 @@ const SearchBook = () => {
   const user = useSelector((state: RootState) => state.UserSlice.userInfo);
   const theme = useSelector((state: RootState) => state.LibrarySlice.theme);
 
-  const [searchValue, serSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState("");
   const [bookList, setBookList] = useState<bookListItemType[]>();
   const [loading, setLoading] = useState(false);
   if (!user) return null;
@@ -41,6 +41,9 @@ const SearchBook = () => {
     if (searchValue) {
       setLoading(true);
       const response = await searchAPI(searchValue);
+      if (response.length === 0) {
+        alert("검색 결과가 없습니다");
+      }
       setLoading(false);
       setBookList(response);
     } else {
@@ -83,13 +86,14 @@ const SearchBook = () => {
           <SearchInput
             value={searchValue}
             onChange={(e) => {
-              serSearchValue(e.target.value);
+              setSearchValue(e.target.value);
             }}
             onKeyDown={(e) => {
               if (e.key === "Enter" && e.nativeEvent.isComposing === false) {
                 searchFunc();
               }
             }}
+            placeholder="책 제목으로 검색해주세요"
           />
           <SearchButton onClick={searchFunc}>
             {loading ? <LoadingIcon /> : <SearchIcon />}
