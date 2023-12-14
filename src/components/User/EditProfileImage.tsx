@@ -52,7 +52,7 @@ const EditProfileImage = () => {
   return (
     <ProfileEditor>
       <ProfileImageSection>
-        {viewProfileImg && viewProfileImg.length > 30 ? (
+        {viewProfileImg && viewProfileImg.length > 80 ? (
           <img src={viewProfileImg} alt="프로필 이미지" />
         ) : (
           <BasicUserIconWrap>

@@ -1,4 +1,5 @@
-const API_BASE_URL = "http://localhost:3001";
+const API_BASE_URL =
+  "https://port-0-book-community-backend-71t02clq3qzf2y.sel4.cloudtype.app";
 export const API_USER_IMG = `${API_BASE_URL}/userimg/`;
 
 export const API_PATH = {

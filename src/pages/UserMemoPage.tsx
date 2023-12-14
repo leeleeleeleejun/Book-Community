@@ -30,7 +30,7 @@ const UserMemoPage = () => {
         setTargetUser(loginUser);
       }
     })();
-  }, [userId]);
+  }, [userId, loginUser]);
 
   if (!targetUser) return null;
 
