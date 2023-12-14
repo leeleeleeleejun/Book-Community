@@ -26,7 +26,7 @@ const LibraryPage = () => {
         setTargetUser(loginUser);
       }
     })();
-  }, [userId]);
+  }, [userId, loginUser]);
 
   return (
     <>
