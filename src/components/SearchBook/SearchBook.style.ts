@@ -100,16 +100,15 @@ export const Description = styled.div`
 `;
 
 export const CollectButton = styled.button`
-  min-width: 29px;
-  line-height: 29px;
-  padding: 0;
+  display: flex;
+  min-width: 30px;
+  min-height: 30px;
+  justify-content: center;
+  align-items: center;
   margin: auto 30px auto 10px;
-  color: white;
   background-color: var(--color-sub);
-  font-size: 25px;
-  font-weight: var(--weight-semi-bold);
 
   @media (max-width: 700px) {
-    margin: auto 20px;
+    margin-right: 20px;
   }
 `;
