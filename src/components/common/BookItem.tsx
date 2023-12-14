@@ -50,9 +50,9 @@ const BookItemBox = styled.div`
 `;
 
 const MinusButton = styled.button`
-  width: 30px;
-  height: 30px;
+  min-width: 30px;
   line-height: 30px;
+  padding: 0;
   border-radius: 8px;
   background-color: var(--color-sub);
   color: white;

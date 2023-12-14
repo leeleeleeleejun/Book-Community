@@ -59,10 +59,6 @@ export const BookListItem = styled.li`
   border-top: 1px solid var(--color-gray-4);
 `;
 
-export const BookInfoBox = styled.div`
-  width: 100%;
-`;
-
 export const BookImg = styled.img`
   @media (max-width: 700px) {
     width: 130px;
@@ -74,6 +70,10 @@ export const BookImg = styled.img`
     max-height: 170px;
     margin: auto;
   }
+`;
+
+export const BookInfoBox = styled.div`
+  width: 100%;
 `;
 
 export const BookTitle = styled.div`
@@ -100,15 +100,16 @@ export const Description = styled.div`
 `;
 
 export const CollectButton = styled.button`
-  width: 30px;
-  height: 30px;
-  margin: auto 30px auto 20px;
+  min-width: 29px;
+  line-height: 29px;
+  padding: 0;
+  margin: auto 30px auto 10px;
   color: white;
   background-color: var(--color-sub);
   font-size: 25px;
   font-weight: var(--weight-semi-bold);
 
   @media (max-width: 700px) {
-    margin: auto 20px auto 5px;
+    margin: auto 20px;
   }
 `;
