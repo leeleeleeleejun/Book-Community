@@ -1,3 +1,4 @@
+import MinusIcon from "@/assets/MinusIcon";
 import { styled } from "styled-components";
 
 const BookItem = ({
@@ -20,7 +21,7 @@ const BookItem = ({
             cancelFunc && cancelFunc();
           }}
         >
-          ㅡ
+          <MinusIcon />
         </MinusButton>
       </BookItemBox>
       <BookImg src={cover} />
@@ -50,17 +51,15 @@ const BookItemBox = styled.div`
 `;
 
 const MinusButton = styled.button`
+  display: flex;
   min-width: 30px;
-  line-height: 30px;
-  padding: 0;
+  min-height: 30px;
+  justify-content: center;
+  align-items: center;
   border-radius: 8px;
   background-color: var(--color-sub);
-  color: white;
-  font-size: 20px;
-  text-align: center;
   margin: auto;
   opacity: 0.7;
-  font-weight: var(--weight-semi-bold);
 `;
 
 const BookImg = styled.img`

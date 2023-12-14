@@ -26,6 +26,7 @@ import { RootState } from "@/store";
 import { setUser } from "@/components/User/UserSlice";
 import LoadingIcon from "@/assets/LoadingIcon";
 import { setMemoBook } from "@/components/memo/WriteMemo/WriteMemoSlice";
+import PlusIcon from "@/assets/PlusIcon";
 
 const SearchBook = () => {
   const dispatch = useDispatch();
@@ -120,7 +121,7 @@ const SearchBook = () => {
                         : chooseMemoBookFunc(cover, title);
                     }}
                   >
-                    +
+                    <PlusIcon />
                   </CollectButton>
                 </BookListItem>
               );
