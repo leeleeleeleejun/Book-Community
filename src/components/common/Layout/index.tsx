@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Outlet, useLocation } from "react-router-dom";
-import type { RootState } from "@/store";
 import { useDispatch, useSelector } from "react-redux";
+import { Outlet } from "react-router-dom";
+import type { RootState } from "@/store";
 import { CLIENT_PATH } from "@/constants/path";
 import { getUserInfo } from "@/api/userAPI";
 import LoginButton from "@/components/LeftSidebar/login/LoginButton";
@@ -36,7 +36,6 @@ const Layout = () => {
   );
   const edit = useSelector((state: RootState) => state.UserSlice.editUserModal);
   const user = useSelector((state: RootState) => state.UserSlice.userInfo);
-  const location = useLocation();
   const dispatch = useDispatch();
   const [loginModal, setLoginModalOpen] = useState<boolean>(false);
   const [showMenu, setShowMenu] = useState(false);
@@ -61,13 +60,13 @@ const Layout = () => {
     })();
   }, []);
 
-  const showMenuFunc = () => {
-    setShowMenu((prev) => !prev);
+  const handleMenuOpen = () => {
+    setShowMenu(true);
   };
 
-  useEffect(() => {
+  const handleMenuClose = () => {
     setShowMenu(false);
-  }, [location.pathname]);
+  };
 
   return (
     <>
@@ -77,7 +76,7 @@ const Layout = () => {
       {edit && <EditUser />}
       <Container $loginModalOpen={loginModal}>
         <LeftAside $showMenu={showMenu}>
-          <button className="close" onClick={showMenuFunc}>
+          <button className="close" onClick={handleMenuClose}>
             <CloseButton />
           </button>
           <Logo to={CLIENT_PATH.HOME}>
@@ -91,7 +90,7 @@ const Layout = () => {
           ) : (
             <LoginButton openLoginModalFunc={openLoginModalFunc} />
           )}
-          <SidebarNav />
+          <SidebarNav handleMenuClose={handleMenuClose} />
           {user && (
             <button
               onClick={() => {
@@ -105,11 +104,7 @@ const Layout = () => {
         </LeftAside>
         <Main>
           <Header>
-            <button
-              onClick={() => {
-                setShowMenu((prev) => !prev);
-              }}
-            >
+            <button onClick={handleMenuOpen}>
               <MenuIcon />
             </button>
             <Logo to={CLIENT_PATH.HOME}>
