@@ -27,14 +27,25 @@ export const MemoTitle = styled.h3`
   font-size: var(--font-medium);
   font-weight: var(--weight-semi-bold);
 
-  @media (max-width: 450px) {
+  @media (max-width: 900px) {
+    height: 35px;
     font-size: 17px;
+
+    overflow: hidden;
+
+    display: -webkit-box;
+    display: -ms-flexbox;
+    white-space: normal;
+    text-overflow: ellipsis;
+
+    word-break: break-word;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 `;
 
 export const Excerpt = styled.div`
   padding: 10px;
-  margin-top: 5px;
   background-color: var(--color-gray-light);
   border-radius: 6px;
 
@@ -53,15 +64,12 @@ export const Excerpt = styled.div`
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
   }
-
-  @media (max-width: 450px) {
-    margin-top: 10px;
-  }
 `;
 
 export const BookImg = styled.img`
   width: 90px;
   height: 130px;
+  margin: auto;
   margin-left: 15px;
   border-radius: 6px;
 
@@ -95,6 +103,10 @@ export const WriterInfo = styled.div`
   display: flex;
   height: 10px;
   align-items: center;
+
+  @media (max-width: 900px) {
+    margin: 10px 0;
+  }
 `;
 
 export const WriterImg = styled.img`
@@ -114,6 +126,9 @@ export const WriterNicName = styled.div`
 `;
 
 export const WriteDate = styled.div`
+  display: flex;
+  align-items: center;
+
   svg {
     margin-right: 3px;
   }

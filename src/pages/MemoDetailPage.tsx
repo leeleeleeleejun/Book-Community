@@ -135,6 +135,7 @@ const BookBox = styled.div`
   display: flex;
   flex-direction: column;
   width: 90%;
+  margin: auto;
   margin-top: 40px;
 `;
 
