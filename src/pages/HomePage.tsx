@@ -51,13 +51,16 @@ const HomePage = () => {
 export default HomePage;
 
 const TopButton = styled.button<{ $visible: boolean }>`
-  width: 35px;
-  height: 35px;
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   position: fixed;
-  bottom: ${({ $visible }) => ($visible ? "30px" : "-40px")};
-
   right: 50%;
+  bottom: ${({ $visible }) => ($visible ? "30px" : "-40px")};
 
   border-radius: 50%;
   background-color: var(--color-sub);
