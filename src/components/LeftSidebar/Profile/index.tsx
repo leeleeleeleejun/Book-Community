@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
-import { UserBox, UserImg, UserName } from "./Profile.style";
 import type { RootState } from "@/store";
-import BasicUserIcon from "@/components/common/BasicUserIcon";
 import { API_USER_IMG } from "@/constants/path";
+import { UserBox, UserImg, UserName } from "./Profile.style";
+import BasicUserIcon from "@/components/common/BasicUserIcon";
 
 const Profile = () => {
   const user = useSelector((state: RootState) => state.UserSlice.userInfo);

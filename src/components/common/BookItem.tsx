@@ -1,5 +1,5 @@
-import MinusIcon from "@/assets/MinusIcon";
 import { styled } from "styled-components";
+import MinusIcon from "@/assets/MinusIcon.svg?react";
 
 const BookItem = ({
   deleteFunc,

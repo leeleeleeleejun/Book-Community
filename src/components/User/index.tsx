@@ -7,7 +7,7 @@ import ValidErrorMessage from "@/components/common/ValidErrorMessage";
 import FormButton from "@/components/common/FormButton";
 import { EditUserInfoValidate } from "@/utils/validate";
 import { ModalContainer, ModalBox } from "@/components/common/ModalContainer";
-import CloseButton from "@/assets/CloseButton";
+import CloseButton from "@/assets/CloseButton.svg?react";
 import { closeModal, setUser } from "./UserSlice";
 import { RootState } from "@/store";
 import { deleteUser, editUserInfoAPI } from "@/api/userAPI";

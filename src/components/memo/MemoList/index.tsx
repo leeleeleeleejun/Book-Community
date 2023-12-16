@@ -1,4 +1,18 @@
-import CalendalIcon from "@/assets/CalendarIcon";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+// 유틸리티 Import:
+import getDateFunc from "@/utils/getDate";
+//타입 및 상수 Import:
+import { memo } from "@/types";
+import { API_USER_IMG, CLIENT_PATH } from "@/constants/path";
+//로딩 아이콘 및 API 호출 관련 Import:
+import LoadingIcon from "@/components/common/LoadingIcon";
+import { getAllMemo, getUserMemo } from "@/api/memoAPI";
+//컴포넌트 Import:
+import BasicUserIcon from "@/components/common/BasicUserIcon";
+import UserLinkBox from "../UserLinkBox";
+//SVG 아이콘 및 스타일 관련 Import:
+import CalendalIcon from "@/assets/CalendarIcon.svg?react";
 import {
   MemoListBox,
   MemoListItem,
@@ -12,15 +26,6 @@ import {
   WriterInfo,
   MemoInfo,
 } from "./MemoList.style";
-import BasicUserIcon from "@/components/common/BasicUserIcon";
-import { useEffect, useMemo, useRef, useState } from "react";
-import LoadingIcon from "@/assets/LoadingIcon";
-import { getAllMemo, getUserMemo } from "@/api/memoAPI";
-import { memo } from "@/types";
-import { API_USER_IMG, CLIENT_PATH } from "@/constants/path";
-import getDateFunc from "@/utils/getDate";
-import { Link } from "react-router-dom";
-import UserLinkBox from "../UserLinkBox";
 
 const MemoList = ({ user }: { user: string }) => {
   const [memoList, setMemoList] = useState<memo[]>([]);

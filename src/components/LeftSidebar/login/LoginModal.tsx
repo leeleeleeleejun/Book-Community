@@ -1,11 +1,16 @@
+//React Hook 사용:
+import { useState } from "react";
+//라우팅 관련 Import:
 import { Link } from "react-router-dom";
+//스타일 및 컴포넌트 Import:
 import { LoginModalBox } from "./Login.style";
 import Input from "@/components/common/Input";
 import FormButton from "@/components/common/FormButton";
-import CloseButton from "@/assets/CloseButton";
+import CloseButton from "@/assets/CloseButton.svg?react";
 import { ModalContainer } from "@/components/common/ModalContainer";
+//경로 상수 Import:
 import { CLIENT_PATH } from "@/constants/path";
-import { useState } from "react";
+// API 호출 Import:
 import { login } from "@/api/userAPI";
 
 const LoginModal = ({

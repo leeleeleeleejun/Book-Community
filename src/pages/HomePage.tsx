@@ -1,8 +1,8 @@
-import UpArrow from "@/assets/UpArrow";
-import Nav from "@/components/common/Nav";
-import MemoList from "@/components/memo/MemoList";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import Nav from "@/components/common/Nav";
+import MemoList from "@/components/memo/MemoList";
+import UpArrow from "@/assets/UpArrow.svg?react";
 
 const HomePage = () => {
   const [position, setPosition] = useState<number>(0);

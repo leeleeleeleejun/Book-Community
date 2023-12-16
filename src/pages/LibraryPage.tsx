@@ -1,11 +1,11 @@
-import LibraryHeader from "@/components/Library/LibraryHeader";
-import LibraryBody from "@/components/Library/LibraryBody";
-import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { RootState } from "@/store";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { userInfo } from "@/types";
+import { RootState } from "@/store";
 import { getAnotherUserInfo } from "@/api/userAPI";
+import LibraryBody from "@/components/Library/LibraryBody";
+import LibraryHeader from "@/components/Library/LibraryHeader";
 
 const LibraryPage = () => {
   const { userId } = useParams();

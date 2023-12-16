@@ -1,8 +1,8 @@
-import GithubIcon from "@/assets/GithubIcon";
-import MailIcon from "@/assets/MailIcon";
-import VelogIcon from "@/assets/VelogIcon.";
-import { FooterBox, IconBox } from "./Foooter.style";
 import { Link } from "react-router-dom";
+import { FooterBox, IconBox } from "./Foooter.style";
+import MailIcon from "@/assets/MailIcon.svg?react";
+import VelogIcon from "@/assets/VelogIcon.svg?react";
+import GithubIcon from "@/assets/GithubIcon.svg?react";
 
 const Footer = ({ signUp }: { signUp: boolean }) => {
   return (

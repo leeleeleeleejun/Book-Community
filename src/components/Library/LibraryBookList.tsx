@@ -5,7 +5,7 @@ import {
   BookListHeader,
   BookListTitle,
 } from "./Library.style";
-import PencilIcon from "@/assets/PecilIcon";
+import PencilIcon from "@/assets/PencilIcon.svg?react";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/components/SearchBook/SearchBookSlice";
 import { BookListThemeObjType, userInfo } from "@/types";

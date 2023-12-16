@@ -1,5 +1,5 @@
-import UserIcon from "@/assets/UserIcon";
 import { styled } from "styled-components";
+import UserIcon from "@/assets/UserIcon.svg?react";
 
 const BasicUserIcon = ({ size }: { size: number }) => {
   return (

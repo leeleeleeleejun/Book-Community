@@ -1,8 +1,17 @@
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import CloseButton from "@/assets/CloseButton";
+//RootState 및Redux 액션 Import:
+import type { RootState } from "@/store";
+import { setMemoBook } from "./WriteMemoSlice";
 import { closeModal, setMemoId } from "./WriteMemoSlice";
 import { setTheme } from "@/components/Library/LibrarySlice";
 import { openModal } from "@/components/SearchBook/SearchBookSlice";
+// 컴포넌트 Import:
+import BookItem from "@/components/common/BookItem";
+//API 호출 Import:
+import { editMemo, getMemo, postMemo } from "@/api/memoAPI";
+//SVG 아이콘 및 스타일 관련 Import:
+import CloseButton from "@/assets/CloseButton.svg?react";
 import {
   WriteMemoModalBox,
   Quill,
@@ -17,11 +26,6 @@ import {
   CheckBoxWrap,
   Content,
 } from "./WriteMemo.style";
-import { useEffect, useState } from "react";
-import type { RootState } from "@/store";
-import BookItem from "@/components/common/BookItem";
-import { setMemoBook } from "./WriteMemoSlice";
-import { editMemo, getMemo, postMemo } from "@/api/memoAPI";
 
 const WriteMemo = () => {
   const dispatch = useDispatch();
