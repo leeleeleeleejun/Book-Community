@@ -1,14 +1,14 @@
+import styled from "styled-components";
 import { useCallback, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { signUpAPI } from "@/api/userAPI";
 import { userInfo, userKey } from "@/types";
 import { SignUpValidate } from "@/utils/validate";
+import Footer from "@/components/RightSidebar/Footer";
 import FormFiled from "@/components/common/FormField";
 import FormButton from "@/components/common/FormButton";
-import ValidErrorMessage from "@/components/common/ValidErrorMessage";
-import styled from "styled-components";
 import Carousel from "@/components/RightSidebar/SidebarCarousel";
-import Footer from "@/components/RightSidebar/Footer";
-import { signUpAPI } from "@/api/userAPI";
-import { useNavigate } from "react-router-dom";
+import ValidErrorMessage from "@/components/common/ValidErrorMessage";
 
 const SignUpPage = () => {
   const navigate = useNavigate();

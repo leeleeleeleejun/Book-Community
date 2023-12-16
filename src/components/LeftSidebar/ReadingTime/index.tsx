@@ -1,3 +1,4 @@
+import { ActivityGraphArray } from "@/types";
 import {
   ReadingTimeBox,
   TotalReadingTime,
@@ -5,7 +6,6 @@ import {
   Week,
   Day,
 } from "./ReadingTime.style";
-import { ActivityGraphArray } from "@/types";
 
 const ReadingTime = ({
   activityGraph,

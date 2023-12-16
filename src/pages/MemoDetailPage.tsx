@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import LeftArrowIcon from "@/assets/LeftArrowIcon";
-import { useNavigate, NavigateFunction, useParams } from "react-router-dom";
 import styled from "styled-components";
-import { deleteMemo, getMemo } from "@/api/memoAPI";
-import { memo } from "@/types";
-import getDateFunc from "@/utils/getDate";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, NavigateFunction, useParams } from "react-router-dom";
+import { memo } from "@/types";
 import { RootState } from "@/store";
+import getDateFunc from "@/utils/getDate";
+import { deleteMemo, getMemo } from "@/api/memoAPI";
+import LeftArrowIcon from "@/assets/LeftArrowIcon.svg?react";
 import {
   openModal,
   setMemoId,
@@ -135,6 +135,7 @@ const BookBox = styled.div`
   display: flex;
   flex-direction: column;
   width: 90%;
+  margin: auto;
   margin-top: 40px;
 `;
 

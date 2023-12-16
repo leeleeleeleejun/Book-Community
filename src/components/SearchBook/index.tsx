@@ -1,8 +1,23 @@
-import { ModalContainer, ModalBox } from "@/components/common/ModalContainer";
-import CloseButton from "@/assets/CloseButton";
+import { useState } from "react";
+//Redux 액션 Import 및 훅 사용
 import { closeModal } from "./SearchBookSlice";
 import { useDispatch } from "react-redux";
-import SearchIcon from "@/assets/SearchIcon";
+//사용자 정보 및 메모 관련 Redux 액션 Import:
+import { useSelector } from "react-redux";
+import { RootState } from "@/store";
+import { setUser } from "@/components/User/UserSlice";
+import { setMemoBook } from "@/components/memo/WriteMemo/WriteMemoSlice";
+//컴포넌트 Import:
+import { ModalContainer, ModalBox } from "@/components/common/ModalContainer";
+// type 및  API 호출 Import:
+import { searchAPI } from "@/api/searchAPI";
+import { pushMyBookListItem } from "@/api/userAPI";
+import { bookListItemType } from "@/types";
+// 아이콘 및 스타일 Import:
+import LoadingIcon from "@/components/common/LoadingIcon";
+import PlusIcon from "@/assets/PlusIcon.svg?react";
+import SearchIcon from "@/assets/SearchIcon.svg?react";
+import CloseButton from "@/assets/CloseButton.svg?react";
 import {
   SearchInput,
   SearchButton,
@@ -17,16 +32,6 @@ import {
   BookInfoBox,
   BookImg,
 } from "./SearchBook.style";
-import { useState } from "react";
-import { searchAPI } from "@/api/searchAPI";
-import { bookListItemType } from "@/types";
-import { pushMyBookListItem } from "@/api/userAPI";
-import { useSelector } from "react-redux";
-import { RootState } from "@/store";
-import { setUser } from "@/components/User/UserSlice";
-import LoadingIcon from "@/assets/LoadingIcon";
-import { setMemoBook } from "@/components/memo/WriteMemo/WriteMemoSlice";
-import PlusIcon from "@/assets/PlusIcon";
 
 const SearchBook = () => {
   const dispatch = useDispatch();

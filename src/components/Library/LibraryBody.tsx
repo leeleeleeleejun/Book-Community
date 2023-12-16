@@ -1,7 +1,7 @@
-import LibraryIcon from "@/assets/LibraryIcon";
+import { userInfo } from "@/types";
 import { Title } from "./Library.style";
 import LibraryBookList from "./LibraryBookList";
-import { userInfo } from "@/types";
+import LibraryIcon from "@/assets/LibraryIcon.svg?react";
 
 const LibraryBody = ({
   targetUser,

@@ -3,9 +3,9 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { Nav, NavItem } from "./SidebarNav.style";
 import { CLIENT_PATH } from "@/constants/path";
-import HomeIcon from "@/assets/HomeIcon";
-import BlogIcon from "@/assets/BlogIcon";
-import BookIcon from "@/assets/BookIcon";
+import HomeIcon from "@/assets/HomeIcon.svg?react";
+import BlogIcon from "@/assets/BlogIcon.svg?react";
+import BookIcon from "@/assets/BookIcon.svg?react";
 // import MessageIcon from "@/assets/MessageIcon";
 
 const SidebarNav = ({ handleMenuClose }: { handleMenuClose: () => void }) => {

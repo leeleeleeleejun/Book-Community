@@ -1,15 +1,15 @@
-import SettingIcon from "@/assets/SettingIcon";
-import MemoList from "@/components/memo/MemoList";
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
-import { openModal } from "@/components/User/UserSlice";
-import { RootState } from "@/store";
-import BasicUserIcon from "@/components/common/BasicUserIcon";
-import { API_USER_IMG } from "@/constants/path";
-import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getAnotherUserInfo } from "@/api/userAPI";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { userInfo } from "@/types";
+import { RootState } from "@/store";
+import { API_USER_IMG } from "@/constants/path";
+import { getAnotherUserInfo } from "@/api/userAPI";
+import { openModal } from "@/components/User/UserSlice";
+import BasicUserIcon from "@/components/common/BasicUserIcon";
+import MemoList from "@/components/memo/MemoList";
+import SettingIcon from "@/assets/SettingIcon.svg?react";
 
 const UserMemoPage = () => {
   const dispatch = useDispatch();

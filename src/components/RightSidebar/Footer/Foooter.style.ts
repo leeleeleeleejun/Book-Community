@@ -7,6 +7,11 @@ export const FooterBox = styled.footer`
 
   p {
     line-height: 1.3;
+    white-space: pre;
+  }
+
+  div {
+    margin-top: 5px;
   }
 `;
 

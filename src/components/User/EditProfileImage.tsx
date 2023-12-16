@@ -1,4 +1,9 @@
 import { ChangeEvent, useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store";
+import { API_USER_IMG } from "@/constants/path";
+import { editProfileImage, deleteProfileImage } from "@/api/userAPI";
+import BasicUserIcon from "../common/BasicUserIcon";
 import {
   ProfileEditor,
   ProfileImageSection,
@@ -6,11 +11,6 @@ import {
   ImgFile,
   BasicUserIconWrap,
 } from "./EditUser.style";
-import BasicUserIcon from "../common/BasicUserIcon";
-import { editProfileImage, deleteProfileImage } from "@/api/userAPI";
-import { useSelector } from "react-redux";
-import { RootState } from "@/store";
-import { API_USER_IMG } from "@/constants/path";
 
 const EditProfileImage = () => {
   const user = useSelector((state: RootState) => state.UserSlice.userInfo);

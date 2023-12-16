@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { pushReadTime, getUserInfo } from "@/api/userAPI";
 import {
   TimeBox,
   StartButton,
@@ -6,12 +7,11 @@ import {
   ButtonBox,
   PauseButton,
 } from "./Timer.style";
-import { pushReadTime, getUserInfo } from "@/api/userAPI";
 
 const Timer = () => {
   const [running, setRunning] = useState<boolean>(false);
   const [time, setTime] = useState<number>(0);
-  const intervalRef = useRef<number | undefined>(undefined);
+  const intervalRef = useRef<NodeJS.Timeout | undefined>(undefined);
   const today = new Date().getDay();
 
   const startWatch = () => {

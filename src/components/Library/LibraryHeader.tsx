@@ -1,7 +1,7 @@
+import { userInfo } from "@/types";
+import { API_USER_IMG } from "@/constants/path";
 import { LibraryHeaderBox, UserImg } from "./Library.style";
 import BasicUserIcon from "@/components/common/BasicUserIcon";
-import { API_USER_IMG } from "@/constants/path";
-import { userInfo } from "@/types";
 
 const LibraryHeader = ({ targetUser }: { targetUser: userInfo | null }) => {
   if (!targetUser) return;

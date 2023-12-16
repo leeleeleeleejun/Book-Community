@@ -1,8 +1,8 @@
+import React from "react";
 import { styled } from "styled-components";
 import Input from "./Input";
-import { FormFiledProps, userKey } from "@/types";
 import autoHyphen from "@/utils/autoHyphen";
-import React from "react";
+import { FormFiledProps, userKey } from "@/types";
 
 const FormFiled = ({
   name,

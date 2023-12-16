@@ -15,7 +15,7 @@ export const WriteMemoModalBox = styled(ModalBox)`
     margin-bottom: 30px;
   }
 
-  @media (max-width: 400px) {
+  @media (max-height: 800px) {
     height: 100%;
     box-sizing: border-box;
   }

@@ -1,10 +1,16 @@
+//Hooks 및 컴포넌트 Import:
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
+//RootState Import 및 상수 정의:
 import type { RootState } from "@/store";
 import { CLIENT_PATH } from "@/constants/path";
+//API 호출 관련 Import:
 import { getUserInfo } from "@/api/userAPI";
+//Redux 액션 Import 및 사용자 정보 설정 액션 정의:
+import { setUser } from "@/components/User/UserSlice";
 import LoginButton from "@/components/LeftSidebar/login/LoginButton";
+//컴포넌트 Import:
 import LoginModal from "@/components/LeftSidebar/login/LoginModal";
 import Profile from "@/components/LeftSidebar/Profile";
 import SidebarNav from "@/components/LeftSidebar/SidebarNav";
@@ -12,11 +18,12 @@ import Carousel from "@/components/RightSidebar/SidebarCarousel";
 import ReadingTime from "@/components/LeftSidebar/ReadingTime";
 import Footer from "@/components/RightSidebar/Footer";
 import WriteMemo from "@/components/memo/WriteMemo";
-import EditUser from "@/components/User";
 import SearchBook from "@/components/SearchBook";
-import { setUser } from "@/components/User/UserSlice";
-import CloseButton from "@/assets/CloseButton";
-import MenuIcon from "@/assets/MenuIcon";
+import EditUser from "@/components/User";
+//SVG 아이콘 Import:
+import CloseButton from "@/assets/CloseButton.svg?react";
+import MenuIcon from "@/assets/MenuIcon.svg?react";
+//스타일 관련 Import:
 import {
   Container,
   LeftAside,
