@@ -66,7 +66,7 @@ const TopButton = styled.button<{ $visible: boolean }>`
   background-color: var(--color-sub);
   opacity: 0.5;
 
-  z-index: 999;
+  z-index: 8;
   cursor: pointer;
   transition: bottom 0.3s ease-in-out;
 
