@@ -6,12 +6,17 @@ import FormField from "@/components/common/FormField";
 import ValidErrorMessage from "@/components/common/ValidErrorMessage";
 import FormButton from "@/components/common/FormButton";
 import { EditUserInfoValidate } from "@/utils/validate";
-import { ModalContainer, ModalBox } from "@/components/common/ModalContainer";
+import { ModalContainer } from "@/components/common/ModalContainer";
 import CloseButton from "@/assets/CloseButton.svg?react";
 import { closeModal, setUser } from "./UserSlice";
 import { RootState } from "@/store";
 import { deleteUser, editUserInfoAPI } from "@/api/userAPI";
-import { Content, Header, WithdrawalButton } from "./EditUser.style";
+import {
+  Content,
+  Header,
+  WithdrawalButton,
+  EditUserModalBox,
+} from "./EditUser.style";
 
 const EditUser = () => {
   const dispatch = useDispatch();
@@ -71,7 +76,7 @@ const EditUser = () => {
 
   return (
     <ModalContainer>
-      <ModalBox>
+      <EditUserModalBox>
         <button
           className="close"
           onClick={() => {
@@ -125,7 +130,7 @@ const EditUser = () => {
           <FormButton onClick={editUserInfoFunc}>수정하기</FormButton>
           <WithdrawalButton onClick={deleteUserFunc}>탈퇴하기</WithdrawalButton>
         </Content>
-      </ModalBox>
+      </EditUserModalBox>
     </ModalContainer>
   );
 };
