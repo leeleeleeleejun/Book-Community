@@ -1,6 +1,6 @@
 import { css, styled } from "styled-components";
 import FormButton from "@/components/common/FormButton";
-
+import { ModalBox } from "@/components/common/ModalContainer";
 export const Header = styled.div`
   h3 {
     font-size: 18px;
@@ -11,6 +11,13 @@ export const Header = styled.div`
     margin-top: 7px;
     color: var(--color-gray-2);
     font-weight: 200;
+  }
+`;
+
+export const EditUserModalBox = styled(ModalBox)`
+  @media (max-height: 800px) {
+    height: 100%;
+    box-sizing: border-box;
   }
 `;
 
