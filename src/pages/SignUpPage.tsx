@@ -9,6 +9,7 @@ import FormFiled from "@/components/common/FormField";
 import FormButton from "@/components/common/FormButton";
 import Carousel from "@/components/RightSidebar/SidebarCarousel";
 import ValidErrorMessage from "@/components/common/ValidErrorMessage";
+import LeftArrowIcon from "@/assets/LeftArrowIcon.svg?react";
 
 const SignUpPage = () => {
   const navigate = useNavigate();
@@ -75,6 +76,13 @@ const SignUpPage = () => {
         <Footer signUp={true} />
       </CarouselBox>
       <main>
+        <BackHistoryButton
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          <LeftArrowIcon />
+        </BackHistoryButton>
         <PageTitle>회원가입</PageTitle>
         <FormFiled
           name="name"
@@ -141,6 +149,13 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     margin-top: 100px;
+    position: relative;
+  }
+
+  @media (max-width: 1000px) {
+    main {
+      width: 100%;
+    }
   }
 `;
 
@@ -167,9 +182,19 @@ const CarouselBox = styled.div`
   div {
     margin: auto;
   }
+
+  @media (max-width: 1000px) {
+    display: none;
+  }
 `;
 
 const Logo = styled.img`
   width: 300px;
   margin: 50px auto;
+`;
+
+const BackHistoryButton = styled.button`
+  position: absolute;
+  top: -10px;
+  left: 10%;
 `;
