@@ -42,6 +42,7 @@
 
 <img width="100" alt="image" src="https://github.com/leeleeleeleejun/Book-Community_Frontend/assets/98197264/ca7b38c6-afa9-44ba-a753-dadb841f911c"/>
 <img width="100" alt="image" src="https://github.com/leeleeleeleejun/Book-Community_Frontend/assets/98197264/d8d7e408-1bf5-4b9f-ab13-ceeb33564968"/>
+<img width="100" alt="image" src="https://github.com/leeleeleeleejun/Book-Community_Frontend/assets/98197264/f5eb17f2-3a52-490a-afda-f5bfe3e0ca82"/>
 
 # 🔍 Feature
 
