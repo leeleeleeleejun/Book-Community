@@ -71,7 +71,10 @@ const SignUpPage = () => {
 
   return (
     <Container>
-      <MetaTag title={`독서일기 | 회원가입`} />
+      <MetaTag
+        title={`독서일기 | 회원가입`}
+        content="독서의 즐거움을 나누어 주세요"
+      />
       <CarouselBox>
         <Logo src="/logo.jpg" />
         <Carousel signUp={true} />

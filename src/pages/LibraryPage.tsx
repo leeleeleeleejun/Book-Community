@@ -33,7 +33,10 @@ const LibraryPage = () => {
 
   return (
     <>
-      <MetaTag title={`독서일기 | ${targetUser.nickname}님의 서재`} />
+      <MetaTag
+        title={`독서일기 | ${targetUser.nickname}님의 서재`}
+        content={`${targetUser.nickname}님의 서재 공간입니다`}
+      />
       <LibraryHeader targetUser={targetUser} />
       <LibraryBody targetUser={targetUser} authUser={authUser} />
     </>
