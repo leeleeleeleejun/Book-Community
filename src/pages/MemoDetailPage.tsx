@@ -11,6 +11,7 @@ import {
   openModal,
   setMemoId,
 } from "@/components/memo/WriteMemo/WriteMemoSlice";
+import MetaTag from "@/components/common/SEO/MetaTag";
 
 const MemoDetailPage = () => {
   const navigate: NavigateFunction = useNavigate();
@@ -43,6 +44,7 @@ const MemoDetailPage = () => {
 
   return (
     <>
+      <MetaTag title={`독서일기 | ${memo.title}`} content={memo.description} />
       <MemoHeader>
         <button
           onClick={() => {

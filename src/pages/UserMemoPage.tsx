@@ -10,6 +10,7 @@ import { openModal } from "@/components/User/UserSlice";
 import BasicUserIcon from "@/components/common/BasicUserIcon";
 import MemoList from "@/components/memo/MemoList";
 import SettingIcon from "@/assets/SettingIcon.svg?react";
+import MetaTag from "@/components/common/SEO/MetaTag";
 
 const UserMemoPage = () => {
   const dispatch = useDispatch();
@@ -36,6 +37,10 @@ const UserMemoPage = () => {
 
   return (
     <>
+      <MetaTag
+        title={`독서일기 | ${targetUser.nickname}님의 메모장`}
+        content={`${targetUser.nickname}님의 메모 공간입니다`}
+      />
       <Banner>이곳에서 당신의 이야기를 만나보세요.</Banner>
       <UserInfo>
         {targetUser.profile.length > 30 ? (
