@@ -6,6 +6,7 @@ import { RootState } from "@/store";
 import { getAnotherUserInfo } from "@/api/userAPI";
 import LibraryBody from "@/components/Library/LibraryBody";
 import LibraryHeader from "@/components/Library/LibraryHeader";
+import MetaTag from "@/components/common/SEO/MetaTag";
 
 const LibraryPage = () => {
   const { userId } = useParams();
@@ -28,8 +29,11 @@ const LibraryPage = () => {
     })();
   }, [userId, loginUser]);
 
+  if (!targetUser) return null;
+
   return (
     <>
+      <MetaTag title={`독서일기 | ${targetUser.nickname}님의 서재`} />
       <LibraryHeader targetUser={targetUser} />
       <LibraryBody targetUser={targetUser} authUser={authUser} />
     </>

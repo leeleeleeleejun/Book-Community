@@ -101,9 +101,9 @@ const MemoList = ({ user }: { user: string }) => {
                 </Excerpt>
               </div>
               {book_info?.cover ? (
-                <BookImg src={book_info?.cover} />
+                <BookImg src={book_info?.cover} alt={book_info.title} />
               ) : (
-                <LogoImg src="/logo_2.jpg" />
+                <LogoImg src="/logo_2.jpg" alt="logo" />
               )}
             </MemoListItem>
           </Link>

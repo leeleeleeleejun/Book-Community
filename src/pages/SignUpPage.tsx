@@ -10,6 +10,7 @@ import FormButton from "@/components/common/FormButton";
 import Carousel from "@/components/RightSidebar/SidebarCarousel";
 import ValidErrorMessage from "@/components/common/ValidErrorMessage";
 import LeftArrowIcon from "@/assets/LeftArrowIcon.svg?react";
+import MetaTag from "@/components/common/SEO/MetaTag";
 
 const SignUpPage = () => {
   const navigate = useNavigate();
@@ -70,6 +71,7 @@ const SignUpPage = () => {
 
   return (
     <Container>
+      <MetaTag title={`독서일기 | 회원가입`} />
       <CarouselBox>
         <Logo src="/logo.jpg" />
         <Carousel signUp={true} />
