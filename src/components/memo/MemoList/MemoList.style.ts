@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const MemoListBox = styled.ul`
@@ -5,7 +6,7 @@ export const MemoListBox = styled.ul`
   flex-direction: column;
 `;
 
-export const MemoListItem = styled.li`
+export const MemoListItem = styled(Link)`
   display: flex;
   max-width: 800px;
   justify-content: space-between;

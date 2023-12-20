@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Link } from "react-router-dom";
 // 유틸리티 Import:
 import getDateFunc from "@/utils/getDate";
 //타입 및 상수 Import:
@@ -61,11 +60,10 @@ const MemoList = ({ user }: { user: string }) => {
         const { _id, title, author, description, createdAt, book_info } = item;
 
         return (
-          <Link
-            key={index}
-            to={_id ? CLIENT_PATH.MEMO.replace(":_id", _id) : "/"}
-          >
-            <MemoListItem>
+          <li key={index}>
+            <MemoListItem
+              to={_id ? CLIENT_PATH.MEMO.replace(":_id", _id) : "/"}
+            >
               <div>
                 <MemoTitle>{title}</MemoTitle>
                 <MemoInfo>
@@ -106,7 +104,7 @@ const MemoList = ({ user }: { user: string }) => {
                 <LogoImg src="/logo_2.jpg" />
               )}
             </MemoListItem>
-          </Link>
+          </li>
         );
       })}
       <div ref={pageEnd} />
