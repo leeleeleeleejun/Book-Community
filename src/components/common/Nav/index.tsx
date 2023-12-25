@@ -21,12 +21,16 @@ const Nav = () => {
 
   const activeHome = location === CLIENT_PATH.HOME;
   const activeTimer = location === CLIENT_PATH.TIMER;
+  const activeBookClub = location === CLIENT_PATH.BOOK_CLUB;
 
   return (
     <NavBox>
       <nav>
         <NavItem to={CLIENT_PATH.HOME} $active={activeHome}>
           독서 메모
+        </NavItem>
+        <NavItem to={CLIENT_PATH.BOOK_CLUB} $active={activeBookClub}>
+          독서 모임
         </NavItem>
         <NavItem to={CLIENT_PATH.TIMER} $active={activeTimer}>
           기록하기

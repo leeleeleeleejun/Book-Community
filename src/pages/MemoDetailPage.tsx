@@ -65,7 +65,7 @@ const MemoDetailPage = () => {
       </MemoHeader>
       {memo.book_info && (
         <BookBox>
-          <BoolTitle>{memo.book_info.title}</BoolTitle>
+          <BookTitle>{memo.book_info.title}</BookTitle>
           <BookImg src={memo.book_info.cover} />
         </BookBox>
       )}
@@ -92,7 +92,7 @@ const MemoDetailPage = () => {
 
 export default MemoDetailPage;
 
-const MemoHeader = styled.div`
+export const MemoHeader = styled.div`
   width: 90%;
   margin: auto;
   padding-bottom: 20px;
@@ -109,14 +109,14 @@ const MemoHeader = styled.div`
   }
 `;
 
-const MemoTitle = styled.h3`
+export const MemoTitle = styled.h3`
   font-size: var(--font-large);
   font-weight: var(--weight-semi-bold);
   word-break: break-word;
   margin-bottom: 5px;
 `;
 
-const Writer = styled.span`
+export const Writer = styled.span`
   font-size: var(--font-micro);
   color: var(--color-gray);
   font-weight: var(--weight-regular);
@@ -126,14 +126,14 @@ const Writer = styled.span`
   }
 `;
 
-const WriteDate = styled.span`
+export const WriteDate = styled.span`
   font-size: var(--font-micro);
   font-weight: var(--weight-regular);
 
   color: var(--color-light-black);
 `;
 
-const BookBox = styled.div`
+export const BookBox = styled.div`
   display: flex;
   flex-direction: column;
   width: 90%;
@@ -141,12 +141,12 @@ const BookBox = styled.div`
   margin-top: 40px;
 `;
 
-const BoolTitle = styled.h4`
+export const BookTitle = styled.h4`
   font-weight: var(--weight-semi-bold);
   text-align: center;
 `;
 
-const BookImg = styled.img`
+export const BookImg = styled.img`
   width: 120px;
   border-radius: 4px;
   box-shadow: 0 0 5px #0006;
