@@ -20,6 +20,7 @@ export const MemoListItem = styled(Link)`
     width: 95%;
     flex-direction: column;
     justify-content: space-between;
+    gap: 10px;
   }
 `;
 
