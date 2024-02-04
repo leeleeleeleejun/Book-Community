@@ -1,9 +1,9 @@
-import { my_book_item } from "@/types";
+import { myBookItem } from "@/types";
 import { createSlice } from "@reduxjs/toolkit";
 
 export interface WriteMemoInitialState {
   writeMemoModal: boolean;
-  memoBook: my_book_item;
+  memoBook: myBookItem;
   memoId: string;
 }
 

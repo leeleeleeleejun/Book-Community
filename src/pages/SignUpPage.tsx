@@ -40,7 +40,7 @@ const SignUpPage = () => {
     phone_number: "",
     profile: "",
     activity_graph: activity_graph_empty,
-    my_book: {
+    myBook: {
       bestBook: [],
       readBook: [],
       hopeBook: [],

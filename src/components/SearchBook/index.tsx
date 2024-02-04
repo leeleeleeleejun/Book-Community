@@ -66,9 +66,9 @@ const SearchBook = () => {
       dispatch(
         setUser({
           ...user,
-          my_book: {
-            ...user.my_book,
-            [theme]: [...user.my_book[theme], book_info],
+          myBook: {
+            ...user.myBook,
+            [theme]: [...user.myBook[theme], book_info],
           },
         })
       );

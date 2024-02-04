@@ -58,7 +58,6 @@ const MemoList = ({ user }: { user: string }) => {
     <MemoListBox>
       {memoList.map((item, index) => {
         const { _id, title, author, description, createdAt, book_info } = item;
-
         return (
           <li key={index}>
             <MemoListItem

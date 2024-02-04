@@ -50,15 +50,15 @@ const LibraryBookList = ({
     const response = await deleteMyBookListItem({ theme, book_info });
 
     if (response?.ok) {
-      const editBookList = targetUser.my_book[theme].filter(
+      const editBookList = targetUser.myBook[theme].filter(
         (item) => item.title !== title
       );
 
       dispatch(
         setUser({
           ...targetUser,
-          my_book: {
-            ...targetUser.my_book,
+          myBook: {
+            ...targetUser.myBook,
             [theme]: editBookList,
           },
         })
@@ -70,14 +70,14 @@ const LibraryBookList = ({
     <>
       <BookListHeader>
         <BookListTitle>
-          {bookListThemeObj[theme]} ({targetUser.my_book[theme].length}/29)
+          {bookListThemeObj[theme]} ({targetUser.myBook[theme].length}/29)
         </BookListTitle>
         <BookListEditButton onClick={openSearchModal}>
           <PencilIcon />
         </BookListEditButton>
       </BookListHeader>
       <BookListBody>
-        {targetUser.my_book[theme].map((item, index) => {
+        {targetUser.myBook[theme].map((item, index) => {
           const { cover, title } = item;
           return (
             <BookItemBox key={index}>
