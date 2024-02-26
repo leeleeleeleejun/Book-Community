@@ -33,6 +33,7 @@ import {
   Header,
   FooterWrap,
 } from "./Layout.style";
+import WriteGather from "@/components/bookClub/WriteGather";
 
 const Layout = () => {
   const search = useSelector(
@@ -40,6 +41,9 @@ const Layout = () => {
   );
   const write = useSelector(
     (state: RootState) => state.WriteMemoSlice.writeMemoModal
+  );
+  const gather = useSelector(
+    (state: RootState) => state.WriteGatherSlice.writeGatherModal
   );
   const edit = useSelector((state: RootState) => state.UserSlice.editUserModal);
   const user = useSelector((state: RootState) => state.UserSlice.userInfo);
@@ -80,6 +84,7 @@ const Layout = () => {
       {search && <SearchBook />}
       {loginModal && <LoginModal closeLoginModalFunc={closeLoginModalFunc} />}
       {write && <WriteMemo />}
+      {gather && <WriteGather />}
       {edit && <EditUser />}
       <Container $loginModalOpen={loginModal}>
         <LeftAside $showMenu={showMenu}>

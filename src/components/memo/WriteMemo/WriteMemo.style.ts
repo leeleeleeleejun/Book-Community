@@ -29,7 +29,7 @@ export const Content = styled.div`
   box-sizing: border-box;
 
   & > span {
-    font-size: var(--font-small);
+    font-size: var(--font-semi-small);
     font-weight: var(--weight-light);
     margin: 8px 0;
   }

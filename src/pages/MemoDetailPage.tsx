@@ -8,7 +8,7 @@ import getDateFunc from "@/utils/getDate";
 import { deleteMemo, getMemo } from "@/api/memoAPI";
 import LeftArrowIcon from "@/assets/LeftArrowIcon.svg?react";
 import {
-  openModal,
+  openWriteMemoModal,
   setMemoId,
 } from "@/components/memo/WriteMemo/WriteMemoSlice";
 import MetaTag from "@/components/common/SEO/MetaTag";
@@ -75,7 +75,7 @@ const MemoDetailPage = () => {
           <Button
             $update={true}
             onClick={() => {
-              dispatch(openModal());
+              dispatch(openWriteMemoModal());
               dispatch(setMemoId(memo._id));
             }}
           >

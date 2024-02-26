@@ -1,7 +1,7 @@
 import { myBookItem } from "@/types";
 import { createSlice } from "@reduxjs/toolkit";
 
-export interface WriteMemoInitialState {
+interface WriteMemoInitialState {
   writeMemoModal: boolean;
   memoBook: myBookItem;
   memoId: string;
@@ -20,10 +20,10 @@ export const WriteMemoSlice = createSlice({
   name: "writeMemo",
   initialState,
   reducers: {
-    openModal: (state) => {
+    openWriteMemoModal: (state) => {
       state.writeMemoModal = true;
     },
-    closeModal: (state) => {
+    closeWriteMemoModal: (state) => {
       state.writeMemoModal = false;
     },
     setMemoBook: (state, action) => {
@@ -35,7 +35,11 @@ export const WriteMemoSlice = createSlice({
   },
 });
 
-export const { openModal, closeModal, setMemoBook, setMemoId } =
-  WriteMemoSlice.actions;
+export const {
+  openWriteMemoModal,
+  closeWriteMemoModal,
+  setMemoBook,
+  setMemoId,
+} = WriteMemoSlice.actions;
 
 export default WriteMemoSlice.reducer;

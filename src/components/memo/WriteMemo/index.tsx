@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 //RootState 및Redux 액션 Import:
 import type { RootState } from "@/store";
-import { setMemoBook } from "./WriteMemoSlice";
-import { closeModal, setMemoId } from "./WriteMemoSlice";
+import { closeWriteMemoModal, setMemoId, setMemoBook } from "./WriteMemoSlice";
 import { setTheme } from "@/components/Library/LibrarySlice";
 import { openModal } from "@/components/SearchBook/SearchBookSlice";
 // 컴포넌트 Import:
@@ -102,7 +101,7 @@ const WriteMemo = () => {
 
   const closeModalFunc = () => {
     cancelMemoBookFunc();
-    dispatch(closeModal());
+    dispatch(closeWriteMemoModal());
     dispatch(setMemoId(""));
   };
 
