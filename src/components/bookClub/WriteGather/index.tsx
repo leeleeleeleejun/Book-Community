@@ -90,7 +90,12 @@ const WriteGather = () => {
           <RadioBox>
             {member.map((item, index) => (
               <label key={item}>
-                <input type="radio" name="member" value={item} />
+                <input
+                  type="radio"
+                  name="member"
+                  value={item}
+                  checked={index === 0}
+                />
                 {index + 1}명
               </label>
             ))}
@@ -98,9 +103,14 @@ const WriteGather = () => {
 
           <span>기간</span>
           <RadioBox>
-            {period.map((item) => (
+            {period.map((item, index) => (
               <label key={item}>
-                <input type="radio" name="member" value={item} />
+                <input
+                  type="radio"
+                  name="day"
+                  value={item}
+                  checked={index === 0}
+                />
                 {item * 5}일
               </label>
             ))}
