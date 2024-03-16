@@ -161,6 +161,7 @@ const WriteMemo = () => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
+          <span>메모 내용</span>
           <Quill
             theme="snow"
             modules={modules}

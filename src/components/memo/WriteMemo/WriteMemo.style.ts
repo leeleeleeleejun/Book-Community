@@ -94,12 +94,14 @@ export const RegisterButton = styled(FormButton)`
 `;
 export const CancelButton = styled(RegisterButton)`
   background-color: var(--color-gray);
+  &:hover {
+    background-color: var(--color-gray-light-3);
+  }
 `;
 
 export const Quill = styled(ReactQuill)`
   height: 170px;
   width: 100%;
-  margin-top: 20px;
   margin-bottom: 70px;
 
   @media (max-width: 500px) {

@@ -115,7 +115,7 @@ const WriteGather = () => {
               </label>
             ))}
           </RadioBox>
-          <span>활동내용</span>
+          <span>활동 내용 및 규칙</span>
           <Quill
             theme="snow"
             modules={modules}
