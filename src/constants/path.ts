@@ -45,11 +45,12 @@ export const API_PATH = {
 export const CLIENT_PATH = {
   HOME: "/",
   BOOK_CLUB: "/bookclub",
+  BOOK_CLUB_GATHER: "/bookclub/gather/:id",
   LOGIN: "/login",
   SIGNUP: "/signup",
   USER_MEMO: "/user/memo/:userId",
   TIMER: "/timer",
   LIBRARY: "/user/library/:userId",
-
+  USER_BOOK_CLUB: "/user/bookclub/:userId",
   MEMO: "/memo/:_id",
 };

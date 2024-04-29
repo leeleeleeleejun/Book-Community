@@ -11,6 +11,7 @@ export const getMemo = async (data: string) => {
     });
 
     const result = await response.json();
+
     if (!response.ok) {
       throw new Error(result.error);
     }
@@ -68,7 +69,7 @@ export const deleteMemo = async (data: string) => {
   }
 };
 
-export const getAllMemo = async (data: number) => {
+export const getAllMemos = async (data: number) => {
   const queryString = new URLSearchParams({ param: String(data) });
   try {
     const response = await fetch(`${API_PATH.ALL_MEMO.GET}?${queryString}`, {
@@ -85,7 +86,7 @@ export const getAllMemo = async (data: number) => {
   }
 };
 
-export const getUserMemo = async (data: number, userId: string) => {
+export const getUserMemos = async (data: number, userId: string) => {
   const queryString = new URLSearchParams({ param: String(data), userId });
 
   try {

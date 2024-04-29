@@ -6,7 +6,7 @@ import { memo } from "@/types";
 import { API_USER_IMG, CLIENT_PATH } from "@/constants/path";
 //로딩 아이콘 및 API 호출 관련 Import:
 import LoadingIcon from "@/components/common/LoadingIcon";
-import { getAllMemo, getUserMemo } from "@/api/memoAPI";
+import { getAllMemos, getUserMemos } from "@/api/memoAPI";
 //컴포넌트 Import:
 import BasicUserIcon from "@/components/common/BasicUserIcon";
 import UserLinkBox from "../UserLinkBox";
@@ -122,9 +122,9 @@ const fetchPins = async (
 ) => {
   setLoading(true);
   const response = user
-    ? await getUserMemo(page, user)
-    : await getAllMemo(page);
-  const newList = response.memos;
+    ? await getUserMemos(page, user)
+    : await getAllMemos(page);
+  const newList = response.posts;
   setMemoList((prev) => [...prev, ...newList]);
   setLoading(false);
 };

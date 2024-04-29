@@ -25,8 +25,8 @@ const MemoDetailPage = () => {
       if (!_id) return;
       const response = await getMemo(_id);
       setMemo({
-        ...response.memo,
-        createdAt: getDateFunc(response.memo.createdAt),
+        ...response.post,
+        createdAt: getDateFunc(response.post.createdAt),
       });
     })();
   }, []);

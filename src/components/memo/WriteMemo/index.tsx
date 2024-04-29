@@ -43,7 +43,7 @@ const WriteMemo = () => {
     (async () => {
       if (memoId) {
         const response = await getMemo(memoId);
-        const memo = response.memo;
+        const memo = response.post;
         setTitle(memo.title);
         setContent(memo.content);
         setDescription(memo.description);

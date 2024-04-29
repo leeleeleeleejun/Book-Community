@@ -25,6 +25,16 @@ import BookItem from "@/components/common/BookItem";
 import { Input, RadioBox } from "./WriteGather.style";
 
 const WriteGather = () => {
+  const memberLengthRange = Array(7)
+    .fill(0)
+    .map((v, i) => i + 1);
+  const termRange = Array(6)
+    .fill(0)
+    .map((v, i) => (i + 1) * 5);
+
+  const [memberLength, setMemberLength] = useState(memberLengthRange[0]);
+  const [term, setTerm] = useState(termRange[0]);
+
   const dispatch = useDispatch();
   const gatherId = useSelector(
     (state: RootState) => state.WriteGatherSlice.gatherId
@@ -45,9 +55,6 @@ const WriteGather = () => {
     const bookInfo = { cover: "", title: "" };
     dispatch(setMemoBook(bookInfo));
   };
-
-  const member = ["one", "two", "three", "four", "five", "six", "seven"];
-  const period = [1, 2, 3, 4, 5, 6];
 
   return (
     <WriteMemoModalContainer>
@@ -88,33 +95,44 @@ const WriteGather = () => {
           </ChooseBook>
           <span>인원</span>
           <RadioBox>
-            {member.map((item, index) => (
+            {memberLengthRange.map((item) => (
               <label key={item}>
                 <input
                   type="radio"
                   name="member"
                   value={item}
-                  checked={index === 0}
+                  checked={memberLength === item}
+                  onClick={() => {
+                    setMemberLength(item);
+                  }}
                 />
-                {index + 1}명
+                {item}명
               </label>
             ))}
           </RadioBox>
-
           <span>기간</span>
           <RadioBox>
-            {period.map((item, index) => (
+            {termRange.map((item) => (
               <label key={item}>
                 <input
                   type="radio"
                   name="day"
                   value={item}
-                  checked={index === 0}
+                  checked={term === item}
+                  onClick={() => {
+                    setTerm(item);
+                  }}
                 />
-                {item * 5}일
+                {item}일
               </label>
             ))}
           </RadioBox>
+          <span>한 줄 소개</span>
+          <Input
+            type="text"
+            // value={description}
+            // onChange={(e) => setDescription(e.target.value)}
+          />
           <span>활동 내용 및 규칙</span>
           <Quill
             theme="snow"

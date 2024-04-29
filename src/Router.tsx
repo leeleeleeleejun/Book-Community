@@ -17,7 +17,7 @@ const Router = () => {
         <Route element={<Layout />}>
           <Route path={CLIENT_PATH.HOME} element={<HomePage />} />
           <Route path={CLIENT_PATH.BOOK_CLUB} element={<BookClubPage />} />
-          <Route path={"/gather"} element={<GatherPage />} />
+          <Route path={CLIENT_PATH.BOOK_CLUB_GATHER} element={<GatherPage />} />
           <Route path={CLIENT_PATH.TIMER} element={<TimerPage />} />
           <Route path={CLIENT_PATH.MEMO} element={<MemoDetailPage />} />
           <Route path={CLIENT_PATH.USER_MEMO} element={<UserMemoPage />} />
