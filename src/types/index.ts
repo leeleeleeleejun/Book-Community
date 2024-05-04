@@ -90,3 +90,13 @@ export interface memo {
   book_info?: myBookItem;
   createdAt?: string;
 }
+
+export interface gatherPost {
+  _id?: string;
+  title: string;
+  author: userInfo;
+  description: string;
+  content: string;
+  book_info: myBookItem;
+  createdAt?: string;
+}

@@ -3,13 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export interface WriteGatherInitialState {
   writeGatherModal: boolean;
-  targetBook: myBookItem;
+  clubBook: myBookItem;
   gatherId: string;
 }
 
 const initialState: WriteGatherInitialState = {
   writeGatherModal: false,
-  targetBook: {
+  clubBook: {
     cover: "",
     title: "",
   },
@@ -17,7 +17,7 @@ const initialState: WriteGatherInitialState = {
 };
 
 export const WriteGatherSlice = createSlice({
-  name: "writeMemo",
+  name: "writeGather",
   initialState,
   reducers: {
     openWriteGatherModal: (state) => {
@@ -26,8 +26,8 @@ export const WriteGatherSlice = createSlice({
     closeWriteGatherModal: (state) => {
       state.writeGatherModal = false;
     },
-    setMemoBook: (state, action) => {
-      state.targetBook = action.payload;
+    setGatherClubBook: (state, action) => {
+      state.clubBook = action.payload;
     },
     setGatherId: (state, action) => {
       state.gatherId = action.payload;
@@ -38,7 +38,7 @@ export const WriteGatherSlice = createSlice({
 export const {
   openWriteGatherModal,
   closeWriteGatherModal,
-  setMemoBook,
+  setGatherClubBook,
   setGatherId,
 } = WriteGatherSlice.actions;
 

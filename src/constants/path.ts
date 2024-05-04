@@ -40,6 +40,13 @@ export const API_PATH = {
   USER_MEMO: {
     GET: `${API_BASE_URL}/memo/user`,
   },
+
+  GATHER: {
+    GET: `${API_BASE_URL}/gather`,
+    POST: `${API_BASE_URL}/gather`,
+    PUT: `${API_BASE_URL}/gather`,
+    DELETE: `${API_BASE_URL}/gather`,
+  },
 };
 
 export const CLIENT_PATH = {
