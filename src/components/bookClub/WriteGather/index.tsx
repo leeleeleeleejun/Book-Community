@@ -81,6 +81,8 @@ const WriteGather = () => {
       description,
       content,
       book_info: bookInfo,
+      member_length: memberLength,
+      term,
     };
 
     const response = gatherId

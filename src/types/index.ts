@@ -98,5 +98,19 @@ export interface gatherPost {
   description: string;
   content: string;
   book_info: myBookItem;
+  member_length: number;
+  term: number;
   createdAt?: string;
+}
+
+export type posts = memo[] | gatherPost[];
+
+export interface postListProp {
+  user: string;
+  getUserPosts: (
+    data: number,
+    userId: string
+  ) => Promise<{ posts: posts; message: string }>;
+  getAllPosts: (data: number) => Promise<{ posts: posts; message: string }>;
+  locationPath: "MEMO" | "BOOK_CLUB_GATHER";
 }

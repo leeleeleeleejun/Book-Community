@@ -32,7 +32,7 @@ const MemoDetailPage = () => {
   }, []);
 
   const deleteMemoFunc = async () => {
-    const userAnswer = confirm("해당 책을 삭제하겠습니까?");
+    const userAnswer = confirm("해당 글을 삭제하겠습니까?");
 
     if (userAnswer && _id) {
       const response = await deleteMemo(_id);
@@ -260,7 +260,7 @@ const ArticleWrap = styled.div`
   }
 `;
 
-const Article = ({ children }: { children: string }) => {
+export const Article = ({ children }: { children: string }) => {
   return <ArticleWrap dangerouslySetInnerHTML={{ __html: children }} />;
 };
 

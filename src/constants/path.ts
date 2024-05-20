@@ -47,12 +47,19 @@ export const API_PATH = {
     PUT: `${API_BASE_URL}/gather`,
     DELETE: `${API_BASE_URL}/gather`,
   },
+
+  ALL_GATHER: {
+    GET: `${API_BASE_URL}/gathers`,
+  },
+  USER_GATHER: {
+    GET: `${API_BASE_URL}/gather/user`,
+  },
 };
 
 export const CLIENT_PATH = {
   HOME: "/",
   BOOK_CLUB: "/bookclub",
-  BOOK_CLUB_GATHER: "/bookclub/gather/:id",
+  BOOK_CLUB_GATHER: "/bookclub/gather/:_id",
   LOGIN: "/login",
   SIGNUP: "/signup",
   USER_MEMO: "/user/memo/:userId",

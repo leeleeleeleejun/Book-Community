@@ -1,5 +1,6 @@
-import { NavigateFunction, useNavigate } from "react-router-dom";
+import { NavigateFunction, useNavigate, useParams } from "react-router-dom";
 import {
+  Article,
   BookBox,
   BookImg,
   BookTitle,
@@ -11,8 +12,33 @@ import {
 import LeftArrowIcon from "@/assets/LeftArrowIcon.svg?react";
 import FormButton from "@/components/common/FormButton";
 import styled from "styled-components";
+import { useEffect, useState } from "react";
+import { gatherPost } from "@/types";
+import { getGather } from "@/api/gatherAPI";
+import getDateFunc from "@/utils/getDate";
+
 const GatherPage = () => {
   const navigate: NavigateFunction = useNavigate();
+  const { _id } = useParams();
+  const [gather, setGather] = useState<gatherPost>();
+
+  useEffect(() => {
+    (async () => {
+      if (!_id) return;
+      const response = await getGather(_id);
+      setGather({
+        ...response.post,
+        createdAt: getDateFunc(response.post.createdAt),
+      });
+    })();
+  }, []);
+
+  if (!gather) return;
+  if (!gather.createdAt) return;
+
+  const endDate = new Date(gather.createdAt);
+  endDate.setDate(endDate.getDate() + gather.term);
+  const endDateString = endDate.toISOString().slice(0, 10);
 
   return (
     <>
@@ -24,23 +50,29 @@ const GatherPage = () => {
         >
           <LeftArrowIcon />
         </button>
-        <MemoTitle>모여라~!</MemoTitle>
+        <MemoTitle>{gather.title}</MemoTitle>
         <Writer>
           <i>by</i>
-          이준석
+          {(gather.author && gather.author.nickname) || "user"}
         </Writer>
-        <WriteDate>2023-12-13 18:19</WriteDate>
+        <WriteDate>
+          {gather.createdAt.slice(0, 10)} {gather.createdAt.slice(11, 16)}
+        </WriteDate>
       </MemoHeader>
       <BookBox>
-        <BookTitle>오광영편의점 - 2024 이재명 집권 프로젝트</BookTitle>
-        <BookImg src="/logo.jpg" />
+        <BookTitle>{gather.book_info.title}</BookTitle>
+        <BookImg src={gather.book_info.cover} />
       </BookBox>
       <ContentBox>
         <div>모임지기의 말</div>
-        <div>저와 함께 완독하실 분! 하루에 1페이지 씩</div>
-        <div>인원: 4/5</div>
-        <div>기간: 2023-12-21 ~ 2023-12-23</div>
-        <div>활동내용: 1일 1페이지 독서 후 매주 금요일 소감 나누기 </div>
+        <div>{gather.description}</div>
+        <div>인원: 0/{gather.member_length}</div>
+        <div>
+          기간: {gather.createdAt.slice(0, 10)}~ {endDateString}
+        </div>
+        <div>
+          활동내용: <Article>{gather.content || ""}</Article>
+        </div>
       </ContentBox>
       <FormButton>참가하기</FormButton>
     </>
