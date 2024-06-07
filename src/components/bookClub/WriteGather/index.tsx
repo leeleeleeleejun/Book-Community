@@ -198,7 +198,7 @@ export default WriteGather;
 
 const memberLengthRange = Array(7)
   .fill(0)
-  .map((v, i) => i + 1);
+  .map((_, i) => i + 1);
 const termRange = Array(6)
   .fill(0)
-  .map((v, i) => (i + 1) * 5);
+  .map((_, i) => (i + 1) * 5);
