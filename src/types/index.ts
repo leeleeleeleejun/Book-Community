@@ -15,7 +15,7 @@ export type ActivityGraphArray = ActivityGraph[];
 
 export type BookListThemeObjType = "bestBook" | "readBook" | "hopeBook";
 
-export interface my_book_item {
+export interface myBookItem {
   cover: string;
   title: string;
 }
@@ -31,10 +31,10 @@ export interface userInfo {
   phone_number: string;
   profile: string;
   activity_graph: ActivityGraphArray;
-  my_book: {
-    bestBook: my_book_item[];
-    readBook: my_book_item[];
-    hopeBook: my_book_item[];
+  myBook: {
+    bestBook: myBookItem[];
+    readBook: myBookItem[];
+    hopeBook: myBookItem[];
   };
 }
 
@@ -78,7 +78,7 @@ export interface bookListItemType {
 
 export interface postBookListItemApiProp {
   theme: BookListThemeObjType;
-  book_info: my_book_item;
+  book_info: myBookItem;
 }
 
 export interface memo {
@@ -87,6 +87,30 @@ export interface memo {
   author: userInfo;
   description: string;
   content: string;
-  book_info?: my_book_item;
+  book_info?: myBookItem;
   createdAt?: string;
+}
+
+export interface gatherPost {
+  _id?: string;
+  title: string;
+  author: userInfo;
+  description: string;
+  content: string;
+  book_info: myBookItem;
+  member_length: number;
+  term: number;
+  createdAt?: string;
+}
+
+export type posts = memo[] | gatherPost[];
+
+export interface postListProp {
+  user: string;
+  getUserPosts: (
+    data: number,
+    userId: string
+  ) => Promise<{ posts: posts; message: string }>;
+  getAllPosts: (data: number) => Promise<{ posts: posts; message: string }>;
+  locationPath: "MEMO" | "BOOK_CLUB_GATHER";
 }

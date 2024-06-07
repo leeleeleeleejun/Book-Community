@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 //Redux 액션 Import 및 훅 사용
 import { closeModal } from "./SearchBookSlice";
 import { useDispatch } from "react-redux";
@@ -7,6 +8,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { setUser } from "@/components/User/UserSlice";
 import { setMemoBook } from "@/components/memo/WriteMemo/WriteMemoSlice";
+import { setGatherClubBook } from "@/components/bookClub/WriteGather/WriteGatherSlice";
 //컴포넌트 Import:
 import { ModalContainer, ModalBox } from "@/components/common/ModalContainer";
 // type 및  API 호출 Import:
@@ -34,6 +36,7 @@ import {
 } from "./SearchBook.style";
 
 const SearchBook = () => {
+  const location = useLocation().pathname;
   const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.UserSlice.userInfo);
   const theme = useSelector((state: RootState) => state.LibrarySlice.theme);
@@ -66,18 +69,21 @@ const SearchBook = () => {
       dispatch(
         setUser({
           ...user,
-          my_book: {
-            ...user.my_book,
-            [theme]: [...user.my_book[theme], book_info],
+          myBook: {
+            ...user.myBook,
+            [theme]: [...user.myBook[theme], book_info],
           },
         })
       );
     }
   };
 
-  const chooseMemoBookFunc = (cover: string, title: string) => {
+  const chooseBookFunc = (cover: string, title: string) => {
     const book_info = { cover, title };
-    dispatch(setMemoBook(book_info));
+
+    location === "/"
+      ? dispatch(setMemoBook(book_info))
+      : dispatch(setGatherClubBook(book_info));
     dispatch(closeModal());
   };
 
@@ -123,7 +129,7 @@ const SearchBook = () => {
                     onClick={() => {
                       theme
                         ? pushMyBookListItemFunc(cover, title)
-                        : chooseMemoBookFunc(cover, title);
+                        : chooseBookFunc(cover, title);
                     }}
                   >
                     <PlusIcon />

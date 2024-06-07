@@ -2,20 +2,19 @@ import { useEffect, useMemo, useRef, useState } from "react";
 // 유틸리티 Import:
 import getDateFunc from "@/utils/getDate";
 //타입 및 상수 Import:
-import { memo } from "@/types";
+import { postListProp, posts } from "@/types";
 import { API_USER_IMG, CLIENT_PATH } from "@/constants/path";
 //로딩 아이콘 및 API 호출 관련 Import:
 import LoadingIcon from "@/components/common/LoadingIcon";
-import { getAllMemo, getUserMemo } from "@/api/memoAPI";
+//import { getAllMemos, getUserMemos } from "@/api/memoAPI";
 //컴포넌트 Import:
 import BasicUserIcon from "@/components/common/BasicUserIcon";
-import UserLinkBox from "../UserLinkBox";
 //SVG 아이콘 및 스타일 관련 Import:
 import CalendalIcon from "@/assets/CalendarIcon.svg?react";
 import {
-  MemoListBox,
-  MemoListItem,
-  MemoTitle,
+  PostListBox,
+  PostListItem,
+  PostTitle,
   Excerpt,
   LogoImg,
   BookImg,
@@ -23,11 +22,17 @@ import {
   WriterImg,
   WriteDate,
   WriterInfo,
-  MemoInfo,
-} from "./MemoList.style";
+  PostInfo,
+} from "./PostList.style";
+import UserLinkBox from "@/components/common/PostList/UserLinkBox";
 
-const MemoList = ({ user }: { user: string }) => {
-  const [memoList, setMemoList] = useState<memo[]>([]);
+const PostList = ({
+  user,
+  getUserPosts,
+  getAllPosts,
+  locationPath,
+}: postListProp) => {
+  const [postList, setPostList] = useState<posts>([]);
   const [page, setPage] = useState(0); //스크롤이 닿았을 때 새롭게 데이터 페이지를 바꿀 state
   const [loading, setLoading] = useState(false);
   const [showLinkBox, setShowLinkBox] = useState<number | null>();
@@ -36,7 +41,7 @@ const MemoList = ({ user }: { user: string }) => {
   const pageEnd = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    fetchPins(page, setMemoList, setLoading, user);
+    fetchPins(page, getUserPosts, getAllPosts, setPostList, setLoading, user);
   }, [page]);
 
   useEffect(() => {
@@ -55,18 +60,17 @@ const MemoList = ({ user }: { user: string }) => {
   };
 
   return (
-    <MemoListBox>
-      {memoList.map((item, index) => {
+    <PostListBox>
+      {postList.map((item, index) => {
         const { _id, title, author, description, createdAt, book_info } = item;
-
         return (
           <li key={index}>
-            <MemoListItem
-              to={_id ? CLIENT_PATH.MEMO.replace(":_id", _id) : "/"}
+            <PostListItem
+              to={_id ? CLIENT_PATH[locationPath].replace(":_id", _id) : "/"}
             >
               <div>
-                <MemoTitle>{title}</MemoTitle>
-                <MemoInfo>
+                <PostTitle>{title}</PostTitle>
+                <PostInfo>
                   <WriterInfo>
                     {author && author.profile ? (
                       <WriterImg
@@ -93,7 +97,7 @@ const MemoList = ({ user }: { user: string }) => {
                     <CalendalIcon />
                     {createdAt && getDateFunc(createdAt).slice(0, 10)}
                   </WriteDate>
-                </MemoInfo>
+                </PostInfo>
                 <Excerpt>
                   <p>{description}</p>
                 </Excerpt>
@@ -103,30 +107,35 @@ const MemoList = ({ user }: { user: string }) => {
               ) : (
                 <LogoImg src="/logo_2.jpg" alt="logo" />
               )}
-            </MemoListItem>
+            </PostListItem>
           </li>
         );
       })}
       <div ref={pageEnd} />
       {loading && <LoadingIcon />}
-    </MemoListBox>
+    </PostListBox>
   );
 };
 
-export default MemoList;
+export default PostList;
 
 const fetchPins = async (
   page: number,
-  setMemoList: React.Dispatch<React.SetStateAction<memo[]>>,
+  getUserPosts: (
+    data: number,
+    userId: string
+  ) => Promise<{ posts: posts; message: string }>,
+  getAllPosts: (data: number) => Promise<{ posts: posts; message: string }>,
+  setPostList: React.Dispatch<React.SetStateAction<posts>>,
   setLoading: React.Dispatch<React.SetStateAction<boolean>>,
   user: string
 ) => {
   setLoading(true);
   const response = user
-    ? await getUserMemo(page, user)
-    : await getAllMemo(page);
-  const newList = response.memos;
-  setMemoList((prev) => [...prev, ...newList]);
+    ? await getUserPosts(page, user)
+    : await getAllPosts(page);
+  const newList = response.posts;
+  setPostList((prev) => [...prev, ...newList]);
   setLoading(false);
 };
 

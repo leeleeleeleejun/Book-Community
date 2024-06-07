@@ -1,12 +1,12 @@
 import { API_PATH } from "@/constants/path";
-import { memo } from "@/types";
+import { gatherPost } from "@/types";
 import callApi from "@/utils/callApi";
 import handleApiResponse from "@/utils/handleApiResponse";
 
-export const getMemo = async (data: string) => {
+export const getGather = async (data: string) => {
   const queryString = new URLSearchParams({ param: data });
   try {
-    const response = await fetch(`${API_PATH.MEMO.GET}?${queryString}`, {
+    const response = await fetch(`${API_PATH.GATHER.GET}?${queryString}`, {
       method: "GET",
     });
 
@@ -21,11 +21,11 @@ export const getMemo = async (data: string) => {
   }
 };
 
-export const postMemo = async (data: memo) => {
+export const postGather = async (data: gatherPost) => {
   try {
     const response = await callApi(
       "POST",
-      API_PATH.MEMO.POST,
+      API_PATH.GATHER.POST,
       JSON.stringify(data)
     );
 
@@ -37,12 +37,12 @@ export const postMemo = async (data: memo) => {
   }
 };
 
-export const editMemo = async (data: memo, memoId: string) => {
+export const editGather = async (data: gatherPost, gatherId: string) => {
   try {
     const response = await callApi(
       "PUT",
-      API_PATH.MEMO.PUT,
-      JSON.stringify({ ...data, _id: memoId })
+      API_PATH.GATHER.PUT,
+      JSON.stringify({ ...data, _id: gatherId })
     );
 
     await handleApiResponse(response);
@@ -53,26 +53,10 @@ export const editMemo = async (data: memo, memoId: string) => {
   }
 };
 
-export const deleteMemo = async (data: string) => {
-  try {
-    const response = await callApi(
-      "DELETE",
-      API_PATH.MEMO.DELETE,
-      JSON.stringify({ _id: data })
-    );
-
-    await handleApiResponse(response);
-
-    return response;
-  } catch (err) {
-    alert(err);
-  }
-};
-
-export const getAllMemos = async (data: number) => {
+export const getAllGathers = async (data: number) => {
   const queryString = new URLSearchParams({ param: String(data) });
   try {
-    const response = await fetch(`${API_PATH.ALL_MEMO.GET}?${queryString}`, {
+    const response = await fetch(`${API_PATH.ALL_GATHER.GET}?${queryString}`, {
       method: "GET",
     });
 
@@ -86,11 +70,11 @@ export const getAllMemos = async (data: number) => {
   }
 };
 
-export const getUserMemos = async (data: number, userId: string) => {
+export const getUserGathers = async (data: number, userId: string) => {
   const queryString = new URLSearchParams({ param: String(data), userId });
 
   try {
-    const response = await fetch(`${API_PATH.USER_MEMO.GET}?${queryString}`, {
+    const response = await fetch(`${API_PATH.USER_GATHER.GET}?${queryString}`, {
       method: "GET",
     });
 

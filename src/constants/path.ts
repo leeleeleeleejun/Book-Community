@@ -40,15 +40,31 @@ export const API_PATH = {
   USER_MEMO: {
     GET: `${API_BASE_URL}/memo/user`,
   },
+
+  GATHER: {
+    GET: `${API_BASE_URL}/gather`,
+    POST: `${API_BASE_URL}/gather`,
+    PUT: `${API_BASE_URL}/gather`,
+    DELETE: `${API_BASE_URL}/gather`,
+  },
+
+  ALL_GATHER: {
+    GET: `${API_BASE_URL}/gathers`,
+  },
+  USER_GATHER: {
+    GET: `${API_BASE_URL}/gather/user`,
+  },
 };
 
 export const CLIENT_PATH = {
   HOME: "/",
+  BOOK_CLUB: "/bookclub",
+  BOOK_CLUB_GATHER: "/bookclub/gather/:_id",
   LOGIN: "/login",
   SIGNUP: "/signup",
   USER_MEMO: "/user/memo/:userId",
   TIMER: "/timer",
   LIBRARY: "/user/library/:userId",
-
+  USER_BOOK_CLUB: "/user/bookclub/:userId",
   MEMO: "/memo/:_id",
 };

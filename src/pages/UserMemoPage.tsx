@@ -8,9 +8,10 @@ import { API_USER_IMG } from "@/constants/path";
 import { getAnotherUserInfo } from "@/api/userAPI";
 import { openModal } from "@/components/User/UserSlice";
 import BasicUserIcon from "@/components/common/BasicUserIcon";
-import MemoList from "@/components/memo/MemoList";
 import SettingIcon from "@/assets/SettingIcon.svg?react";
 import MetaTag from "@/components/common/SEO/MetaTag";
+import PostList from "@/components/common/PostList";
+import { getAllMemos, getUserMemos } from "@/api/memoAPI";
 
 const UserMemoPage = () => {
   const dispatch = useDispatch();
@@ -59,7 +60,12 @@ const UserMemoPage = () => {
           </button>
         )}
       </UserInfo>
-      <MemoList user={targetUser._id || ""} />
+      <PostList
+        user={targetUser._id || ""}
+        getUserPosts={getUserMemos}
+        getAllPosts={getAllMemos}
+        locationPath="MEMO"
+      />
     </>
   );
 };

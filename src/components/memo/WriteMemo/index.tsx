@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 //RootState 및Redux 액션 Import:
 import type { RootState } from "@/store";
-import { setMemoBook } from "./WriteMemoSlice";
-import { closeModal, setMemoId } from "./WriteMemoSlice";
+import { closeWriteMemoModal, setMemoId, setMemoBook } from "./WriteMemoSlice";
 import { setTheme } from "@/components/Library/LibrarySlice";
 import { openModal } from "@/components/SearchBook/SearchBookSlice";
 // 컴포넌트 Import:
@@ -44,7 +43,7 @@ const WriteMemo = () => {
     (async () => {
       if (memoId) {
         const response = await getMemo(memoId);
-        const memo = response.memo;
+        const memo = response.post;
         setTitle(memo.title);
         setContent(memo.content);
         setDescription(memo.description);
@@ -102,7 +101,7 @@ const WriteMemo = () => {
 
   const closeModalFunc = () => {
     cancelMemoBookFunc();
-    dispatch(closeModal());
+    dispatch(closeWriteMemoModal());
     dispatch(setMemoId(""));
   };
 
@@ -162,6 +161,7 @@ const WriteMemo = () => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
+          <span>메모 내용</span>
           <Quill
             theme="snow"
             modules={modules}

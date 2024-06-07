@@ -4,9 +4,9 @@ import UpArrow from "@/assets/UpArrow.svg?react";
 import TopButton from "@/components/common/TopButton";
 import showTopButton from "@/utils/showTopButton";
 import PostList from "@/components/common/PostList";
-import { getAllMemos, getUserMemos } from "@/api/memoAPI";
+import { getAllGathers, getUserGathers } from "@/api/gatherAPI";
 
-const HomePage = () => {
+const BookClubPage = () => {
   const [position, setPosition] = useState<number>(0);
   const [visible, setVisible] = useState<boolean>(true);
 
@@ -28,12 +28,12 @@ const HomePage = () => {
       <Nav />
       <PostList
         user={""}
-        getUserPosts={getUserMemos}
-        getAllPosts={getAllMemos}
-        locationPath="MEMO"
+        getUserPosts={getUserGathers}
+        getAllPosts={getAllGathers}
+        locationPath="BOOK_CLUB_GATHER"
       />
     </>
   );
 };
 
-export default HomePage;
+export default BookClubPage;

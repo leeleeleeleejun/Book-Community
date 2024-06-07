@@ -35,7 +35,6 @@ const Timer = () => {
 
     const loginResponse = await getUserInfo();
     if (token && loginResponse?.ok) {
-      console.log;
       const response = await pushReadTime({ day: today, active: time });
       if (response) {
         stopWatch();

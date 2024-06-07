@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const MemoListBox = styled.ul`
+export const PostListBox = styled.ul`
   display: flex;
   flex-direction: column;
 `;
 
-export const MemoListItem = styled(Link)`
+export const PostListItem = styled(Link)`
   display: flex;
   max-width: 800px;
   justify-content: space-between;
@@ -28,7 +28,7 @@ export const MemoListItem = styled(Link)`
   }
 `;
 
-export const MemoTitle = styled.h3`
+export const PostTitle = styled.h3`
   height: 50px;
   font-size: var(--font-medium);
   font-weight: var(--weight-semi-bold);
@@ -97,7 +97,7 @@ export const LogoImg = styled.img`
   }
 `;
 
-export const MemoInfo = styled.div`
+export const PostInfo = styled.div`
   display: flex;
   justify-content: space-between;
   font-size: var(--font-small);

@@ -29,7 +29,7 @@ export const Content = styled.div`
   box-sizing: border-box;
 
   & > span {
-    font-size: var(--font-small);
+    font-size: var(--font-semi-small);
     font-weight: var(--weight-light);
     margin: 8px 0;
   }
@@ -94,12 +94,14 @@ export const RegisterButton = styled(FormButton)`
 `;
 export const CancelButton = styled(RegisterButton)`
   background-color: var(--color-gray);
+  &:hover {
+    background-color: var(--color-gray-light-3);
+  }
 `;
 
 export const Quill = styled(ReactQuill)`
   height: 170px;
   width: 100%;
-  margin-top: 20px;
   margin-bottom: 70px;
 
   @media (max-width: 500px) {

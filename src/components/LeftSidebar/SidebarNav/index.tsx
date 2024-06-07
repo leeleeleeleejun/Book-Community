@@ -6,7 +6,7 @@ import { CLIENT_PATH } from "@/constants/path";
 import HomeIcon from "@/assets/HomeIcon.svg?react";
 import BlogIcon from "@/assets/BlogIcon.svg?react";
 import BookIcon from "@/assets/BookIcon.svg?react";
-// import MessageIcon from "@/assets/MessageIcon";
+import MessageIcon from "@/assets/MessageIcon.svg?react";
 
 const SidebarNav = ({ handleMenuClose }: { handleMenuClose: () => void }) => {
   const location = useLocation().pathname;
@@ -52,6 +52,13 @@ const SidebarNav = ({ handleMenuClose }: { handleMenuClose: () => void }) => {
         $active={userLibraryActive}
       >
         <BookIcon />내 서재
+      </NavItem>
+      <NavItem
+        onClick={handleNavItemClick}
+        to={userLibraryUrl}
+        $active={userLibraryActive}
+      >
+        <MessageIcon />내 모임
       </NavItem>
     </Nav>
   );
