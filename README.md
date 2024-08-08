@@ -1,4 +1,3 @@
-<div align=center>
   <h2> 독서일기, 함께 나누다</h2>
   <br>
   
@@ -37,6 +36,8 @@
 <img width="100" alt="image" src="https://github.com/leeleeleeleejun/Book-Community_Frontend/assets/98197264/75ec505a-b9ed-42a7-be56-26ecda055e19"/>
 <img width="100" alt="image" src="https://github.com/leeleeleeleejun/Book-Community_Frontend/assets/98197264/3841b034-ffd0-422e-9d30-0277462accf2"/>
 <img width="100" alt="image" src="https://github.com/leeleeleeleejun/Book-Community_Frontend/assets/98197264/d3de5e21-0228-4b89-add4-e36d8dcf65d3"/>
+<img width="100" alt="image" src="https://github.com/user-attachments/assets/fb6b6231-4646-40e9-91c3-44c510c050f1"/>
+
 
 #### 🖥️ Backend
 
